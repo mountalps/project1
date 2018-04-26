@@ -126,6 +126,8 @@ $signUpCategory = $_POST['signUpRadio'];
         <!--
         CREATE TABLE `Company` (
         `cid` INT NOT NULL auto_increment,
+        `cusername` VARCHAR(20) NOT NULL,
+        `cpassword` VARCHAR(20) NOT NULL,
         `cname` VARCHAR(20) NOT NULL,
         `ccity` VARCHAR(20) NOT NULL,
         `cstate` VARCHAR(20) NOT NULL,
