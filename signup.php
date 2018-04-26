@@ -139,6 +139,15 @@ $signUpCategory = $_POST['signUpRadio'];
             <form action="companysignup.php" method="post">
                 <table>
                     <tr>
+                        <td>Username*:</td>
+                        <td><input type="text" name = "cusername"  size="35"></td>
+                    </tr>
+
+                    <tr>
+                        <td>Password*:</td>
+                        <td><input type="text" name="cpassword" size="35"></td>
+                    </tr>
+                    <tr>
                         <td>Company Name*:</td>
                         <td><input type="text" name = "cname"  size="35"></td>
                     </tr>
@@ -153,11 +162,11 @@ $signUpCategory = $_POST['signUpRadio'];
                         <td><input type="text" name="cstate" size="35"></td>
                     </tr>
                     <tr>
-                        <td>country:</td>
+                        <td>country*:</td>
                         <td><input type="text" name="ccountry" size="35"></td>
                     </tr>
                     <tr>
-                        <td>industry:</td>
+                        <td>industry*:</td>
                         <td><input type="text" name="industry" size="35"></td>
                     </tr>
                     <tr>

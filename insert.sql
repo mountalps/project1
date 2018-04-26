@@ -24,18 +24,18 @@ values
 (null, 'jmasureli', 'jDhPnlw', 'Jeromy', 'Stevens Institute of Technology', 'Physics', 'Doctor', 3.7, 'Tin', null, 0),
 (null, 'abiertonj', '038KU588Amj', 'Ariana', 'Birsk State Pedagogical Institute', 'Physics', 'Doctor', 3.67, 'Stim', null, 1);
 
-#(cid, cname, ccity, cstate, ccountry, industry)
+#(cid, cusername, cpassword, cname, ccity, cstate, ccountry, industry)
 insert into Company values
-(null, 'Microsoft', 'New York City', 'New York', 'United States', 'Telecommunications Equipment'),
-(null, 'Youspan', 'Denver', 'Colorado', 'United States', 'Marine Transportation'),
-(null, 'Twiyo', 'Los Angeles', 'California', 'United States', 'Life Insurance'),
-(null, 'Brightdog', 'Austin', 'Texas', 'United States', 'Marine Transportation'),
-(null, 'Jayo', 'Richmond', 'Virginia', 'United States', 'Marine Transportation'),
-(null, 'Ailane', 'Mobile', 'Alabama', 'United States', 'Marine Transportation'),
-(null, 'Shufflebeat', 'Syracuse', 'New York', 'United States', 'Auto Parts:O.E.M.'),
-(null, 'Kaymbo', 'Charlotte', 'North Carolina', 'United States', 'Marine Transportation'),
-(null, 'Oba', 'Monticello', 'Minnesota', 'United States', 'Oil & Gas Production'),
-(null, 'Yabox', 'Mesa', 'Arizona', 'United States', 'Marine Transportation');
+(null, 'c001', 'c001', 'Microsoft', 'New York City', 'New York', 'United States', 'Telecommunications Equipment'),
+(null, 'c002', 'c002','Youspan', 'Denver', 'Colorado', 'United States', 'Marine Transportation'),
+(null, 'c003', 'c003','Twiyo', 'Los Angeles', 'California', 'United States', 'Life Insurance'),
+(null, 'c004', 'c004','Brightdog', 'Austin', 'Texas', 'United States', 'Marine Transportation'),
+(null, 'c005', 'c005','Jayo', 'Richmond', 'Virginia', 'United States', 'Marine Transportation'),
+(null, 'c006', 'c006','Ailane', 'Mobile', 'Alabama', 'United States', 'Marine Transportation'),
+(null, 'c007', 'c007','Shufflebeat', 'Syracuse', 'New York', 'United States', 'Auto Parts:O.E.M.'),
+(null, 'c008', 'c008','Kaymbo', 'Charlotte', 'North Carolina', 'United States', 'Marine Transportation'),
+(null, 'c009', 'c009','Oba', 'Monticello', 'Minnesota', 'United States', 'Oil & Gas Production'),
+(null, 'c010', 'c010','Yabox', 'Mesa', 'Arizona', 'United States', 'Marine Transportation');
 
 
 #Job (jid, title, cid, jcity, jstate, jcountry, salary, degree, major, jdesciption)
