@@ -1,10 +1,9 @@
-{\rtf1\ansi\ansicpg1252\cocoartf1561\cocoasubrtf200
-{\fonttbl\f0\fswiss\fcharset0 Helvetica;\f1\fnil\fcharset134 PingFangSC-Regular;}
-{\colortbl;\red255\green255\blue255;}
-{\*\expandedcolortbl;;}
-\margl1440\margr1440\vieww10800\viewh8400\viewkind0
-\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+Changes:
+1. company的schema改了，加了cusername和cpassword
+2. company的样本数据改了，加了上面的两样
+3. student和company的username也设成primarykey（因为登陆的时候，用的是username），作为ID使用
 
+<<<<<<< HEAD
 \f0\fs24 \cf0 Changes:\
 1. 
 \f1 company\'b5\'c4schema\'b8\'c4\'c1\'cb\'a3\'ac\'bc\'d3\'c1\'cbcusername\'ba\'cdcpassword\
@@ -15,3 +14,10 @@
 \
 \'ce\'ca\'cc\'e2\'a3\'ba\
 \'b1\'d8\'cc\'ee\'cf\'ee\'c8\'e7\'b9\'fb\'c3\'bb\'d3\'d0\'cc\'ee\'a3\'acstudent\'cd\'cb\'bb\'d8\'b5\'bdssign up\'ca\'b1\'a3\'ac\'d6\'ae\'c7\'b0\'d1\'a1\'d4\'f1\'b5\'c4student\'b6\'aa\'ca\'a7}
+=======
+
+
+
+问题：
+必填项如果没有填，student退回到ssign up时，之前选择的student丢失
+>>>>>>> 8526dd682b35d277e9f83a219f00500c6ea538d2
