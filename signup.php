@@ -7,6 +7,7 @@
  */
 
 $signUpCategory = $_POST['signUpRadio'];
+
 ?>
 
 <!DOCTYPE html>
@@ -29,17 +30,7 @@ $signUpCategory = $_POST['signUpRadio'];
     <!--
     CREATE TABLE `Student`
     (
-  `sid` INT NOT NULL auto_increment,
-  `username` VARCHAR(20) NOT NULL,
-  `password` VARCHAR(20) NOT NULL,
-  `sname` VARCHAR(20) NOT NULL,
-  `university` VARCHAR(100) ,
-  `major` VARCHAR(20),
-  `degree` VARCHAR(20),
-  `GPA` DECIMAL(3,2) ,
-  `keywords` VARCHAR(500),
-  `resume` Varchar(20),
-  `restrict` bit NOT NULL,
+
   PRIMARY KEY (`sid`)
   );
   -->
@@ -88,8 +79,8 @@ $signUpCategory = $_POST['signUpRadio'];
                         <td>Restrict:</td>
                         <td>
                             <select name="restrict" id="">
-                                <option value="yes">Yes</option>
                                 <option value="no">No</option>
+                                <option value="yes">Yes</option>
                             </select>
                         </td>
                     </tr>
