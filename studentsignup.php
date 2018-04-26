@@ -46,7 +46,7 @@ $_SESSION['DBdatabase'] = $DBdatabase;
 
     <?php if($username == null || $password == null ||$sname == null):?>
     <?php if($username == null):?>
-        <h1>Please input your username!</h1>
+        <h1 >Please input your username!</h1>
     <?php endif;?>
 
     <?php if($password == null):?>
@@ -81,10 +81,10 @@ $_SESSION['DBdatabase'] = $DBdatabase;
         ?>
 
         <?php if ($result == 'true'):?>
-            <h2>Sign Up Unsuccessfully!</h2>
+            <h2>Sign Up Successfully!</h2>
             <button onclick="window.location.href='startpage.html'">Back to login</button>
         <?php else:?>
-            <h2>No reason!</h2>
+            <h2>Sign Up Unsuccessfully!</h2>
 
         <?php endif;?>
 

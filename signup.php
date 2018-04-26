@@ -23,9 +23,9 @@ $signUpCategory = $_POST['signUpRadio'];
         <!---------------------------------------------------------------------->
         <!--------------When the client select to sign up as a student:--------->
     <?php if($signUpCategory == "student"): ?>
-        <h1>Student Sign Up:</h1>
-        <h2>please fill in this form, * means required</h2>
-        <p>If you do not want clients who are not your friends or followed by you to see details in your profile,please select "Yes" in Restrict</p>
+        <h1 align="center">Student Sign Up:</h1>
+        <h2 align="center">please fill in this form, * means required</h2>
+        <p align="center">If you do not want clients who are not your friends or followed by you to see details in your profile,please select "Yes" in Restrict</p>
 
     <!--
     CREATE TABLE `Student`
@@ -111,8 +111,8 @@ $signUpCategory = $_POST['signUpRadio'];
         <!------------------------------------------------------------------------->
         <!--------------When the client select to sign up as a Company:-------------->
     <?php elseif ($signUpCategory == "company"): ?>
-        <h1>Company Sign Up</h1>
-        <h2>please fill in this form, * means required</h2>
+        <h1 align="center">Company Sign Up</h1>
+        <h2 align="center">please fill in this form, * means required</h2>
 
         <!--
         CREATE TABLE `Company` (
