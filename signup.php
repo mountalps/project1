@@ -44,7 +44,7 @@ $signUpCategory = $_POST['signUpRadio'];
 
                     <tr>
                         <td>Password*:</td>
-                        <td><input type="text" name="password" size="35"></td>
+                        <td><input type="password" name="password" size="35"></td>
                     </tr>
 
                     <tr>
@@ -136,7 +136,7 @@ $signUpCategory = $_POST['signUpRadio'];
 
                     <tr>
                         <td>Password*:</td>
-                        <td><input type="text" name="cpassword" size="35"></td>
+                        <td><input type="password" name="cpassword" size="35"></td>
                     </tr>
                     <tr>
                         <td>Company Name*:</td>

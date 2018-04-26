@@ -13,8 +13,8 @@ CREATE TABLE `Student` (
   `keywords` VARCHAR(500),
   `resume` Varchar(20),
   `restrict` bit NOT NULL,
-  PRIMARY KEY (`sid`),
-  PRIMARY KEY (`username`)
+  PRIMARY KEY (`sid`)
+  #PRIMARY KEY (`username`)
   );
 
 CREATE TABLE `Company` (
@@ -26,8 +26,9 @@ CREATE TABLE `Company` (
   `cstate` VARCHAR(20) NOT NULL,
   `ccountry` VARCHAR(20) NOT NULL,
   `industry` VARCHAR(100) NOT NULL,
-  PRIMARY KEY (`cid`),
-  PRIMARY KEY (`cusername`));
+  PRIMARY KEY (`cid`)
+  #PRIMARY KEY (`cusername`)
+  );
 
 CREATE TABLE `Job` (
   `jid` INT NOT NULL auto_increment,
