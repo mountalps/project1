@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Welcome to Jobster!</title>
+</head>
+<body>
+    <h1 align="center">Welcome To Jobster!</h1>
+
+    <hr>
+    <h2 align="center">Please Login</h2>
+
+    <hr>
+    <br>
+    <form action="login.php" align = "center">
+        Username:<input type="text" name = "username"  size="35">
+        <br>
+        Password:<input type="text" name="password"  size="35">
+        <br>
+        <br>
+        Choose your category: <input type="radio" name="boxes[]" value="student">Student
+        <input type="radio" name="boxes[]" value="company">Company
+        <br>
+        <input type="submit" value="Login" align="right">
+    </form>
+
+
+    <br>
+    <br>
+    <hr>
+    <h2 align="center">Don't have an account? Join now! </h2>
+    <hr>
+    <h3 align="center">Are you a student or a company? </h3>
+    <form action="signup.php" align="center">
+        <input type="radio" name="signUpBoxes[]" value="student">Student
+        <input type="radio" name="signUpBoxes[]" value="company">Company
+        <br>
+        <input type="submit" value="Sign up" align="center">
+    </form>
+
+
+    <hr>
+</body>
+</html>
