@@ -11,13 +11,13 @@
 </head>
 <body>
     <div class="navivation">
-        <nav>
-            <a class="active" href="student-homepage0.php">Home</a> |
-            <a href="notifications.php">Notifications</a> |
-            <a href="friends_page.php">Friends</a> |
-            <a href="followed_companies.php">Followed Companies</a> |
-            <a href="applied_jobs.php">Applied Jobs</a> |
-            <form action="search_result.php" method="get" id="keyword_search">
+    <nav>
+            <a class="active" href="0_student-homepage.php">Home</a> |
+            <a href="student_notifications.php">Notifications</a> |
+            <a href="student_friends_page.php">Friends</a> |
+            <a href="student_followed_companies.php">Followed Companies</a> |
+            <a href="student_applied_jobs.php">Applied Jobs</a> |
+            <form action="student_search_result.php" method="get" id="keyword_search">
                 <input type="text" placeholder="Search..." name="keyword">
                 <button type="submit">search</button>
             </form>
