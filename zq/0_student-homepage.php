@@ -37,19 +37,36 @@
     if ($conn->connect_error) {
         die("Connection failed: " . $conn->connect_error);
     }
-    $query1 = "select sname from Student where sid = " . $sid;
-    if ($conn->query($query1) == TRUE) {
-        
-    } else {
-        echo "Unable to login to the system. Please try again later.";
+    $query = "SELECT sname FROM Student s WHERE s.sid = 1";
+    $result = $conn->query($query);
+    $sname = "";
+    if ($result->num_rows > 0) {
+        while ($row = $result->fetch_assoc()) {
+            $sname = $row;
+        }
     }
-    $conn->close();
+
     // the rest of the text
-    $hellostr = "Hello" . $sname;
-    echo "<h1>$hellostr</h1>";
+    $hellostr = "Hello, " . $sname;
+    echo "<h2>$hellostr</h2>";
     ?>
     <div>
-    Here are some avaliable jobs:
+    Here are some avaliable jobs:<br>
     </div>
+    <?php
+    $query = "SELECT * FROM Job j, Company c where j.cid = c.cid";
+    $result = $conn->query($query);
+    if ($result->num_rows > 0) {
+        while ($row = $result->fetch_assoc()) {
+            // echo $row["cname"];
+            echo 
+            "<div>
+            Job Title: " . $row["title"] . "<br>    By Company: " . $row["cname"] . "<br><br>"
+            . "
+            </div>";
+        }
+    }
+    $conn->close();
+    ?>
 </body>
 </html>
