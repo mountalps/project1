@@ -24,10 +24,32 @@
         </nav>
     </div>
     <?php
-    $DBhost = $_SESSION["DBhost"];
-    echo "$DBhost";
-    $hellostr = "Hello!!!";
+    // get the sid from signin page
+    $sid = $_SESSION['studentid'];
+    $sid = 1;
+    
+    // database connection
+    $servername = "localhost";
+    $username = "root";
+    $password = "root";
+    $dbname = "PJ2database";
+    $conn = new mysqli($servername, $username, $password, $dbname);
+    if ($conn->connect_error) {
+        die("Connection failed: " . $conn->connect_error);
+    }
+    $query1 = "select sname from Student where sid = " . $sid;
+    if ($conn->query($query1) == TRUE) {
+        
+    } else {
+        echo "Unable to login to the system. Please try again later.";
+    }
+    $conn->close();
+    // the rest of the text
+    $hellostr = "Hello" . $sname;
     echo "<h1>$hellostr</h1>";
     ?>
+    <div>
+    Here are some avaliable jobs:
+    </div>
 </body>
 </html>
