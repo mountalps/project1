@@ -7,11 +7,25 @@
     <title>Jobster Home</title>
     <style>
         form {display: inline-block;}
+        nav {background-color: #EEE;}
+        .wrapper {padding: 0 60px 0 60px;}
+        .job-intro {
+          background-color: #EEEEEE;
+          padding: 10px 10px 10px 10px;
+          border: 5px solid white;
+          display: block;
+        }
+        .job-a:hover{ color: red; }
+        .job-a { text-decoration: none; }
+        p {margin: 5px 5px 5px 5px; word-wrap: break-word;}
+        /* .job-left { padding : 0px; margin: 0; display: inline-block;}
+        .job-right { padding : 0px; margin: 0 0 0 5px; display: inline-block; float: right;} */
     </style>
 </head>
 <body>
     <div class="navivation">
         <nav>
+          <div class="wrapper">
             <a class="active" href="0_student-homepage.php">Home</a> |
             <a href="student_notifications.php">Notifications</a> |
             <a href="student_friends_page.php">Friends</a> |
@@ -21,52 +35,64 @@
                 <input type="text" placeholder="Search..." name="keyword">
                 <button type="submit">search</button>
             </form>
+            </div>
         </nav>
     </div>
-    <?php
-    // get the sid from signin page
-    $sid = $_SESSION['studentid'];
-    $sid = 1;
-    
-    // database connection
-    $servername = "localhost";
-    $username = "root";
-    $password = "root";
-    $dbname = "PJ2database";
-    $conn = new mysqli($servername, $username, $password, $dbname);
-    if ($conn->connect_error) {
-        die("Connection failed: " . $conn->connect_error);
-    }
-    $query = "SELECT sname FROM Student s WHERE s.sid = 1";
-    $result = $conn->query($query);
-    $sname = "";
-    if ($result->num_rows > 0) {
-        while ($row = $result->fetch_assoc()) {
-            $sname = $row;
-        }
-    }
+    <div class="wrapper">
+      <?php
+      // get the sid from signin page
+      $sid = $_SESSION['studentid'];
+      $sid = 1;
 
-    // the rest of the text
-    $hellostr = "Hello, " . $sname;
-    echo "<h2>$hellostr</h2>";
-    ?>
-    <div>
-    Here are some avaliable jobs:<br>
+      // database connection
+      $servername = "localhost";
+      $username = "root";
+      $password = "root";
+      $dbname = "PJ2database";
+      $conn = new mysqli($servername, $username, $password, $dbname);
+      if ($conn->connect_error) {
+          die("Connection failed: " . $conn->connect_error);
+      }
+      $query = "SELECT sname FROM Student s WHERE s.sid = 1";
+      $result = $conn->query($query);
+      $sname = "";
+      if ($result->num_rows > 0) {
+          while ($row = $result->fetch_assoc()) {
+              $sname = $row;
+          }
+      }
+
+      // the rest of the text
+      $hellostr = "Hello " . $sname . ",";
+      echo "<h2>$hellostr</h2>";
+      ?>
+      <div>
+      Here are some avaliable jobs:<br>
+      </div>
+      <?php
+      $query = "SELECT j.title, j.jcity, j.jstate, j.jcountry, j.salary, c.cname, j.jdesciption, j.major, j.degree FROM Job j, Company c where j.cid = c.cid;";
+      $result = $conn->query($query);
+      if ($result->num_rows > 0) {
+          while ($row = $result->fetch_assoc()) {
+              echo "<a href='#' class='job-a'>";
+              echo "<div class='job-intro'>";
+              echo "<div class='job-header'>
+                    <p>Job Title: ".$row["title"]."</p></div>";
+              echo "<div class='job-company'>
+                    <p>By Company: ".$row["cname"]."</p></div>";
+              echo "<div class='job-description'>
+                    <p>Description: ".$row["jdesciption"]."shlfdkjhasjkfhkjlasdhfajsdhlfjkashdfasdfaasjhdfkjlashdjkfahskdjf;akjsdhfjakshf;sdhfkjlashdfljkahsdfulawehfajksdhfnauwehfukasdfnajk.ehfajk.sdhfkjdkjhasjkfhkjlasdhfajsdhlfjkashdfasdfaasjhdfkjlashdjkfahskdjf;akjsdhfjakshf;sdhfkjlashdfljkahsdfulawehsdhfajsdhlfjkashdfasdfaasjhdfkjlashdjkfahskdjf;akjsdhfjakshf;sdhfkjlashdfljkahsdfulawehfajksdhfnauwehfukasdfnajk.ehfajk.sdhfkj.</p></div>";
+              echo "<div class='job-location'>
+                    <p>Location: ".$row["jcity"].", ".$row["jstate"].", ".$row["jcountry"]."</p></div>";
+              echo "<div class='job-major-degree'>".
+                    "<p>".$row["major"].", ".$row["degree"]."</p></div>";
+              echo "<div class='job-salary'>
+                    <p>Salary: $ ".number_format($row["salary"])."</p></div>";
+              echo "</div></a>";
+          }
+      }
+      $conn->close();
+      ?>
     </div>
-    <?php
-    $query = "SELECT * FROM Job j, Company c where j.cid = c.cid";
-    $result = $conn->query($query);
-    if ($result->num_rows > 0) {
-        while ($row = $result->fetch_assoc()) {
-            // echo $row["cname"];
-            echo 
-            "<div>
-            Job Title: " . $row["title"] . "<br>    By Company: " . $row["cname"] . "<br><br>"
-            . "
-            </div>";
-        }
-    }
-    $conn->close();
-    ?>
 </body>
 </html>
