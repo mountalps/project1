@@ -4,28 +4,28 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Jobster Home</title>
+    <title>Your Jobs</title>
     <style>
         form {display: inline-block;}
     </style>
 </head>
 <body>
     <div class="navivation">
-        <nav>
-            <a class="active" href="student-homepage0.php">Home</a> |
-            <a href="notifications.php">Notifications</a> |
-            <a href="friends_page.php">Friends</a> |
-            <a href="followed_companies.php">Followed Companies</a> |
-            <a href="applied_jobs.php">Applied Jobs</a> |
-            <form action="search_result.php" method="get" id="keyword_search">
+    <nav>
+            <a class="active" href="0_company-homepage.php">Home</a> |
+            <a href="company_notifications.php">Notifications</a> |
+            <a href="company_jobs.php">Your Jobs</a> |
+            <a href="company_publish_jobs.php">Publish A Job</a> |
+            <form action="company_search_result.php" method="get" id="keyword_search">
                 <input type="text" placeholder="Search..." name="keyword">
                 <button type="submit">search</button>
             </form>
         </nav>
     </div>
     <?php
-    
-    $hellostr = "Hello!!!";
+    $DBhost = $_SESSION["DBhost"];
+    echo "$DBhost";
+    $hellostr = "Jobs of your company";
     echo "<h1>$hellostr</h1>";
     ?>
 </body>

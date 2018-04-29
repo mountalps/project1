@@ -4,8 +4,8 @@
 insert into Student
 values 
 (null, 'fionnidis0', 'Qfm86w7Y4R', 'Freeman', 'New York University', 'Computer Science', 'Master', 3.24, 'Stringtough', null, 0),
-(null, 'lsnaith1', 'N1BkX2DgBaU', 'Lorry', 'New York University', 'Computer Science', 'Master', 3.84, 'database systems, networking, computer vision', 'database systems, networking, computer vision', 1),
-(null, 'aloalday2', 'Y7yAPpHwt', 'Afton', 'New York University', 'Computer Science', 'Master', 3.55, 'database systems, networking', 'database systems, networking', 0),
+(null, 'lsnaith1', 'N1BkX2DgBaU', 'Lorry', 'New York University', 'Computer Science', 'Master', 3.84, 'database systems, networking, computer vision', null, 1),
+(null, 'aloalday2', 'Y7yAPpHwt', 'Afton', 'New York University', 'Computer Science', 'Master', 3.55, 'database systems, networking', null, 0),
 (null, 'zgourlay3', 't7UMYzm', 'Zared', 'University of New Brunswick, Saint John', 'Computer Science', 'Master', 3.18, 'Andalax', null, 0),
 (null, 'eescale4', 'wxWlioIs', 'Etheline', 'Kyunghee University', 'Computer Science', 'Master', 3.46, 'Alphazap', null, 0),
 (null, 'tclausewitz5', 'qR9iRIk1N3', 'Tyrus', 'Gyeongsang National University', 'Computer Science', 'Master', 3.75, 'Cardguard', null, 1),
