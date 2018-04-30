@@ -68,7 +68,7 @@ $DBdatabase = 'project1';
             <?php if(encryptPassword($password) === $result[0]['password']):?>
                 <?php
                     echo 'success!';
-                    $_SESSION['user'] = $result;
+                    $_SESSION['user'] = $username;
                     header('Location:./zq/0_student-homepage.php');
                     exit;
                 ?>
@@ -105,7 +105,7 @@ $DBdatabase = 'project1';
                     <?php if(encryptPassword($password) === $result[0]['cpassword']):?>
                         <?php
                         echo 'success!';
-                        $_SESSION['user'] = $result;
+                        $_SESSION['user'] = $username;
                         header('Location:./zq/0_company-homepage.php');
                         exit;
                         ?>

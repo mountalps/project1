@@ -85,6 +85,11 @@ $DBdatabase = 'project1';
         <?php if ($result == 'true'):?>
             <h2>Sign Up Successfully!</h2>
             <button onclick="window.location.href='startpage.html'">Back to login</button>
+            <?php
+                $_SESSION['user'] = $username;
+                header('Location:./zq/0_student-homepage.php');
+                exit;
+                ?>
         <?php else:?>
             <h2>Sign Up Unsuccessfully!</h2>
 
