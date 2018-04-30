@@ -5,6 +5,7 @@
  * Date: 4/26/18
  * Time: 17:00
  */
+include_once './lib/fun.php';
 
 $sid = $_POST['sid'];
 $username = $_POST['username'];
@@ -30,10 +31,10 @@ $DBuser = 'root';
 $DBpassword = 'root';
 $DBdatabase = 'project1';
 
-$_SESSION['DBhost'] = $DBhost;
-$_SESSION['DBuser'] = $DBuser;
-$_SESSION['DBpassword'] = $DBpassword;
-$_SESSION['DBdatabase'] = $DBdatabase;
+//$_SESSION['DBhost'] = $DBhost;
+//$_SESSION['DBuser'] = $DBuser;
+//$_SESSION['DBpassword'] = $DBpassword;
+//$_SESSION['DBdatabase'] = $DBdatabase;
 ?>
 
 <!DOCTYPE html>
@@ -62,6 +63,7 @@ $_SESSION['DBdatabase'] = $DBdatabase;
 
         <?php
 
+        $password = encryptPassword($password);
         #student(sid, username, password, sname, university, degree, major, GPA, keywords, resume, restrict)
         $connect = mysqli_connect($DBhost, $DBuser, $DBpassword, $DBdatabase);
         mysqli_query($connect, 'set names utf8');

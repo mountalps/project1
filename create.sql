@@ -4,7 +4,7 @@ use project1;
 CREATE TABLE `Student` (
   `sid` INT NOT NULL auto_increment,
   `username` VARCHAR(20) NOT NULL,
-  `password` VARCHAR(20) NOT NULL,
+  `password` VARCHAR(50) NOT NULL,
   `sname` VARCHAR(20) NOT NULL,
   `university` VARCHAR(100) ,
   `major` VARCHAR(20),
@@ -20,7 +20,7 @@ CREATE TABLE `Student` (
 CREATE TABLE `Company` (
   `cid` INT NOT NULL auto_increment,
   `cusername` VARCHAR(20) NOT NULL,
-  `cpassword` VARCHAR(20) NOT NULL,
+  `cpassword` VARCHAR(50) NOT NULL,
   `cname` VARCHAR(20) NOT NULL,
   `ccity` VARCHAR(20) NOT NULL,
   `cstate` VARCHAR(20) NOT NULL,

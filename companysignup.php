@@ -5,6 +5,7 @@
  * Date: 4/26/18
  * Time: 17:01
  */
+include_once './lib/fun.php';
 
 $cusername = $_POST['cusername'];
 $cpassword = $_POST['cpassword'];
@@ -13,7 +14,6 @@ $ccity = $_POST['ccity'];
 $cstate = $_POST['cstate'];
 $ccountry = $_POST['ccountry'];
 $industry = $_POST['industry'];
-
 
 $DBhost = 'localhost';
 $DBuser = 'root';
@@ -33,6 +33,7 @@ $DBdatabase = 'project1';
 <body>
 
 <?php if($cusername == null || $cpassword == null ||$cname == null||$ccity == null||$cstate == null||$ccountry == null||$industry == null):?>
+
     <?php if($cusername == null):?>
         <h1>Please input your username!</h1>
     <?php endif;?>
@@ -66,6 +67,7 @@ $DBdatabase = 'project1';
 
     <?php
 
+    $cpassword = encryptPassword($cpassword);
     #(cid, cusername, cpassword, cname, ccity, cstate, ccountry, industry)
     $connect = mysqli_connect($DBhost, $DBuser, $DBpassword, $DBdatabase);
     mysqli_query($connect, 'set names utf8');
