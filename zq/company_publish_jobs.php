@@ -7,11 +7,14 @@
     <title>Your Jobs</title>
     <style>
         form {display: inline-block;}
+        nav {background-color: #EEE}
+        .wrapper {padding: 0 60px 0 60px;}
     </style>
 </head>
 <body>
     <div class="navivation">
-    <nav>
+      <nav>
+        <div class="wrapper">
             <a class="active" href="0_company-homepage.php">Home</a> |
             <a href="company_notifications.php">Notifications</a> |
             <a href="company_jobs.php">Your Jobs</a> |
@@ -20,6 +23,7 @@
                 <input type="text" placeholder="Search..." name="keyword">
                 <button type="submit">search</button>
             </form>
+          </div>
         </nav>
     </div>
     <?php

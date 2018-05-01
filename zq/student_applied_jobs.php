@@ -27,6 +27,56 @@
           </div>
       </nav>
     </div>
-    <h2>This is your Applied Jobs!</h2>
+    <div class="wrapper">
+      <div>
+      <?php
+      // get the sid from signin page
+      $sid = $_SESSION['studentid'];
+      $sid = 4;
+
+      // database connection
+      $servername = "localhost";
+      $username = "root";
+      $password = "root";
+      $dbname = "PJ2database";
+      $conn = new mysqli($servername, $username, $password, $dbname);
+      if ($conn->connect_error) {
+          die("Connection failed: " . $conn->connect_error);
+      }
+      $query = "SELECT sname FROM Student s WHERE s.sid = 1";
+      $result = $conn->query($query);
+      $sname = "";
+      if ($result->num_rows > 0) {
+          while ($row = $result->fetch_assoc()) {
+              $sname = $row['sname'];
+          }
+      }
+
+      // the rest of the text
+      $hellostr = "Hello " . $sname . ",";
+      echo "<h2>$hellostr</h2>";
+      ?>
+      </div>
+      <div class="all-friends">
+      <?php
+      $query = "
+      select j.title, j.jcity, j.jstate, j.jcountry, c.cname, a.atime from Application a, Company c, Job j where a.tocid=c.cid and a.fromsid = ".$sid." and a.jid=j.jid;";
+      $result = $conn->query($query);
+      if ($result->num_rows > 0) {
+        echo "<br><br>Here are your applied jobs:<br><br>";
+          while ($row = $result->fetch_assoc()) {
+            echo "<div class='applied-job'><p>";
+            echo $row['title'];
+            echo " in ".$row['jcity'].", ".$row['jstate'].", ".$row['jcountry'];
+            echo "on ".$row['atime'];
+            echo "</p></div>";
+          }
+      } else {
+        echo "<br><br>You don't have any friends yet.<br><br>";
+      }
+      $conn->close();
+      ?>
+      </div>
+    </div>
 </body>
 </html>
