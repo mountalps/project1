@@ -1,0 +1,38 @@
+form {
+  display: inline-block;
+}
+nav {
+  background-color: #EEE;
+}
+.wrapper {
+  padding: 0 60px 0 60px;
+}
+.job-intro {
+  background-color: #EEEEEE;
+  padding: 10px 10px 10px 10px;
+  border: 5px solid white;
+  display: block;
+}
+.job-a:hover {
+  color: red;
+}
+.job-a {
+  text-decoration: none;
+}
+p {
+  margin: 5px 5px 5px 5px; word-wrap: break-word;
+}
+
+/* .friend-request {
+  display: block;
+  overflow: scroll;
+  height: 200px;
+  width: auto;
+}
+
+ul {
+  list-style-type: none;
+  display: block;
+  width: inherit;
+  height: inherit;
+} */

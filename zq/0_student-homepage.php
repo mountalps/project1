@@ -5,22 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Jobster Home</title>
-    <style>
-        form {display: inline-block;}
-        nav {background-color: #EEE;}
-        .wrapper {padding: 0 60px 0 60px;}
-        .job-intro {
-          background-color: #EEEEEE;
-          padding: 10px 10px 10px 10px;
-          border: 5px solid white;
-          display: block;
-        }
-        .job-a:hover{ color: red; }
-        .job-a { text-decoration: none; }
-        p {margin: 5px 5px 5px 5px; word-wrap: break-word;}
-        /* .job-left { padding : 0px; margin: 0; display: inline-block;}
-        .job-right { padding : 0px; margin: 0 0 0 5px; display: inline-block; float: right;} */
-    </style>
+    <link rel="stylesheet" href="student.css">
 </head>
 <body>
     <div class="navivation">
@@ -58,7 +43,7 @@
       $sname = "";
       if ($result->num_rows > 0) {
           while ($row = $result->fetch_assoc()) {
-              $sname = $row;
+              $sname = $row['sname'];
           }
       }
 
