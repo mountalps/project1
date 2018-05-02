@@ -1,6 +1,6 @@
 #student(sid, username, password, sname, university, degree, major, GPA, keywords, resume, restrict)
 #name, a login name, and a password.
-
+use dbproject;
 insert into Student
 values 
 (null, 'fionnidis0', 'Qfm86w7Y4R', 'Freeman', 'New York University', 'Computer Science', 'Master', 3.24, 'Stringtough', null, 0),

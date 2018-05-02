@@ -6,6 +6,7 @@
  * Time: 15:56
  */
 include_once './lib/fun.php';
+include_once './lib/dbinfo.php';
 
 $username = trim($_POST['username']);
 $password = trim($_POST['password']);
@@ -14,11 +15,11 @@ $loginCategory = $_POST['loginRadio'];
 //echo $username;
 //echo $password;
 //echo $loginCategory ;
-
-$DBhost = 'localhost';
-$DBuser = 'root';
-$DBpassword = 'root';
-$DBdatabase = 'project1';
+//
+//$DBhost = 'localhost';
+//$DBuser = 'root';
+//$DBpassword = 'root';
+//$DBdatabase = 'project1';
 
 
 ?>

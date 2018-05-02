@@ -1,6 +1,6 @@
-drop database if exists project1;
-create database project1;
-use project1;
+drop database if exists dbproject;
+create database dbproject;
+use dbproject;
 CREATE TABLE `Student` (
   `sid` INT NOT NULL auto_increment,
   `username` VARCHAR(20) NOT NULL,
