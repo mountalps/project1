@@ -6,6 +6,7 @@
  * Time: 17:01
  */
 include_once './lib/fun.php';
+include_once './lib/dbinfo.php';
 
 $cusername = $_POST['cusername'];
 $cpassword = $_POST['cpassword'];
@@ -60,14 +61,12 @@ $industry = $_POST['industry'];
 
     <?php
 
-    $cpassword = encryptPassword($cpassword);
-    #(cid, cusername, cpassword, cname, ccity, cstate, ccountry, industry)
-    $connect = mysqli_connect($DBhost, $DBuser, $DBpassword, $DBdatabase, $port);
-    var_dump($connect);
-    mysqli_query($connect, 'set names utf8');
-    $sqlConfirmNoDuplicate = "select * from Company where cusername = '{$cusername}';";
+    $password = encryptPassword($password);
+    $connect = mysqlInit($DBhost, $DBuser, $DBpassword, $DBdatabase, $port);
+    $sqlConfirmNoDuplicate = "select * from Student where username = '{$username}';";
     $resultConfirmNoDuplicate = mysqli_query($connect, $sqlConfirmNoDuplicate);
     $confirmResult = mysqli_fetch_all($resultConfirmNoDuplicate, MYSQLI_ASSOC);
+
     ?>
 
     <?php if(count($confirmResult)!=0):?>

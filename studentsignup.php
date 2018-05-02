@@ -55,9 +55,7 @@ if ($restrict == "no" || $restrict == null){
         <?php
             $password = encryptPassword($password);
             #student(sid, username, password, sname, university, degree, major, GPA, keywords, resume, restrict)
-            $connect = mysqli_connect($DBhost, $DBuser, $DBpassword, $DBdatabase, $port);
-            var_dump($connect);
-            mysqli_query($connect, 'set names utf8');
+            $connect = mysqlInit($DBhost, $DBuser, $DBpassword, $DBdatabase, $port);
             $sqlConfirmNoDuplicate = "select * from Student where username = '{$username}';";
             $resultConfirmNoDuplicate = mysqli_query($connect, $sqlConfirmNoDuplicate);
             $confirmResult = mysqli_fetch_all($resultConfirmNoDuplicate, MYSQLI_ASSOC);
@@ -76,11 +74,11 @@ if ($restrict == "no" || $restrict == null){
         <?php if ($result == 'true'):?>
             <h2>Sign Up Successfully!</h2>
             <button onclick="window.location.href='index.html'">Back to login</button>
-<!--            --><?php
-//                $_SESSION['user'] = $username;
-//                header('Location:./zq/0_student-homepage.php');
-//                exit;
-//                ?>
+            <?php
+                $_SESSION['user'] = $username;
+                header('Location:./zq/0_student-homepage.php');
+                exit;
+                ?>
         <?php else:?>
             <h2>Sign Up Unsuccessfully!</h2>
 
