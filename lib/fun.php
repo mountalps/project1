@@ -15,8 +15,8 @@
  * @param $DBdatabase
  * @return bool|mysqli
  */
-function mysqlInit($DBhost, $DBuser, $DBpassword, $DBdatabase){
-    $connect = mysqli_connect($DBhost, $DBuser, $DBpassword, $DBdatabase);
+function mysqlInit($DBhost, $DBuser, $DBpassword, $DBdatabase, $port){
+    $connect = mysqli_connect($DBhost, $DBuser, $DBpassword, $DBdatabase, $port);
     mysqli_query($connect, 'set names utf8');
     if (!$connect)
         return false;

@@ -12,16 +12,6 @@ $username = trim($_POST['username']);
 $password = trim($_POST['password']);
 $loginCategory = $_POST['loginRadio'];
 
-//echo $username;
-//echo $password;
-//echo $loginCategory ;
-//
-//$DBhost = 'localhost';
-//$DBuser = 'root';
-//$DBpassword = 'root';
-//$DBdatabase = 'project1';
-
-
 ?>
 
 <!DOCTYPE html>
@@ -49,17 +39,7 @@ $loginCategory = $_POST['loginRadio'];
     <?php else:?>
         <?php if($loginCategory == "student"):?>
         <?php
-            //$connect = mysqli_connect($DBhost, $DBuser, $DBpassword, $DBdatabase);
-            //var_dump($connect);
-            $conToDB = mysqlInit($DBhost, $DBuser, $DBpassword, $DBdatabase);
-
-//            if (!$conToDB){
-//                echo 'connection failed!';
-//                exit;
-//            }
-//            else{
-//                echo 'connection success!';
-//            }
+            $conToDB = mysqlInit($DBhost, $DBuser, $DBpassword, $DBdatabase, $port);
             $sql = "select * from Student where username = '{$username}'";
             $result = mysqli_query($conToDB, $sql);
             $result = mysqli_fetch_all($result, MYSQLI_ASSOC);
@@ -75,12 +55,12 @@ $loginCategory = $_POST['loginRadio'];
                 ?>
             <?php else:?>
                 <h1>Your password is incorrect! Please Try Again</h1>
-                    <button onclick="window.location.href='startpage.html'">Back to login</button>
+                    <button onclick="window.location.href='index.html'">Back to login</button>
                 <?php endif;?>
 
             <?php  else:?>
                 <h1>Your username doesn't exit! Please Try Again</h1>
-                <button onclick="window.location.href='startpage.html'">Back to login</button>
+                <button onclick="window.location.href='index.html'">Back to login</button>
 
         <?php endif;?>
     <?php endif;?>
@@ -89,7 +69,7 @@ $loginCategory = $_POST['loginRadio'];
         <?php if($loginCategory === "company"):?>
                 <?php
 //            echo '111';
-                $conToDB = mysqlInit($DBhost, $DBuser, $DBpassword, $DBdatabase);
+                $conToDB = mysqlInit($DBhost, $DBuser, $DBpassword, $DBdatabase, $port);
 
 //            if (!$conToDB){
 //                echo 'connection failed!';
@@ -112,11 +92,11 @@ $loginCategory = $_POST['loginRadio'];
                         ?>
                     <?php else:?>
                         <h1>Your password is incorrect! Please Try Again</h1>
-                        <button onclick="window.location.href='startpage.html'">Back to login</button>
+                        <button onclick="window.location.href='index.html'">Back to login</button>
                     <?php endif;?>
                 <?php  else:?>
                     <h1>Your username doesn't exit! Please Try Again</h1>
-                    <button onclick="window.location.href='startpage.html'">Back to login</button>
+                    <button onclick="window.location.href='index.html'">Back to login</button>
 
                 <?php endif;?>
 

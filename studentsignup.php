@@ -6,6 +6,7 @@
  * Time: 17:00
  */
 include_once './lib/fun.php';
+include_once './lib/dbinfo.php';
 
 $sid = $_POST['sid'];
 $username = $_POST['username'];
@@ -25,16 +26,6 @@ if ($restrict == "no" || $restrict == null){
     $restrict = '0';
 }
 
-
-$DBhost = 'localhost';
-$DBuser = 'root';
-$DBpassword = 'root';
-$DBdatabase = 'project1';
-
-//$_SESSION['DBhost'] = $DBhost;
-//$_SESSION['DBuser'] = $DBuser;
-//$_SESSION['DBpassword'] = $DBpassword;
-//$_SESSION['DBdatabase'] = $DBdatabase;
 ?>
 
 <!DOCTYPE html>
@@ -57,24 +48,24 @@ $DBdatabase = 'project1';
     <?php if($sname == null):?>
         <h1>Please input your name!</h1>
     <?php endif;?>
-        <button onclick="window.location.href='startpage.html'">Return To Start Page</button>
+        <button onclick="window.location.href='index.html'">Return To Start Page</button>
 
     <?php else:?>
 
         <?php
-
-        $password = encryptPassword($password);
-        #student(sid, username, password, sname, university, degree, major, GPA, keywords, resume, restrict)
-        $connect = mysqli_connect($DBhost, $DBuser, $DBpassword, $DBdatabase);
-        mysqli_query($connect, 'set names utf8');
-        $sqlConfirmNoDuplicate = "select * from Student where username = '{$username}';";
-        $resultConfirmNoDuplicate = mysqli_query($connect, $sqlConfirmNoDuplicate);
-        $confirmResult = mysqli_fetch_all($resultConfirmNoDuplicate, MYSQLI_ASSOC);
+            $password = encryptPassword($password);
+            #student(sid, username, password, sname, university, degree, major, GPA, keywords, resume, restrict)
+            $connect = mysqli_connect($DBhost, $DBuser, $DBpassword, $DBdatabase, $port);
+            var_dump($connect);
+            mysqli_query($connect, 'set names utf8');
+            $sqlConfirmNoDuplicate = "select * from Student where username = '{$username}';";
+            $resultConfirmNoDuplicate = mysqli_query($connect, $sqlConfirmNoDuplicate);
+            $confirmResult = mysqli_fetch_all($resultConfirmNoDuplicate, MYSQLI_ASSOC);
         ?>
 
         <?php if(count($confirmResult)!=0):?>
             <h3>Your username has been occupied! Please sign up again</h3>
-            <button onclick="window.location.href='startpage.html'">Return To Start Page</button>
+            <button onclick="window.location.href='index.html'">Return To Start Page</button>
         <?php else:?>
         <?php
         $sql = "insert into Student values
@@ -84,12 +75,12 @@ $DBdatabase = 'project1';
 
         <?php if ($result == 'true'):?>
             <h2>Sign Up Successfully!</h2>
-            <button onclick="window.location.href='startpage.html'">Back to login</button>
-            <?php
-                $_SESSION['user'] = $username;
-                header('Location:./zq/0_student-homepage.php');
-                exit;
-                ?>
+            <button onclick="window.location.href='index.html'">Back to login</button>
+<!--            --><?php
+//                $_SESSION['user'] = $username;
+//                header('Location:./zq/0_student-homepage.php');
+//                exit;
+//                ?>
         <?php else:?>
             <h2>Sign Up Unsuccessfully!</h2>
 

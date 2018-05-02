@@ -15,13 +15,6 @@ $cstate = $_POST['cstate'];
 $ccountry = $_POST['ccountry'];
 $industry = $_POST['industry'];
 
-$DBhost = 'localhost';
-$DBuser = 'root';
-$DBpassword = 'root';
-$DBdatabase = 'project1';
-
-
-
 ?>
 
 <!DOCTYPE html>
@@ -61,7 +54,7 @@ $DBdatabase = 'project1';
     <?php if($industry == null):?>
         <h1>Please input your industry!</h1>
     <?php endif;?>
-    <button onclick="window.location.href='startpage.html'">Return To Start Page</button>
+    <button onclick="window.location.href='index.html'">Return To Start Page</button>
 
 <?php else:?>
 
@@ -69,7 +62,8 @@ $DBdatabase = 'project1';
 
     $cpassword = encryptPassword($cpassword);
     #(cid, cusername, cpassword, cname, ccity, cstate, ccountry, industry)
-    $connect = mysqli_connect($DBhost, $DBuser, $DBpassword, $DBdatabase);
+    $connect = mysqli_connect($DBhost, $DBuser, $DBpassword, $DBdatabase, $port);
+    var_dump($connect);
     mysqli_query($connect, 'set names utf8');
     $sqlConfirmNoDuplicate = "select * from Company where cusername = '{$cusername}';";
     $resultConfirmNoDuplicate = mysqli_query($connect, $sqlConfirmNoDuplicate);
@@ -78,17 +72,18 @@ $DBdatabase = 'project1';
 
     <?php if(count($confirmResult)!=0):?>
         <h3>Your username has been occupied! Please sign up again</h3>
-        <button onclick="window.location.href='startpage.html'">Return To Start Page</button>
+        <button onclick="window.location.href='index.html'">Return To Start Page</button>
     <?php else:?>
         <?php
         $sql = "insert into Company values
 (null, '{$cusername}', '{$cpassword}', '{$cname}', '{$ccity}', '{$cstate}', '{$ccountry}', '{$industry}');";
         $result = mysqli_query($connect, $sql);
+        var_dump($result);
         ?>
 
         <?php if ($result == 'true'):?>
             <h2>You Sign Up Successfully!</h2>
-            <button onclick="window.location.href='startpage.html'">Back to login</button>
+            <button onclick="window.location.href='index.html'">Back to login</button>
             <?php
             $_SESSION['user'] = $cusername;
             header('Location:./zq/0_company-homepage.php');

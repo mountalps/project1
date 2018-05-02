@@ -2,11 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8aa35af9-4704-4c2e-9ded-47aa05ea5462" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/lib/dbinfo.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/create.sql" beforeDir="false" afterPath="$PROJECT_DIR$/create.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/companysignup.php" beforeDir="false" afterPath="$PROJECT_DIR$/companysignup.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/insert.sql" beforeDir="false" afterPath="$PROJECT_DIR$/insert.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/startpage.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/dbinfo.php" beforeDir="false" afterPath="$PROJECT_DIR$/lib/dbinfo.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/fun.php" beforeDir="false" afterPath="$PROJECT_DIR$/lib/fun.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/login.php" beforeDir="false" afterPath="$PROJECT_DIR$/login.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/studentsignup.php" beforeDir="false" afterPath="$PROJECT_DIR$/studentsignup.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -29,45 +33,74 @@
     <expand>
       <path>
         <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
-        <item name="project1@localhost" type="feb32156:DbDataSourceImpl" />
+        <item name="dbproject@dbprojectjobster.cinhv01qdhxv.us-east-2.rds.amazonaws.com" type="feb32156:DbDataSourceImpl" />
       </path>
       <path>
         <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
-        <item name="project1@localhost" type="feb32156:DbDataSourceImpl" />
+        <item name="dbproject@dbprojectjobster.cinhv01qdhxv.us-east-2.rds.amazonaws.com" type="feb32156:DbDataSourceImpl" />
         <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
       </path>
       <path>
         <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
-        <item name="project1@localhost" type="feb32156:DbDataSourceImpl" />
+        <item name="dbproject@dbprojectjobster.cinhv01qdhxv.us-east-2.rds.amazonaws.com" type="feb32156:DbDataSourceImpl" />
         <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
-        <item name="project1: schema" type="c314c289:MysqlImplModel$Schema" />
-      </path>
-      <path>
-        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
-        <item name="project1@localhost" type="feb32156:DbDataSourceImpl" />
-        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
-        <item name="project1: schema" type="c314c289:MysqlImplModel$Schema" />
-        <item name="Student: table" type="98d5ac3d:MysqlImplModel$Table" />
+        <item name="dbproject: schema" type="c314c289:MysqlImplModel$Schema" />
       </path>
     </expand>
     <select />
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="login.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/login.php">
+      <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="255">
-              <caret line="17" selection-start-line="17" selection-end-line="20" selection-end-column="25" />
+            <state relative-caret-position="120">
+              <caret line="8" lean-forward="true" selection-start-line="8" selection-end-line="8" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="dbinfo.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="companysignup.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/companysignup.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="160">
+              <caret line="64" column="24" lean-forward="true" selection-start-line="64" selection-start-column="24" selection-end-line="64" selection-end-column="24" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="dbinfo.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/lib/dbinfo.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="105">
-              <caret line="12" column="25" selection-start-line="12" selection-start-column="25" selection-end-line="12" selection-end-column="25" />
+            <state relative-caret-position="90">
+              <caret line="11" column="31" selection-start-line="11" selection-start-column="31" selection-end-line="11" selection-end-column="31" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="studentsignup.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/studentsignup.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="225">
+              <caret line="59" column="27" selection-start-line="59" selection-start-column="27" selection-end-line="59" selection-end-column="27" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="login.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/login.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-998">
+              <caret line="8" selection-start-line="8" selection-end-line="8" selection-end-column="32" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="fun.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/lib/fun.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="180">
+              <caret line="17" column="18" selection-start-line="17" selection-start-column="9" selection-end-line="17" selection-end-column="18" />
             </state>
           </provider>
         </entry>
@@ -81,6 +114,11 @@
       </list>
     </option>
   </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>mysqlInit</find>
+    </findStrings>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
@@ -90,15 +128,17 @@
         <option value="$PROJECT_DIR$/emptyHTML.html" />
         <option value="$PROJECT_DIR$/signup.php" />
         <option value="$PROJECT_DIR$/startpage.html" />
-        <option value="$PROJECT_DIR$/lib/fun.php" />
-        <option value="$PROJECT_DIR$/login.php" />
-        <option value="$PROJECT_DIR$/studentsignup.php" />
-        <option value="$PROJECT_DIR$/companysignup.php" />
         <option value="$PROJECT_DIR$/create.sql" />
-        <option value="$PROJECT_DIR$/insert.sql" />
         <option value="$PROJECT_DIR$/test1.php" />
-        <option value="$PROJECT_DIR$/test.php" />
         <option value="$PROJECT_DIR$/lib/dbinfo.php" />
+        <option value="$PROJECT_DIR$/lib/fun.php" />
+        <option value="$PROJECT_DIR$/test.php" />
+        <option value="$PROJECT_DIR$/login.php" />
+        <option value="$APPLICATION_CONFIG_DIR$/consoles/db/ba105505-e85b-4686-b6bb-99c297099161/console_1.sql" />
+        <option value="$APPLICATION_CONFIG_DIR$/consoles/db/ba105505-e85b-4686-b6bb-99c297099161/console_2.sql" />
+        <option value="$PROJECT_DIR$/insert.sql" />
+        <option value="$PROJECT_DIR$/companysignup.php" />
+        <option value="$PROJECT_DIR$/studentsignup.php" />
       </list>
     </option>
   </component>
@@ -109,10 +149,10 @@
     <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="PhpWorkspaceProjectConfiguration" interpreter_name="MAMA PHP 7.2.1" />
-  <component name="ProjectFrameBounds">
-    <option name="x" value="133" />
-    <option name="y" value="60" />
-    <option name="width" value="1106" />
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="720" />
+    <option name="y" value="23" />
+    <option name="width" value="720" />
     <option name="height" value="877" />
   </component>
   <component name="ProjectView">
@@ -150,6 +190,7 @@
     <property name="com.intellij.database.dataSource.DataSourceTemplate" value="MySQL" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+    <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors.Database" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -188,34 +229,35 @@
       <workItem from="1525054949147" duration="9000" />
       <workItem from="1525057947940" duration="28000" />
       <workItem from="1525087832840" duration="7947000" />
-      <workItem from="1525266876159" duration="485000" />
+      <workItem from="1525266876159" duration="3712000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="22858000" />
+    <option name="totallyTimeSpent" value="26085000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="363" y="136" width="1106" height="877" extended-state="0" />
+    <frame x="0" y="23" width="1440" height="877" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.337406" />
       <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
+      <window_info anchor="bottom" id="PHP-CGI Server" order="7" />
       <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" />
-      <window_info anchor="right" id="Database" order="3" weight="0.22861357" />
       <window_info anchor="bottom" id="Database Changes" order="7" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.32893" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.32893" />
       <window_info anchor="bottom" id="Version Control" order="7" />
-      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="Terminal" order="7" />
+      <window_info anchor="bottom" id="Database Console" visible="true" weight="0.32893" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.25679544" />
+      <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
+      <window_info anchor="right" id="Database" order="3" visible="true" weight="0.25751072" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
-      <window_info anchor="bottom" id="PHP-CGI Server" order="7" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Find" order="1" />
@@ -260,11 +302,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="90">
           <caret line="6" selection-start-line="6" selection-end-line="6" selection-end-column="3" />
-          <folding>
-            <element signature="e#423#510#0#PHP" />
-            <element signature="e#524#610#0#PHP" />
-            <element signature="e#811#905#0#PHP" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -464,41 +501,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/studentsignup.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="437">
-          <caret line="91" column="18" lean-forward="true" selection-start-line="87" selection-start-column="12" selection-end-line="91" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lib/fun.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="735">
-          <caret line="54" selection-start-line="54" selection-end-line="54" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/create.sql">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="1" column="26" lean-forward="true" selection-start-line="1" selection-start-column="26" selection-end-line="1" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/insert.sql">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
-          <caret line="24" column="25" selection-start-line="24" selection-start-column="25" selection-end-line="24" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/companysignup.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1545">
-          <caret line="103" selection-start-line="103" selection-end-line="103" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/test1.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="60">
@@ -506,36 +508,83 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/ba105505-e85b-4686-b6bb-99c297099161/console.sql">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
     <entry file="file://$PROJECT_DIR$/test.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="10" column="13" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
+        <state>
+          <caret selection-end-line="39" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/ba105505-e85b-4686-b6bb-99c297099161/console_1.sql">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="22" lean-forward="true" selection-start-column="22" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/ba105505-e85b-4686-b6bb-99c297099161/console_2.sql">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="22" selection-start-column="22" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/create.sql">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="14" column="26" lean-forward="true" selection-end-line="149" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/insert.sql">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="315">
+          <caret line="21" column="31" selection-start-line="21" selection-start-column="31" selection-end-line="21" selection-end-column="31" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="405">
-          <caret line="27" column="33" selection-start-line="27" selection-start-column="33" selection-end-line="27" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/login.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="17" selection-start-line="17" selection-end-line="20" selection-end-column="25" />
-          <folding>
-            <element signature="e#423#510#0#PHP" />
-            <element signature="e#524#610#0#PHP" />
-            <element signature="e#811#905#0#PHP" />
-          </folding>
+        <state relative-caret-position="120">
+          <caret line="8" lean-forward="true" selection-start-line="8" selection-end-line="8" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/lib/dbinfo.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="12" column="25" selection-start-line="12" selection-start-column="25" selection-end-line="12" selection-end-column="25" />
+        <state relative-caret-position="90">
+          <caret line="11" column="31" selection-start-line="11" selection-start-column="31" selection-end-line="11" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/fun.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="17" column="18" selection-start-line="17" selection-start-column="9" selection-end-line="17" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/companysignup.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="160">
+          <caret line="64" column="24" lean-forward="true" selection-start-line="64" selection-start-column="24" selection-end-line="64" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/login.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-998">
+          <caret line="8" selection-start-line="8" selection-end-line="8" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/studentsignup.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="59" column="27" selection-start-line="59" selection-start-column="27" selection-end-line="59" selection-end-column="27" />
         </state>
       </provider>
     </entry>

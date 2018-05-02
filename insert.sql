@@ -3,39 +3,39 @@
 use dbproject;
 insert into Student
 values 
-(null, 'fionnidis0', 'Qfm86w7Y4R', 'Freeman', 'New York University', 'Computer Science', 'Master', 3.24, 'Stringtough', null, 0),
-(null, 'lsnaith1', 'N1BkX2DgBaU', 'Lorry', 'New York University', 'Computer Science', 'Master', 3.84, 'database systems, networking, computer vision', null, 1),
-(null, 'aloalday2', 'Y7yAPpHwt', 'Afton', 'New York University', 'Computer Science', 'Master', 3.55, 'database systems, networking', null, 0),
-(null, 'zgourlay3', 't7UMYzm', 'Zared', 'University of New Brunswick, Saint John', 'Computer Science', 'Master', 3.18, 'Andalax', null, 0),
-(null, 'eescale4', 'wxWlioIs', 'Etheline', 'Kyunghee University', 'Computer Science', 'Master', 3.46, 'Alphazap', null, 0),
-(null, 'tclausewitz5', 'qR9iRIk1N3', 'Tyrus', 'Gyeongsang National University', 'Computer Science', 'Master', 3.75, 'Cardguard', null, 1),
-(null, 'wdursley6', 'Gs9lNupD', 'Wenda', 'Georg-August Universität Göttingen', 'Physics', 'Doctor', 3.18, 'Temp', null, 0),
-(null, 'nfelgat7', 'PyW3cJHmUD', 'Neilla', 'United States International University', 'Physics', 'Doctor', 3.16, 'Domainer', null, 1),
-(null, 'sbeckworth8', '1qIYpfUa15', 'Samson', 'Universidade Católica de Santos', 'Physics', 'Doctor', 3.18, 'Tampflex', null, 1),
-(null, 'ymedford9', 'eZ9OWBQZT', 'Yulma', 'Fine Arts Academy in Gdansk', 'Physics', 'Doctor', 3.91, 'Gembucket', null, 0),
-(null, 'mboatswaina', 'EKeeAp2OYak', 'Myrtle', 'Universidad del Norte', 'Physics', 'Doctor', 3.22, 'Biodex', null, 0),
-(null, 'lcroftsb', 'cmmRkpCR4XT9', 'Lyda', 'Ching Kuo Institue of Management & Health', 'Physics', 'Doctor', 3.76, 'Lotstring', null, 0),
-(null, 'bbrumc', 'rOOMEy', 'Barbabas', 'Université Julius Nyerere Kankan', 'Physics', 'Doctor', 3.42, 'Duobam', null, 0),
-(null, 'myersond', 'Npc7bymffmp', 'Monte', 'Islamic Azad University, Central Tehran Branch', 'Physics', 'Doctor', 3.44, 'Duobam', null, 1),
-(null, 'aemanuelove', 'xIG6mwi', 'Artur', 'Turku School of Economics and Business Administration', 'Physics', 'Doctor', 3.83, 'Alpha', null, 1),
-(null, 'idespenserf', 'f2SnlrdrG', 'Inger', 'Tallinn University of Technology', 'Physics', 'Doctor', 3.49, 'Bitchip', null, 1),
-(null, 'vbenoitong', 'reolUVkm', 'Vasily', 'Brigham Young University', 'Physics', 'Doctor', 3.18, 'Stim', null, 1),
-(null, 'cbuggeh', 'KFKmHjVepj', 'Coleen', 'University of North West', 'Physics', 'Doctor', 3.87, 'Mat Lam Tam', null, 0),
-(null, 'jmasureli', 'jDhPnlw', 'Jeromy', 'Stevens Institute of Technology', 'Physics', 'Doctor', 3.7, 'Tin', null, 0),
-(null, 'abiertonj', '038KU588Amj', 'Ariana', 'Birsk State Pedagogical Institute', 'Physics', 'Doctor', 3.67, 'Stim', null, 1);
+(null, 'aa', '720bd597dca3a367d63e03553964b78b', 'Freeman', 'New York University', 'Computer Science', 'Master', 3.24, 'Stringtough', null, 0),
+(null, 'bb', '720bd597dca3a367d63e03553964b78b', 'Lorry', 'New York University', 'Computer Science', 'Master', 3.84, 'database systems, networking, computer vision', null, 1),
+(null, 'cc', '720bd597dca3a367d63e03553964b78b', 'Afton', 'New York University', 'Computer Science', 'Master', 3.55, 'database systems, networking', null, 0),
+(null, 'dd', '720bd597dca3a367d63e03553964b78b', 'Zared', 'University of New Brunswick, Saint John', 'Computer Science', 'Master', 3.18, 'Andalax', null, 0),
+(null, 'ee', '720bd597dca3a367d63e03553964b78b', 'Etheline', 'Kyunghee University', 'Computer Science', 'Master', 3.46, 'Alphazap', null, 0),
+(null, 'ff', '720bd597dca3a367d63e03553964b78b', 'Tyrus', 'Gyeongsang National University', 'Computer Science', 'Master', 3.75, 'Cardguard', null, 1),
+(null, 'gg', '720bd597dca3a367d63e03553964b78b', 'Wenda', 'Georg-August Universität Göttingen', 'Physics', 'Doctor', 3.18, 'Temp', null, 0),
+(null, 'hh', '720bd597dca3a367d63e03553964b78b', 'Neilla', 'United States International University', 'Physics', 'Doctor', 3.16, 'Domainer', null, 1),
+(null, 'ii', '720bd597dca3a367d63e03553964b78b', 'Samson', 'Universidade Católica de Santos', 'Physics', 'Doctor', 3.18, 'Tampflex', null, 1),
+(null, 'jj', '720bd597dca3a367d63e03553964b78b', 'Yulma', 'Fine Arts Academy in Gdansk', 'Physics', 'Doctor', 3.91, 'Gembucket', null, 0),
+(null, 'kk', '720bd597dca3a367d63e03553964b78b', 'Myrtle', 'Universidad del Norte', 'Physics', 'Doctor', 3.22, 'Biodex', null, 0),
+(null, 'll', '720bd597dca3a367d63e03553964b78b', 'Lyda', 'Ching Kuo Institue of Management & Health', 'Physics', 'Doctor', 3.76, 'Lotstring', null, 0),
+(null, 'mm', '720bd597dca3a367d63e03553964b78b', 'Barbabas', 'Université Julius Nyerere Kankan', 'Physics', 'Doctor', 3.42, 'Duobam', null, 0),
+(null, 'nn', '720bd597dca3a367d63e03553964b78b', 'Monte', 'Islamic Azad University, Central Tehran Branch', 'Physics', 'Doctor', 3.44, 'Duobam', null, 1),
+(null, 'pp', '720bd597dca3a367d63e03553964b78b', 'Artur', 'Turku School of Economics and Business Administration', 'Physics', 'Doctor', 3.83, 'Alpha', null, 1),
+(null, 'qq', '720bd597dca3a367d63e03553964b78b', 'Inger', 'Tallinn University of Technology', 'Physics', 'Doctor', 3.49, 'Bitchip', null, 1),
+(null, 'rr', '720bd597dca3a367d63e03553964b78b', 'Vasily', 'Brigham Young University', 'Physics', 'Doctor', 3.18, 'Stim', null, 1),
+(null, 'ss', '720bd597dca3a367d63e03553964b78b', 'Coleen', 'University of North West', 'Physics', 'Doctor', 3.87, 'Mat Lam Tam', null, 0),
+(null, 'tt', '720bd597dca3a367d63e03553964b78b', 'Jeromy', 'Stevens Institute of Technology', 'Physics', 'Doctor', 3.7, 'Tin', null, 0),
+(null, 'uu', '720bd597dca3a367d63e03553964b78b', 'Ariana', 'Birsk State Pedagogical Institute', 'Physics', 'Doctor', 3.67, 'Stim', null, 1);
 
 #(cid, cusername, cpassword, cname, ccity, cstate, ccountry, industry)
 insert into Company values
-(null, 'c001', 'c001', 'Microsoft', 'New York City', 'New York', 'United States', 'Telecommunications Equipment'),
-(null, 'c002', 'c002','Youspan', 'Denver', 'Colorado', 'United States', 'Marine Transportation'),
-(null, 'c003', 'c003','Twiyo', 'Los Angeles', 'California', 'United States', 'Life Insurance'),
-(null, 'c004', 'c004','Brightdog', 'Austin', 'Texas', 'United States', 'Marine Transportation'),
-(null, 'c005', 'c005','Jayo', 'Richmond', 'Virginia', 'United States', 'Marine Transportation'),
-(null, 'c006', 'c006','Ailane', 'Mobile', 'Alabama', 'United States', 'Marine Transportation'),
-(null, 'c007', 'c007','Shufflebeat', 'Syracuse', 'New York', 'United States', 'Auto Parts:O.E.M.'),
-(null, 'c008', 'c008','Kaymbo', 'Charlotte', 'North Carolina', 'United States', 'Marine Transportation'),
-(null, 'c009', 'c009','Oba', 'Monticello', 'Minnesota', 'United States', 'Oil & Gas Production'),
-(null, 'c010', 'c010','Yabox', 'Mesa', 'Arizona', 'United States', 'Marine Transportation');
+(null, 'c001', '720bd597dca3a367d63e03553964b78b', 'Microsoft', 'New York City', 'New York', 'United States', 'Telecommunications Equipment'),
+(null, 'c002', '720bd597dca3a367d63e03553964b78b','Youspan', 'Denver', 'Colorado', 'United States', 'Marine Transportation'),
+(null, 'c003', '720bd597dca3a367d63e03553964b78b','Twiyo', 'Los Angeles', 'California', 'United States', 'Life Insurance'),
+(null, 'c004', '720bd597dca3a367d63e03553964b78b','Brightdog', 'Austin', 'Texas', 'United States', 'Marine Transportation'),
+(null, 'c005', '720bd597dca3a367d63e03553964b78b','Jayo', 'Richmond', 'Virginia', 'United States', 'Marine Transportation'),
+(null, 'c006', '720bd597dca3a367d63e03553964b78b','Ailane', 'Mobile', 'Alabama', 'United States', 'Marine Transportation'),
+(null, 'c007', '720bd597dca3a367d63e03553964b78b','Shufflebeat', 'Syracuse', 'New York', 'United States', 'Auto Parts:O.E.M.'),
+(null, 'c008', '720bd597dca3a367d63e03553964b78b','Kaymbo', 'Charlotte', 'North Carolina', 'United States', 'Marine Transportation'),
+(null, 'c009', '720bd597dca3a367d63e03553964b78b','Oba', 'Monticello', 'Minnesota', 'United States', 'Oil & Gas Production'),
+(null, 'c010', '720bd597dca3a367d63e03553964b78b','Yabox', 'Mesa', 'Arizona', 'United States', 'Marine Transportation');
 
 
 #Job (jid, title, cid, jcity, jstate, jcountry, salary, degree, major, jdesciption)
