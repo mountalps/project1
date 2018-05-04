@@ -1,3 +1,7 @@
+<?php
+include_once '../lib/fun.php';
+include_once '../lib/dbinfo.php';
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -34,11 +38,9 @@
     $sid = 1;
 
     // database connection
-    $servername = "localhost";
-    $username = "root";
-    $password = "root";
-    $dbname = "PJ2database";
-    $conn = new mysqli($servername, $username, $password, $dbname);
+    session_start();
+    $username = $_SESSION['user'];
+    $conn = new mysqli($DBhost, $DBuser, $DBpassword, $DBdatabase, $port);
     if ($conn->connect_error) {
         die("Connection failed: " . $conn->connect_error);
     }

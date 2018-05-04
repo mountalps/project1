@@ -50,13 +50,14 @@ include_once '../lib/dbinfo.php';
       $hellostr = "Hello " . $sname . ",";
       echo "<h2>$hellostr</h2>";
       ?>
-      <div>
-      Here are some avaliable jobs:<br>
-      </div>
       <?php
-      $query = "SELECT j.title, j.jcity, j.jstate, j.jcountry, j.salary, c.cname, j.jdesciption, j.major, j.degree FROM Job j, Company c where j.cid = c.cid;";
+      $query = "SELECT j.title, j.jcity, j.jstate, j.jcountry, j.salary, c.cname, j.jdesciption, j.major, j.degree FROM Job j, Company c, Follow f, Student s where j.cid = c.cid and c.cid = f.cid and f.sid = s.sid and s.username ='{$username}';";
       $result = $conn->query($query);
-      if ($result->num_rows > 0) {
+      if ($result->num_rows > 0) {?>
+        <div>
+        Here are all jobs from companies you follow:<br>
+        </div>
+      <?php
           while ($row = $result->fetch_assoc()) {
               echo "<a href='#' class='job-a'>";
               echo "<div class='job-intro'>";
