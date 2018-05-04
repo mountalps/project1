@@ -24,60 +24,68 @@
         </nav>
     </div>
     <div class="wrapper">
-      <?php
-      // get the sid from signin page
-      $sid = $_SESSION['studentid'];
-      $sid = 1;
+      <div class="database-connection">
+        <?php
+          // get the username of student
+          $sid = $_SESSION['studentid'];
+          $sid = 1;
 
-      // database connection
-      $servername = "localhost";
-      $username = "root";
-      $password = "root";
-      $dbname = "PJ2database";
-      $conn = new mysqli($servername, $username, $password, $dbname);
-      if ($conn->connect_error) {
-          die("Connection failed: " . $conn->connect_error);
-      }
-      $query = "SELECT sname FROM Student s WHERE s.sid = 1";
-      $result = $conn->query($query);
-      $sname = "";
-      if ($result->num_rows > 0) {
-          while ($row = $result->fetch_assoc()) {
-              $sname = $row['sname'];
+          // database connection
+          $servername = "localhost";
+          $username = "root";
+          $password = "root";
+          $dbname = "PJ2database";
+          $conn = new mysqli($servername, $username, $password, $dbname);
+          if ($conn->connect_error) {
+              die("Connection failed: " . $conn->connect_error);
           }
-      }
-
-      // the rest of the text
-      $hellostr = "Hello " . $sname . ",";
-      echo "<h2>$hellostr</h2>";
-      ?>
-      <div>
-      Here are some avaliable jobs:<br>
+        ?>
       </div>
-      <?php
-      $query = "SELECT j.title, j.jcity, j.jstate, j.jcountry, j.salary, c.cname, j.jdesciption, j.major, j.degree FROM Job j, Company c where j.cid = c.cid;";
-      $result = $conn->query($query);
-      if ($result->num_rows > 0) {
-          while ($row = $result->fetch_assoc()) {
-              echo "<a href='#' class='job-a'>";
-              echo "<div class='job-intro'>";
-              echo "<div class='job-header'>
-                    <p>Job Title: ".$row["title"]."</p></div>";
-              echo "<div class='job-company'>
-                    <p>By Company: ".$row["cname"]."</p></div>";
-              echo "<div class='job-description'>
-                    <p>Description: ".$row["jdesciption"]."shlfdkjhasjkfhkjlasdhfajsdhlfjkashdfasdfaasjhdfkjlashdjkfahskdjf;akjsdhfjakshf;sdhfkjlashdfljkahsdfulawehfajksdhfnauwehfukasdfnajk.ehfajk.sdhfkjdkjhasjkfhkjlasdhfajsdhlfjkashdfasdfaasjhdfkjlashdjkfahskdjf;akjsdhfjakshf;sdhfkjlashdfljkahsdfulawehsdhfajsdhlfjkashdfasdfaasjhdfkjlashdjkfahskdjf;akjsdhfjakshf;sdhfkjlashdfljkahsdfulawehfajksdhfnauwehfukasdfnajk.ehfajk.sdhfkj.</p></div>";
-              echo "<div class='job-location'>
-                    <p>Location: ".$row["jcity"].", ".$row["jstate"].", ".$row["jcountry"]."</p></div>";
-              echo "<div class='job-major-degree'>".
-                    "<p>".$row["major"].", ".$row["degree"]."</p></div>";
-              echo "<div class='job-salary'>
-                    <p>Salary: $ ".number_format($row["salary"])."</p></div>";
-              echo "</div></a>";
-          }
-      }
-      $conn->close();
-      ?>
+      <div class="say-hello-student">
+        <?php
+        $query = "SELECT sname FROM Student s WHERE s.sid = 1";
+        $result = $conn->query($query);
+        $sname = "";
+        if ($result->num_rows > 0) {
+            while ($row = $result->fetch_assoc()) {
+                $sname = $row['sname'];
+            }
+        }
+        // the rest of the text
+        $hellostr = "Hello " . $sname . ",";
+        echo "<h2>$hellostr</h2>";
+        ?>
+      </div>
+      <div class="job-display-student">
+        <?php
+        $query = "SELECT j.title, j.jcity, j.jstate, j.jcountry, j.salary, c.cname, j.jdesciption, j.major, j.degree FROM Job j, Company c where j.cid = c.cid;";
+        $result = $conn->query($query);
+        if ($result->num_rows > 0) {
+          echo "<p>Here are some avaliable jobs:</p>";
+            while ($row = $result->fetch_assoc()) {
+                echo "<a href='#' class='job-a'>";
+                  echo "<div class='job-intro'>";
+                    echo "<div class='job-header'>
+                          <p>Job Title: ".$row["title"]."</p></div>";
+                    echo "<div class='job-company'>
+                          <p>By Company: ".$row["cname"]."</p></div>";
+                    echo "<div class='job-description'>
+                          <p>Description: ".$row["jdesciption"]."shlfdkjhasjkfhkjlasdhfajsdhlfjkashdfasdfaasjhdfkjlashdjkfahskdjf;akjsdhfjakshf;sdhfkjlashdfljkahsdfulawehfajksdhfnauwehfukasdfnajk.ehfajk.sdhfkjdkjhasjkfhkjlasdhfajsdhlfjkashdfasdfaasjhdfkjlashdjkfahskdjf;akjsdhfjakshf;sdhfkjlashdfljkahsdfulawehsdhfajsdhlfjkashdfasdfaasjhdfkjlashdjkfahskdjf;akjsdhfjakshf;sdhfkjlashdfljkahsdfulawehfajksdhfnauwehfukasdfnajk.ehfajk.sdhfkj.</p></div>";
+                    echo "<div class='job-location'>
+                          <p>Location: ".$row["jcity"].", ".$row["jstate"].", ".$row["jcountry"]."</p></div>";
+                    echo "<div class='job-major-degree'>".
+                          "<p>".$row["major"].", ".$row["degree"]."</p></div>";
+                    echo "<div class='job-salary'>
+                          <p>Salary: $ ".number_format($row["salary"])."</p></div>";
+                  echo "</div>";
+                echo "</a>";
+            }
+        } else {
+          echo "<p>Sorry, we currentally do not have any avaliable jobs.</p>";
+        }
+        $conn->close();
+        ?>
+      </div>
     </div>
 </body>
 </html>

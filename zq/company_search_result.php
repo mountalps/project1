@@ -40,7 +40,7 @@
     //echo count($pieces);
     foreach($pieces as $k){
         echo "$k<br>";
-    }
+    } endforeach;
     ?>
 </body>
 </html>

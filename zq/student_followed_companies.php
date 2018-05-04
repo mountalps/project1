@@ -28,54 +28,57 @@
       </nav>
     </div>
     <div class="wrapper">
-      <div>
-      <?php
-      // get the sid from signin page
-      $sid = $_SESSION['studentid'];
-      $sid = 1;
+      <div class="database-connection">
+        <?php
+          // get the username of student
+          $sid = $_SESSION['studentid'];
+          $sid = 1;
 
-      // database connection
-      $servername = "localhost";
-      $username = "root";
-      $password = "root";
-      $dbname = "PJ2database";
-      $conn = new mysqli($servername, $username, $password, $dbname);
-      if ($conn->connect_error) {
-          die("Connection failed: " . $conn->connect_error);
-      }
-      $query = "SELECT sname FROM Student s WHERE s.sid = 1";
-      $result = $conn->query($query);
-      $sname = "";
-      if ($result->num_rows > 0) {
-          while ($row = $result->fetch_assoc()) {
-              $sname = $row['sname'];
+          // database connection
+          $servername = "localhost";
+          $username = "root";
+          $password = "root";
+          $dbname = "PJ2database";
+          $conn = new mysqli($servername, $username, $password, $dbname);
+          if ($conn->connect_error) {
+              die("Connection failed: " . $conn->connect_error);
           }
-      }
-
-      // the rest of the text
-      $hellostr = "Hello " . $sname . ",";
-      echo "<h2>$hellostr</h2>";
-      ?>
+        ?>
       </div>
-      <div class="all-friends">
-      <?php
-      $query = "
-      select c.cname, c.ccity, c.cstate, c.ccountry, c.industry from Follow f, Company c where f.sid = ".$sid." and f.cid=c.cid;";
-      $result = $conn->query($query);
-      if ($result->num_rows > 0) {
-        echo "<br><br>Here are your followed companies:<br><br>";
-          while ($row = $result->fetch_assoc()) {
-            echo "<div class='followed-companies'><p>";
-            echo $row['cname'];
-            echo " in ".$row['ccity'].", ".$row['cstate'].", ".$row['ccountry'];
-            echo "in industry ".$row['industry'];
-            echo "</p></div>";
+      <div class="say-hello-student">
+        <?php
+          $query = "SELECT sname FROM Student s WHERE s.sid = 1";
+          $result = $conn->query($query);
+          $sname = "";
+          if ($result->num_rows > 0) {
+              while ($row = $result->fetch_assoc()) {
+                  $sname = $row['sname'];
+              }
           }
-      } else {
-        echo "<br><br>You don't have any friends yet.<br><br>";
-      }
-      $conn->close();
-      ?>
+          // the rest of the text
+          $hellostr = "Hello " . $sname . ",";
+          echo "<h2>$hellostr</h2>";
+        ?>
+      </div>
+      <div class="followed-companies">
+        <?php
+          $query = "
+          select c.cname, c.ccity, c.cstate, c.ccountry, c.industry from Follow f, Company c where f.sid = ".$sid." and f.cid=c.cid;";
+          $result = $conn->query($query);
+          if ($result->num_rows > 0) {
+            echo "<p>Here are your followed companies:</p>";
+              while ($row = $result->fetch_assoc()) {
+                echo "<div class='followed-companies'><p>";
+                echo $row['cname'];
+                echo " in ".$row['ccity'].", ".$row['cstate'].", ".$row['ccountry'];
+                echo "in industry ".$row['industry'];
+                echo "</p></div>";
+              }
+          } else {
+            echo "<p>You don't have any followed companies yet.</p>";
+          }
+          $conn->close();
+        ?>
       </div>
   </div>
 </body>

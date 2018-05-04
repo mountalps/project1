@@ -1,30 +1,24 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Your Jobs</title>
-    <style>
-        form {display: inline-block;}
-        nav {background-color: #EEE}
-        .wrapper {padding: 0 60px 0 60px;}
-    </style>
-</head>
-<body>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Job Created</title>
+    <link rel="stylesheet" href="student.css">
+  </head>
+  <body>
     <div class="navivation">
       <nav>
         <div class="wrapper">
-            <a class="active" href="0_company-homepage.php">Home</a> |
-            <a href="company_notifications.php">Notifications</a> |
-            <a href="company_jobs.php">Your Jobs</a> |
-            <a href="company_publish_jobs.php">Publish A Job</a> |
-            <form action="company_search_result.php" method="get" id="keyword_search">
-                <input type="text" placeholder="Search..." name="keyword">
-                <button type="submit">search</button>
-            </form>
-          </div>
-        </nav>
+          <a class="active" href="0_company-homepage.php">Home</a> |
+          <a href="company_notifications.php">Notifications</a> |
+          <a href="company_jobs.php">Your Jobs</a> |
+          <a href="company_publish_jobs.php">Publish A Job</a> |
+          <form action="company_search_result.php" method="get" id="keyword_search">
+              <input type="text" placeholder="Search..." name="keyword">
+              <button type="submit">search</button>
+          </form>
+        </div>
+      </nav>
     </div>
     <div class="wrapper">
       <div class="database-connection">
@@ -59,11 +53,22 @@
         $hellostr = "Hello " . $cname . ",";
         echo "<h2>$hellostr</h2>";?>
       </div>
+      <div class="assign-values">
+        <?php
+          $job_title = $_POST["job-title"];
+          $job_city = $_POST["job-city"];
+          $job_state = $_POST["job-state"];
+          $job_country = $_POST["job-country"];
+          $job_salary = $_POST["job-salary"];
+          $job_degree = $_POST["job-degree"];
+          $job_major = $_POST["job-major"];
+          $job_description = $_POST["job-description"];
+         ?>
+      </div>
       <div class="published-jobs">
         <?php
           $cid = 1;
-          $query = "
-          SELECT j.title, j.jcity, j.jstate, j.jcountry, j.salary, c.cname, j.jdesciption, j.major, j.degree FROM Job j, Company c where j.cid = c.cid and c.cid = ".$cid.";";
+          $query = "";
           $result = $conn->query($query);
           if ($result->num_rows > 0) {
             echo "<p>Here are published jobs of your company:</p>";
@@ -75,11 +80,11 @@
                 echo "</p></div>";
               }
           } else {
-            echo "<p>You have not published any jobs yet.</p>";
+            echo "<p>Sorry, Job Creation Failed.</p>";
           }
           $conn->close();
         ?>
       </div>
     </div>
-</body>
+  </body>
 </html>
