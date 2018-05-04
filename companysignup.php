@@ -63,10 +63,9 @@ $industry = $_POST['industry'];
 
     $password = encryptPassword($password);
     $connect = mysqlInit($DBhost, $DBuser, $DBpassword, $DBdatabase, $port);
-    $sqlConfirmNoDuplicate = "select * from Company where cusername = '{$username}';";
+    $sqlConfirmNoDuplicate = "select * from Company where cusername = '{$cusername}';";
     $resultConfirmNoDuplicate = mysqli_query($connect, $sqlConfirmNoDuplicate);
     $confirmResult = mysqli_fetch_all($resultConfirmNoDuplicate, MYSQLI_ASSOC);
-    var_dump($confirmResult);
 
     ?>
 
@@ -97,6 +96,8 @@ $industry = $_POST['industry'];
         <?php endif;?>
 
     <?php endif;?>
+
+
 <?php endif;?>
 
 
