@@ -1,3 +1,7 @@
+<?php
+include_once '../lib/fun.php';
+include_once '../lib/dbinfo.php'; ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -31,11 +35,12 @@
           $sid = 1;
 
           // database connection
-          $servername = "localhost";
-          $username = "root";
-          $password = "root";
-          $dbname = "PJ2database";
-          $conn = new mysqli($servername, $username, $password, $dbname);
+          // $servername = "localhost";
+          // $username = "root";
+          // $password = "root";
+          // $dbname = "PJ2database";
+          // $conn = new mysqli($servername, $username, $password, $dbname);
+          $conn = new mysqli($DBhost, $DBuser, $DBpassword, $DBdatabase, $port);
           if ($conn->connect_error) {
               die("Connection failed: " . $conn->connect_error);
           }
@@ -43,7 +48,9 @@
       </div>
       <div class="say-hello-student">
         <?php
-        $query = "SELECT sname FROM Student s WHERE s.sid = 1";
+        session_start();
+        $username = $_SESSION['user'];
+        $query = "SELECT sname FROM Student s where username='".$username."';";
         $result = $conn->query($query);
         $sname = "";
         if ($result->num_rows > 0) {
