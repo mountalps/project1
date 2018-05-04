@@ -84,6 +84,8 @@ $industry = $_POST['industry'];
             <h2>You Sign Up Successfully!</h2>
             <button onclick="window.location.href='index.html'">Back to login</button>
             <?php
+
+            session_start();
             $_SESSION['user'] = $cusername;
             header('Location:./zq/0_company-homepage.php');
             exit;

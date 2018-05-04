@@ -75,6 +75,8 @@ if ($restrict == "no" || $restrict == null){
             <h2>Sign Up Successfully!</h2>
             <button onclick="window.location.href='index.html'">Back to login</button>
             <?php
+
+                session_start();
                 $_SESSION['user'] = $username;
                 header('Location:./zq/0_student-homepage.php');
                 exit;

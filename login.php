@@ -49,6 +49,7 @@ $loginCategory = $_POST['loginRadio'];
             <?php if(encryptPassword($password) === $result[0]['password']):?>
                 <?php
                     echo 'success!';
+                    session_start();
                     $_SESSION['user'] = $username;
                     header('Location:./zq/0_student-homepage.php');
                     exit;
@@ -86,6 +87,7 @@ $loginCategory = $_POST['loginRadio'];
                     <?php if(encryptPassword($password) === $result[0]['cpassword']):?>
                         <?php
                         echo 'success!';
+                        session_start();
                         $_SESSION['user'] = $username;
                         header('Location:./zq/0_company-homepage.php');
                         exit;

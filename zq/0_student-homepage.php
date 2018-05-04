@@ -1,3 +1,12 @@
+<?php
+
+include_once '../lib/fun.php';
+include_once '../lib/dbinfo.php';
+
+$user = $_SESSION['user'];
+var_dump($user);
+        ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
