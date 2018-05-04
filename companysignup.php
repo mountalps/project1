@@ -61,7 +61,7 @@ $industry = $_POST['industry'];
 
     <?php
 
-    $password = encryptPassword($password);
+    $cpassword = encryptPassword($cpassword);
     $connect = mysqlInit($DBhost, $DBuser, $DBpassword, $DBdatabase, $port);
     $sqlConfirmNoDuplicate = "select * from Company where cusername = '{$cusername}';";
     $resultConfirmNoDuplicate = mysqli_query($connect, $sqlConfirmNoDuplicate);
