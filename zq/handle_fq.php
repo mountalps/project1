@@ -47,7 +47,7 @@ include_once '../lib/dbinfo.php';
       echo "rejected";
       // echo $sid2;
     }
-    header("Location: student_notifications.php");
+    header("Location: student_friends_page.php");
     exit;
     ?>
   </body>
