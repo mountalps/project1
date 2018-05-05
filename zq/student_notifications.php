@@ -100,7 +100,12 @@ include_once '../lib/dbinfo.php';
                                 </form>
                     <?php
                             echo ", who forwared you the following job:<br>";
-                            echo $row['title'].' in '.$row['jcity'].', '.$row['jstate'].', '.$row['jcountry'];
+                    ?>
+                                <form class="job-info" action="job_info.php" method="post" id="job-info-form">
+                                    <button type="submit" name="jid" value="<?php echo $row['jid']; ?>"><?php echo $row['title']; ?></button>
+                                </form>
+                    <?php
+                            echo ' in '.$row['jcity'].', '.$row['jstate'].', '.$row['jcountry'];
                             echo "</p></div>";
                         }
                     }
