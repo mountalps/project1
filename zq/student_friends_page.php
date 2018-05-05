@@ -61,7 +61,7 @@ include_once '../lib/dbinfo.php';
                         echo "<div class='friend-info'><p>";
             ?>
                         <form class="student-info" action="student_info.php" method="post" id="student-info-form">
-                          <button type="submit" name="sid" value="<?php echo $row['sid']; ?>"><?php echo $row['sname']; ?></button>
+                            <button type="submit" name="sid" value="<?php echo $row['sid']; ?>"><?php echo $row['sname']; ?></button>
             <?php
                         echo " in ".$row['university'];
                         echo " major in ".$row['major'];
