@@ -54,9 +54,9 @@ include_once '../lib/dbinfo.php';
         <?php
             $queryfq = "select s2.sname, s.university, ns.nid, fq.fromsid from NotificationToStudent ns, FriendReq fq, Student s, Student s2 where ns.nid = fq.nid and fq.tosid = s.sid and fq.fromsid = s2.sid and s.username = '{$username}' and fq.fqstatus = 'pending';";
 
-            $queryf = "select f.fromsid, j.jid, j.title, s.sname, j.jcity, j.jstate, j.jcountry from NotificationToStudent ns, Forward f, Announcement a, Job j, Student s where s.sid = f.fromsid and ns.nid = f.fid and f.nid = a.nid and a.jid = j.jid;";
+            $queryf = "select f.fromsid, j.jid, j.title, s.sname, j.jcity, j.jstate, j.jcountry, f.fromsid from NotificationToStudent ns, Forward f, Announcement a, Job j, Student s where s.sid = f.fromsid and ns.nid = f.fid and f.nid = a.nid and a.jid = j.jid;";
 
-            $queryt = "select t.content, s.sname, t.ttime, ns.nstatus, ns.nid from NotificationToStudent ns, Tips t, Student s, Student s1 where ns.nid = t.nid and t.fromsid = s.sid and ns.tosid=s1.sid and s1.username = '{$username}';";
+            $queryt = "select t.content, s.sname, t.ttime, ns.nstatus, ns.nid, t.fromsid from NotificationToStudent ns, Tips t, Student s, Student s1 where ns.nid = t.nid and t.fromsid = s.sid and ns.tosid=s1.sid and s1.username = '{$username}';";
 
             $resultfq = $conn->query($queryfq);
             $resultf = $conn->query($queryf);
@@ -93,7 +93,12 @@ include_once '../lib/dbinfo.php';
                         echo "<br><br>Here are some job forwards:<br><br>";
                         while ($row = $resultf->fetch_assoc()) {
                             echo "<div class='forwarded-message'><p>";
-                            echo "You received a job forward from ".$row['sname'];
+                            echo "You received a job forward from ";
+                    ?>
+                                <form class="student-info" action="student_info.php" method="post" id="student-info-form">
+                                    <button type="submit" name="sid" value="<?php echo $row['fromsid']; ?>"><?php echo $row['sname']; ?></button>
+                                </form>
+                    <?php
                             echo ", who forwared you the following job:<br>";
                             echo $row['title'].' in '.$row['jcity'].', '.$row['jstate'].', '.$row['jcountry'];
                             echo "</p></div>";
@@ -110,7 +115,12 @@ include_once '../lib/dbinfo.php';
                         while ($row = $resultt->fetch_assoc()) {
                             if ($row['nstatus'] == 'unread') {
                                 echo "<div class='unread-message'><p>";
-                                echo "You received a message from ".$row['sname'];
+                                echo "You received a message from ";
+                ?>
+                                <form class="student-info" action="student_info.php" method="post" id="student-info-form">
+                                    <button type="submit" name="sid" value="<?php echo $row['fromsid']; ?>"><?php echo $row['sname']; ?></button>
+                                </form>
+                <?php
                                 echo " on ".$row['ttime']."<br>";
                                 echo $row['content'];
                                 echo "</p></div>";
@@ -151,7 +161,12 @@ include_once '../lib/dbinfo.php';
                             <?php
                                 foreach ($readtips as $row) {
                                     echo "<div class='read-tip-area'>";
-                                    echo "You read a message from ".$row['sname'];
+                                    echo "You read a message from ";
+                            ?>
+                                    <form class="student-info" action="student_info.php" method="post" id="student-info-form">
+                                        <button type="submit" name="sid" value="<?php echo $row['fromsid']; ?>"><?php echo $row['sname']; ?></button>
+                                    </form>
+                            <?php
                                     echo " on ".$row['ttime']."<br>";
                                     echo $row['content'];
                                     echo "</div>";
