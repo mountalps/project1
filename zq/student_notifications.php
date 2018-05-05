@@ -29,36 +29,32 @@ include_once '../lib/dbinfo.php';
     </div>
     <div class="wrapper">
       <?php
-      // get the sid from signin page
-      $sid = $_SESSION['studentid'];
-      $sid = 5;
+        // database connection
+        session_start();
+        $username = $_SESSION['user'];
+        $conn = new mysqli($DBhost, $DBuser, $DBpassword, $DBdatabase, $port);
+        if ($conn->connect_error) {
+            die("Connection failed: " . $conn->connect_error);
+        }
 
-      // database connection
-      session_start();
-      $username = $_SESSION['user'];
-      $conn = new mysqli($DBhost, $DBuser, $DBpassword, $DBdatabase, $port);
-      if ($conn->connect_error) {
-          die("Connection failed: " . $conn->connect_error);
-      }
+        $query = "SELECT sname FROM Student s WHERE s.username = '{$username}';";
+        $result = $conn->query($query);
+        $sname = "";
+        if ($result->num_rows > 0) {
+            while ($row = $result->fetch_assoc()) {
+                $sname = $row['sname'];
+            }
+        }
 
-      $query = "SELECT sname FROM Student s WHERE s.sid = 1";
-      $result = $conn->query($query);
-      $sname = "";
-      if ($result->num_rows > 0) {
-          while ($row = $result->fetch_assoc()) {
-              $sname = $row['sname'];
-          }
-      }
-
-      // the rest of the text
-      $hellostr = "Hello " . $sname . ",";
-      echo "<h2>$hellostr</h2>";
+        // the rest of the text
+        $hellostr = "Helloha " . $sname . ",";
+        echo "<h2>$hellostr</h2>";
       ?>
       <div>
       Here are your notifications:<br>
       </div>
       <?php
-      $queryfq = "select s.sname, s.university from NotificationToStudent ns, FriendReq fq, Student s where ns.nid = fq.nid and fq.fromsid = s.sid and fq.fqstatus = 'pending';";
+      $queryfq = "select s2.sname, s.university, ns.nid from NotificationToStudent ns, FriendReq fq, Student s, Student s2 where ns.nid = fq.nid and fq.tosid = s.sid and fq.fromsid = s2.sid and s.username = '{$username}' and fq.fqstatus = 'pending';";
 
       $queryf = "select f.fromsid, j.jid, j.title, s.sname, j.jcity, j.jstate, j.jcountry from NotificationToStudent ns, Forward f, Announcement a, Job j, Student s where s.sid = f.fromsid and ns.nid = f.fid and f.nid = a.nid and a.jid = j.jid;";
 
@@ -74,10 +70,16 @@ include_once '../lib/dbinfo.php';
       if ($resultfq->num_rows > 0) {
         echo "<br><br>Here are some friend requests:<br><br>";
           while ($row = $resultfq->fetch_assoc()) {
-            echo "<div class='friend-request-message'><p>";
+            echo "<div class='friend-request-message' style='display:block;'><p>";
             echo "You received a friend request from ".$row['sname'];
             echo ", who is from ".$row['university'];
             echo "</p></div>";
+            ?>
+            <form class="fqdecision" action="handle_fq.php" method="post">
+              <button type="submit" name="frapprove" value="<?php echo $row['nid']; ?>">Approve <?php echo $row['sname']; ?></button>
+              <button type="submit" name="frreject" value="<?php echo $row['nid']; ?>">Reject <?php echo $row['sname'] ?></button>
+            </form>
+            <?php
           }
       }
       $conn->close();
