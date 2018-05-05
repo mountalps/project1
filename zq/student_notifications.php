@@ -58,7 +58,7 @@ include_once '../lib/dbinfo.php';
 
       $queryf = "select f.fromsid, j.jid, j.title, s.sname, j.jcity, j.jstate, j.jcountry from NotificationToStudent ns, Forward f, Announcement a, Job j, Student s where s.sid = f.fromsid and ns.nid = f.fid and f.nid = a.nid and a.jid = j.jid;";
 
-      $queryt = "select t.content, s.sname, t.ttime from NotificationToStudent ns,  Tips t, Student s where ns.nid = t.nid and t.fromsid = s.sid;";
+      $queryt = "select t.content, s.sname, t.ttime, ns.nstatus, ns.nid from NotificationToStudent ns, Tips t, Student s, Student s1 where ns.nid = t.nid and t.fromsid = s.sid and ns.tosid=s1.sid and s1.username = '{$username}';";
 
       $resultfq = $conn->query($queryfq);
       $resultf = $conn->query($queryf);
@@ -101,19 +101,70 @@ include_once '../lib/dbinfo.php';
       </div>
 
       <div class="tips">
-      <?php
-      if ($resultt->num_rows > 0) {
-        echo "<br><br>Here are some messages(tips):<br><br>";
-          while ($row = $resultt->fetch_assoc()) {
-            echo "<div class='forwarded-message'><p>";
-            echo "You received a message from ".$row['sname'];
-            echo " on ".$row['ttime']."<br>";
-            echo $row['content'];
-            echo "</p></div>";
+        <?php
+          $readtips = [];
+          if ($resultt->num_rows > 0) {
+            echo "<br><br>Here are some messages(tips):<br><br>";
+              while ($row = $resultt->fetch_assoc()) {
+                if ($row['nstatus'] == 'unread') {
+                  echo "<div class='unread-message'><p>";
+                  echo "You received a message from ".$row['sname'];
+                  echo " on ".$row['ttime']."<br>";
+                  echo $row['content'];
+                  echo "</p></div>";
+                  ?>
+                  <div class="tip-read-button">
+                    <form class="tip-read-form" action="handle-tip.php" method="post">
+                      <button type="submit" name="read-tip" value="<?php echo $row['nid']; ?>">mark the message from <?php echo $row['sname'] ?> as read</button>
+                    </form>
+                  </div>
+                  <?php
+                } else {
+                  $readtips[] = $row;
+                }
+              }
+          } else {
+            echo "You Don't have no tips from other student";
           }
-      }
-      $conn->close();
-      ?>
+          ?>
+          <?php if ($readtips != []) {
+            echo "<p>You have some read tips:</p>";?>
+            <button onclick="myFunction()" id="hide-button-1">Show read tips</button>
+            <script type="text/javascript">
+            function myFunction() {
+              var x = document.getElementById("read-tips");
+              var y = document.getElementById("hide-button-1");
+              if (x.style.display === "none") {
+                x.style.display = "block";
+                y.innerText = "Hide read tips";
+              } else {
+                y.innerText = "Show read tips";
+                x.style.display = "none";
+              }
+            }
+            </script>
+            <div id="read-tips" style="display:none;">
+              <?php
+              foreach ($readtips as $row) {
+                echo "<div class='read-tip-area'>";
+                echo "You read a message from ".$row['sname'];
+                echo " on ".$row['ttime']."<br>";
+                echo $row['content'];
+                echo "</div>";
+              ?>
+                <div class="tip-unread-button">
+                  <form class="tip-read-form" action="handle-read-tip.php" method="post">
+                    <button type="submit" name="unread-tip" value="<?php echo $row['nid']; ?>">mark the message from <?php echo $row['sname'] ?> as unread</button>
+                  </form>
+                </div>
+              <?php } // for each loop end ?>
+            </div>
+          <?php } else {
+            echo "<p>You have no read tips</p>";
+          }?>
+        <?php
+          $conn->close();
+        ?>
       </div>
 
       <?php
