@@ -41,6 +41,11 @@ include_once '../lib/dbinfo.php';
                 if ($conn->connect_error) {
                     die("Connection failed: " . $conn->connect_error);
                 }
+                $testresult = $conn->query("select sid from Student where username = '{$username}';");
+                if ($testresult->num_rows == 0) {
+                    header("Location: ../index.html");
+                    exit;
+                }
             ?>
         </div>
         <div class="say-hello-student">
@@ -122,9 +127,10 @@ include_once '../lib/dbinfo.php';
                           echo "<p>Sorry, we currentally do not have any students.</p>";
                       }
                     }
-                    // foreach (array_unique($students) as $key) {
-                    //     echo $key."<br>";
-                    // }
+                    $checkerstu
+                    foreach (array_unique($students) as $key) {
+                        echo $key."<br>";
+                    }
                 ?>
             </div>
             <div class="display-job">
@@ -135,7 +141,15 @@ include_once '../lib/dbinfo.php';
                         if ($result->num_rows > 0) {
                             // echo "entered if";
                             while ($row = $result->fetch_assoc()) {
-                                $jobs[] = $row["title"];
+                                $jobs[] = $row;
+                            }
+                        } else {
+                            echo "<p>Sorry, we currentally do not have any avaliable jobs.</p>";
+                        }
+                    }
+                    $checkerjob = [];
+                    foreach ($jobs as $row) {
+                        if (!in_array($row,$checkerjob)){
                 ?>
                                 <p><form class="job-info" action="job_info.php" method="post" id="job-info-form">
                                     <input type="hidden" name="sid" value="<?php echo $sid; ?>">
@@ -143,14 +157,10 @@ include_once '../lib/dbinfo.php';
                                      <?php echo "at {$row['jcity']}, {$row['jstate']}"; ?>
                                 </form></p>
                 <?php
-                            }
-                        } else {
-                            echo "<p>Sorry, we currentally do not have any avaliable jobs.</p>";
+                            $checkerjob[] = $row;
                         }
+                        // echo $key."<br>";
                     }
-                    // foreach (array_unique($students) as $key) {
-                    //     echo $key."<br>";
-                    // }
                 ?>
             </div>
             <div class="display-company">
@@ -161,20 +171,24 @@ include_once '../lib/dbinfo.php';
                         if ($result->num_rows > 0) {
                             // echo "entered if";
                             while ($row = $result->fetch_assoc()) {
-                                $companies[] = $row["cname"];
-                ?>
-                                <p><form class="company-info" action="company_info.php" method="post" id="company-info-form">
-                                    <button type="submit" name="cid" value="<?php echo $row['cid']; ?>"><?php echo $row['cname']; ?></button>
-                                </form></p>
-                <?php
+                                $companies[] = $row;
                             }
                         } else {
                             echo "<p>Sorry, we currentally do not have any avaliable companies.</p>";
                         }
                     }
-                    // foreach (array_unique($companies) as $key) {
-                    //     echo $key."<br>";
-                    // }
+                    $checkercom = [];
+                    foreach (($companies) as $row) {
+                        // echo $row[0];
+                        if (!in_array($row, $checkercom)) {
+                ?>
+                            <p><form class="company-info" action="company_info.php" method="post" id="company-info-form">
+                                <button type="submit" name="cid" value="<?php echo $row['cid']; ?>"><?php echo $row['cname']; ?></button>
+                            </form></p>
+                <?php
+                            $checkercom[] = $row;
+                        }
+                    }
                 ?>
             </div>
         </div>

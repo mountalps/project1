@@ -25,7 +25,7 @@ include_once '../lib/dbinfo.php';
         $jdegree = $row['degree'];
         $jsalary = $row['salary'];
         $jcountry = $row['jcountry'];
-        $jdescription = $row['jdesciption'];
+        $jdescription = $row['jdescription'];
         $cid = $row['cid'];
         $cname = $row['cname'];
         $expired = $row['expired'];
@@ -65,6 +65,7 @@ include_once '../lib/dbinfo.php';
                     <?php
                     // echo $usersid;
                     // echo $sidpost;
+                    // $usersid = $conn->query("select sid from Student where username = '{$username}';")->fetch_assoc()['sid'];
                     if ($usersid != $sidpost) {
                         header("Location: ../index.html");
                         exit;
@@ -86,7 +87,15 @@ include_once '../lib/dbinfo.php';
                 </div>
             </div>
             <div class="job-body">
-
+                <h2>Job Location: <?php echo "{$jcity}, {$jstate}, {$jcountry}"; ?></h2>
+                <h2>Job Salary: <?php echo "{$jsalary}"; ?></h2>
+                <h2>Job Location: <?php echo "{$jcity}, {$jstate}, {$jcountry}"; ?></h2>
+                <h2>Job Major Prefered: <?php echo "{$jmajor}"; ?></h2>
+                <h2>Job Degree Prifered: <?php echo "{$jdegree}"; ?></h2>
+                <div class="job-description" style="width:50%;">
+                    <h2>Job Description:</h2>
+                    <p><?php echo $jdescription; ?></p>
+                </div>
             </div>
         </div>
     </div>
