@@ -8,6 +8,7 @@
     $sqlGetCompanyInfo = "select * from Company where cusername = '{$username}';";
     $resultCompanyInfo = mysqli_query($conToDB, $sqlGetCompanyInfo);
     $companyInfo = mysqli_fetch_all($resultCompanyInfo, MYSQLI_ASSOC);
+    $_SESSION['companyInfo'] = $companyInfo;
     
 //    var_dump($companyInfo);
     
@@ -146,7 +147,7 @@
             $applicants = mysqli_fetch_all($resultApplicants, MYSQLI_ASSOC);
             ?>
             <?php foreach ($applicants as &$applicant): ?>
-                <form action="student_info.php" method="post">
+                <form action="company_check_student.php" method="post">
                     <button type="submit" name="sid" value="<?php echo $applicant['sid']; ?>"><?php echo $applicant['sname']; ?></button>
                 </form>
             <?php endforeach;?>
