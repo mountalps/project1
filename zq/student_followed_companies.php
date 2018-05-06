@@ -34,10 +34,6 @@ include_once '../lib/dbinfo.php';
     <div class="wrapper">
       <div>
       <?php
-      // get the sid from signin page
-      $sid = $_SESSION['studentid'];
-      $sid = 1;
-
       // database connection
       session_start();
       $username = $_SESSION['user'];
@@ -45,21 +41,15 @@ include_once '../lib/dbinfo.php';
       if ($conn->connect_error) {
           die("Connection failed: " . $conn->connect_error);
       }
-      $query = "SELECT sname FROM Student s WHERE s.sid = 1";
-      $result = $conn->query($query);
-      $sname = "";
-      if ($result->num_rows > 0) {
-          while ($row = $result->fetch_assoc()) {
-              $sname = $row['sname'];
-          }
-      }
+      $sname = ($conn->query("SELECT sname FROM Student s WHERE s.username = '{$username}';"))->fetch_assoc()['sname'];
 
       // the rest of the text
       $hellostr = "Hello " . $sname . ",";
       echo "<h2>$hellostr</h2>";
       ?>
       </div>
-      <div class="all-friends">
+      <div class="all-companies">
+          <h4>Followed Companies:</h4>
       <?php
       $query = "
       select c.cname, c.ccity, c.cstate, c.ccountry, c.industry from Follow f, Company c where f.sid = ".$sid." and f.cid=c.cid;";
@@ -74,7 +64,7 @@ include_once '../lib/dbinfo.php';
             echo "</p></div>";
           }
       } else {
-        echo "<br><br>You don't have any friends yet.<br><br>";
+        echo "<p>You don't have any followed companies yet.</p>";
       }
       $conn->close();
       ?>

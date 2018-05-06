@@ -52,11 +52,12 @@ include_once '../lib/dbinfo.php';
             echo "<h2>$hellostr</h2>";
         ?>
         <div class="all-friends">
+            <h4>Your Friends:</h4>
             <?php
                 $query = "select s.sname, s.sid, s.university, s.major from ((select f.sid1 as sid from Friend f, Student s2 where f.sid2 = s2.sid and s2.username = '{$username}') union (select f.sid2 as sid from Friend f, Student s3 where f.sid1 = s3.sid and s3.username='{$username}')) a, Student s where s.sid = a.sid;";
                 $result = $conn->query($query);
                 if ($result->num_rows > 0) {
-                    echo "<br><br>Here are your friends:<br><br>";
+                    echo "<p>Here are your friends:</p>";
                     while ($row = $result->fetch_assoc()) {
                         echo "<div class='friend-info'><p>";
             ?>
@@ -71,7 +72,7 @@ include_once '../lib/dbinfo.php';
             <?php
                     }
                 } else {
-                    echo "<br><br>You don't have any friends yet.<br><br>";
+                    echo "<p>You don't have any friends yet.</p>";
                 }
                 $conn->close();
             ?>
