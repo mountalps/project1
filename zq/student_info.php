@@ -45,8 +45,9 @@ include_once '../lib/dbinfo.php';
         </div>
         <div class="wrapper">
             <?php
-                $studentuniversity = ($conn->query("select s.university from Student s where s.sid = ".$sid.";"))->fetch_assoc()['university'];
-                $studentmajor = ($conn->query("select s.major from Student s where s.sid = ".$sid.";"))->fetch_assoc()['major'];
+                $result = ($conn->query("select s.university, s.major from Student s where s.sid = ".$sid.";"))->fetch_assoc();
+                $studentuniversity = $result['university'];
+                $studentmajor = $result['major'];
             ?>
                 <div class="public-student-info">
                     <p>Name : <?php echo $studentname; ?></p>
@@ -61,10 +62,22 @@ include_once '../lib/dbinfo.php';
                 $torf = ($conn->query("select True as result from Friend f, Student s where s.username = '{$username}' and (s.sid = f.sid1 or s.sid = f.sid2) and (f.sid1 = {$sid} or f.sid2 = {$sid});"))->fetch_assoc()['result'];
 
                 if ($torf == 1) {
-                    echo "they are friend";
+                    $result = ($conn->query("select s.degree, s.GPA from Student s where s.sid = ".$sid.";"))->fetch_assoc();
+                    $gpa = $result['GPA'];
+                    $degree = $result['degree'];
             ?>
                     <div class="private-student-info">
-                        //TODO
+                        <p>GPA: <?php echo $gpa; ?></p>
+                        <p>Degree: <?php echo $degree; ?></p>
+                    </div>
+                    <div class="friend-message">
+                        <p><br>You can send a message to your friend:</p>
+                        <form class="tips-form" action="submit_tips.php" method="post">
+                            <textarea name="tips-area" rows="8" cols="40" maxlength="200" placeholder="write some messages to your friend and click submit to send."></textarea>
+                            <input type="hidden" name="fromsid" value="<?php echo $currentusersid; ?>">
+                            <input type="hidden" name="tosid" value="<?php echo $sid; ?>">
+                            <button type="submit">Submit</button>
+                        </form>
                     </div>
             <?php
                 } else {
