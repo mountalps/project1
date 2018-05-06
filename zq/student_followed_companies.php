@@ -42,29 +42,27 @@ include_once '../lib/dbinfo.php';
           die("Connection failed: " . $conn->connect_error);
       }
       $sname = ($conn->query("SELECT sname FROM Student s WHERE s.username = '{$username}';"))->fetch_assoc()['sname'];
-
       // the rest of the text
       $hellostr = "Hello " . $sname . ",";
-      echo "<h2>$hellostr</h2>";
+      echo "<h1>$hellostr</h1>";
       ?>
       </div>
       <div class="all-companies">
-          <h4>Followed Companies:</h4>
+          <h2>Followed Companies:</h2>
       <?php
-      $query = "
-      select c.cname, c.ccity, c.cstate, c.ccountry, c.industry from Follow f, Company c where f.sid = ".$sid." and f.cid=c.cid;";
-      $result = $conn->query($query);
+      $result = $conn->query("select c.cid, c.cname, s.sid from Company c, Follow f, Student s where f.sid = s.sid and f.cid = c.cid and s.username = '{$username}';");
       if ($result->num_rows > 0) {
-        echo "<br><br>Here are your followed companies:<br><br>";
-          while ($row = $result->fetch_assoc()) {
-            echo "<div class='followed-companies'><p>";
-            echo $row['cname'];
-            echo " in ".$row['ccity'].", ".$row['cstate'].", ".$row['ccountry'];
-            echo "in industry ".$row['industry'];
-            echo "</p></div>";
-          }
+            while ($row = $result->fetch_assoc()) {
+      ?>
+                <div class='followed-companies'>
+                    <p><form class="company-info" action="company_info.php" method="post" id="company-info-form">
+                        <button type="submit" name="cid" value="<?php echo $row['cid']; ?>"><?php echo $row['cname']; ?></button>
+                    </form></p>
+                </div>
+      <?php
+            }
       } else {
-        echo "<p>You don't have any followed companies yet.</p>";
+            echo "<p>You don't have any followed companies yet.</p>";
       }
       $conn->close();
       ?>
