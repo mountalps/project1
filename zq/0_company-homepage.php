@@ -23,6 +23,7 @@ include_once '../lib/dbinfo.php';
           <a href="company_notifications.php">Notifications</a> |
           <a href="company_jobs.php">Your Jobs</a> |
           <a href="company_publish_jobs.php">Publish A Job</a> |
+          <a href="company_modify_profile.php">Modify Profile</a> |
           <form action="company_search_result.php" method="get" id="keyword_search">
               <input type="text" placeholder="Search..." name="keyword">
               <button type="submit">search</button>

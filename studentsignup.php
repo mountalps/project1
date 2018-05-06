@@ -19,12 +19,15 @@ $GPA = $_POST['GPA'];
 $keywords = $_POST['keywords'];
 $resume = $_POST['resume'];
 $restrict = $_POST['restrict'];
-if ($restrict == 'yes'){
-    $restrict = '1';
+
+if ($restrict == "yes"){
+    $restrict = 1;
 }
 if ($restrict == "no" || $restrict == null){
-    $restrict = '0';
+    $restrict = 0;
 }
+
+var_dump($restrict);
 
 ?>
 
@@ -66,6 +69,7 @@ if ($restrict == "no" || $restrict == null){
             <button onclick="window.location.href='index.html'">Return To Start Page</button>
         <?php else:?>
         <?php
+            var_dump($restrict);
         $sql = "insert into Student values
 (null, '{$username}', '{$password}', '{$sname}', '{$university}', '{$major}', '{$degree}', '{$GPA}', '{$keywords}', '{$resume}', '{$restrict}');";
         $result = mysqli_query($connect, $sql);
@@ -76,10 +80,11 @@ if ($restrict == "no" || $restrict == null){
             <button onclick="window.location.href='index.html'">Back to login</button>
             <?php
 
-                session_start();
-                $_SESSION['user'] = $username;
-                header('Location:./zq/0_student-homepage.php');
-                exit;
+//                session_start();
+//                $_SESSION['user'] = $username;
+//                header('Location:./zq/0_student-homepage.php');
+//                exit;
+                
                 ?>
         <?php else:?>
             <h2>Sign Up Unsuccessfully!</h2>

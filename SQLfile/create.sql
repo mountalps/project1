@@ -12,7 +12,8 @@ CREATE TABLE `Student` (
   `GPA` DECIMAL(3,2) ,
   `keywords` VARCHAR(500),
   `resume` Varchar(20),
-  `restrict` bit NOT NULL,
+  #`restrict` bit NOT NULL,
+  `restrict` VARCHAR(1) NOT NULL,
   PRIMARY KEY (`sid`)
   );
 
