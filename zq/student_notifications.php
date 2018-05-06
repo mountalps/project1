@@ -36,14 +36,9 @@ include_once '../lib/dbinfo.php';
             if ($conn->connect_error) {
                 die("Connection failed: " . $conn->connect_error);
             }
-            $query = "SELECT sname FROM Student s WHERE s.username = '{$username}';";
-            $result = $conn->query($query);
-            $sname = "";
-            if ($result->num_rows > 0) {
-                while ($row = $result->fetch_assoc()) {
-                    $sname = $row['sname'];
-                }
-            }
+            $q = $conn->query("SELECT sname, sid FROM Student s WHERE s.username = '{$username}';")->fetch_assoc();
+            $sname = $q['sname'];
+            $sid = $q['sid'];
             // the rest of the text
             $hellostr = "Helloha " . $sname . ",";
             echo "<h1>$hellostr</h1>";
@@ -106,9 +101,11 @@ include_once '../lib/dbinfo.php';
                     <?php
                             echo ", who forwared you the following job:<br>";
                     ?>
-                                <form class="job-info" action="job_info.php" method="post" id="job-info-form">
+                                <p><form class="job-info" action="job_info.php" method="post" id="job-info-form">
+                                    <input type="hidden" name="sid" value="<?php echo $sid; ?>">
                                     <button type="submit" name="jid" value="<?php echo $row['jid']; ?>"><?php echo $row['title']; ?></button>
-                                </form>
+                                     <?php echo "at {$row['jcity']}, {$row['jstate']}"; ?>
+                                </form></p>
                     <?php
                             echo ' in '.$row['jcity'].', '.$row['jstate'].', '.$row['jcountry'];
                             echo "</p></div>";

@@ -15,18 +15,21 @@ include_once '../lib/dbinfo.php';
             die("Connection failed: " . $conn->connect_error);
         }
         $jid = $_POST['jid'];
-        $row = $conn->query("select title, cid, jcity, jstate, jcountry, salary, degree, major, jdescription From Job where jid={$jid};")->fetch_assoc();
-        // $title = $row['title'];
-        // $jcity = $row['jcity'];
-        // $jstate = $row['jstate'];
-        // $jmajor = $row['major'];
-        // $jdegree = $row['degree'];
-        // $jsalary = $row['salary'];
-        // $jcountry = $row['jcountry'];
-        // $jdescription = $row['jdesciption'];
-        //
-        // $cid = $row['cid'];
-        // $cname = $row['cname'];
+        $sidpost = $_POST['sid'];
+        $usersid = $conn->query("select sid from Student where username = '{$username}';")->fetch_assoc()['sid'];
+        $row = $conn->query("select title, cid, jcity, jstate, jcountry, salary, degree, major, jdescription, expirationDate <= now() as expired From Job where jid={$jid};")->fetch_assoc();
+        $title = $row['title'];
+        $jcity = $row['jcity'];
+        $jstate = $row['jstate'];
+        $jmajor = $row['major'];
+        $jdegree = $row['degree'];
+        $jsalary = $row['salary'];
+        $jcountry = $row['jcountry'];
+        $jdescription = $row['jdesciption'];
+        $cid = $row['cid'];
+        $cname = $row['cname'];
+        $expired = $row['expired'];
+
     ?>
     <title><?php echo $studentname; ?></title>
     <style>
@@ -53,6 +56,38 @@ include_once '../lib/dbinfo.php';
         </nav>
     </div>
     <div class="wrapper">
+        <div class="job-info">
+            <div class="job-head">
+                <div class="job-title">
+                    <h1><?php echo $title; ?></h1>
+                </div>
+                <div class="job-apply">
+                    <?php
+                    // echo $usersid;
+                    // echo $sidpost;
+                    if ($usersid != $sidpost) {
+                        header("Location: ../index.html");
+                        exit;
+                    }
+                    // echo $jid." and ".$sidpost." and ".$usersid;
+                    $countj = ($conn->query("select count(*) as countj from Application where fromsid = {$usersid} and jid = {$jid};"))->fetch_assoc()['countj'];
+                    if ($countj == 0 && $expired == 0) {
+                    ?>
+                        <form class="job-apply" action="job-apply.php" method="post">
+                            <input type="hidden" name="sid" value="<?php echo $sidpost; ?>">
+                            <button type="submit" name="jid" value="<?php echo $jid; ?>">Apply this job</button>
+                        </form>
+                    <?php } else  if ($countj > 0){?>
+                        <button type="button" name="button">You Already Applied this job</button>
+                    <?php } else{
+                        echo "<button type='button' name='button'>This job expired</button>";
+                    }?>
+                </div>
+            </div>
+            <div class="job-body">
+
+            </div>
+        </div>
     </div>
 </body>
 

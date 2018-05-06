@@ -45,7 +45,9 @@ include_once '../lib/dbinfo.php';
         </div>
         <div class="say-hello-student">
             <?php
-                $sname = $conn->query("select sname from Student s WHERE s.username = '{$username}'")->fetch_assoc()['sname'];
+                $q = $conn->query("SELECT sname, sid FROM Student s WHERE s.username = '{$username}';")->fetch_assoc();
+                $sname = $q['sname'];
+                $sid = $q['sid'];
                 $hellostr = "Hello " . $sname . ",";
                 echo "<h1>$hellostr</h1>";
             ?>
@@ -136,7 +138,9 @@ include_once '../lib/dbinfo.php';
                                 $jobs[] = $row["title"];
                 ?>
                                 <p><form class="job-info" action="job_info.php" method="post" id="job-info-form">
+                                    <input type="hidden" name="sid" value="<?php echo $sid; ?>">
                                     <button type="submit" name="jid" value="<?php echo $row['jid']; ?>"><?php echo $row['title']; ?></button>
+                                     <?php echo "at {$row['jcity']}, {$row['jstate']}"; ?>
                                 </form></p>
                 <?php
                             }

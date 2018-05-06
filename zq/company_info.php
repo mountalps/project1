@@ -15,7 +15,7 @@ include_once '../lib/dbinfo.php';
                 die("Connection failed: " . $conn->connect_error);
             }
             $cid = $_POST['cid'];
-            // $sid = 10;
+            $sid = $conn->query("select sid from Student where username = '{$username}';")->fetch_assoc()['sid'];
             $result = $conn->query("select cid, cname, ccity, cstate, ccountry, industry from Company where cid = {$cid};")->fetch_assoc();
             $cname = $result['cname'];
             $cid = $result['cid'];
@@ -70,18 +70,54 @@ include_once '../lib/dbinfo.php';
                     <?php } ?>
                 </div>
                 <div class="company-body">
-                    <h2>Company Location: </h2>
-                    <h2>Company Industry: </h2>
+                    <h2>Company Location: <?php echo "{$ccity}, {$cstate}, {$ccountry}" ?></h2>
+                    <h2>Company Industry: <?php echo $industry ?></h2>
                 </div>
             </div>
             <div class="company-job">
-                <h2>Company Published Jobs</h2>
-                <div class="company-avaliable-job">
-                    <h3>Company Avaliable Jobs</h3>
-                </div>
-                <div class="company-expired-job">
-                    <h3>Company Explired Jobs</h3>
-                </div>
+                <?php
+                    $avaliable = $conn->query("select * from Job j where j.cid = {$cid} and j.expirationDate > now();");
+                    $expired = $conn->query("select * from Job j where j.cid = {$cid} and j.expirationDate <= now();");
+                ?>
+                <h2>Company Published Jobs:</h2>
+                <ul>
+                    <li><div class="company-avaliable-job">
+                        <h3>Company Avaliable Jobs:</h3>
+                        <?php
+                            if ($avaliable->num_rows > 0) {
+                                while ($row = $avaliable->fetch_assoc()) {
+                        ?>
+                                    <div class="job">
+                                        <p><form class="job-info" action="job_info.php" method="post" id="job-info-form">
+                                            <input type="hidden" name="sid" value="<?php echo $sid; ?>">
+                                            <button type="submit" name="jid" value="<?php echo $row['jid']; ?>"><?php echo $row['title']; ?></button>
+                                             <?php echo "at {$row['jcity']}, {$row['jstate']}"; ?>
+                                        </form></p>
+                                    </div>
+                        <?php
+                                }
+                            }
+                        ?>
+                    </div></li>
+                    <li><div class="company-expired-job">
+                        <h3>Company Explired Jobs</h3>
+                        <?php
+                            if ($expired->num_rows > 0) {
+                                while ($row = $expired->fetch_assoc()) {
+                        ?>
+                                    <div class="job">
+                                        <p><form class="job-info" action="job_info.php" method="post" id="job-info-form">
+                                            <input type="hidden" name="sid" value="<?php echo $sid; ?>">
+                                            <button type="submit" name="jid" value="<?php echo $row['jid']; ?>"><?php echo $row['title']; ?></button>
+                                             <?php echo "at {$row['jcity']}, {$row['jstate']}"; ?>
+                                        </form></p>
+                                    </div>
+                        <?php
+                                }
+                            }
+                        ?>
+                    </div></li>
+                </ul>
             </div>
         </div>
     </body>
