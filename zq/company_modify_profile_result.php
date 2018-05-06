@@ -17,13 +17,13 @@
     $ccountry = $_POST['ccountry'];
     $industry = $_POST['industry'];
     
-    var_dump($username);
-    var_dump($cpassword);
-    var_dump($cname);
-    var_dump($ccity);
-    var_dump($cstate);
-    var_dump($ccountry);
-    var_dump($industry);
+//    var_dump($username);
+//    var_dump($cpassword);
+//    var_dump($cname);
+//    var_dump($ccity);
+//    var_dump($cstate);
+//    var_dump($ccountry);
+//    var_dump($industry);
 ?>
 
 
@@ -64,19 +64,89 @@
             $cpassword = encryptPassword($cpassword);
             $sqlChangePassword = "update Company set cpassword='{$cpassword}' where cusername='{$username}';";
             $resultChangePassword = mysqli_query($conToDB, $sqlChangePassword);
-            var_dump($resultChangePassword);
+//            echo 'resultChangePassword:';
+//            var_dump($resultChangePassword);
+//            echo '<br>';
         }
     
         if ($cname != ""){
             
-            $sqlChangePassword = "update Company set cpassword='{$cpassword}' where cusername='{$username}';";
-            $resultChangePassword = mysqli_query($conToDB, $sqlChangePassword);
-            var_dump($resultChangePassword);
+            $sqlChangeName = "update Company set cname='{$cname}' where cusername='{$username}';";
+            $resultChangeName = mysqli_query($conToDB, $sqlChangeName);
+//            echo 'resultChangeName:';
+//            var_dump($resultChangeName);
+//            echo '<br>';
+    
         }
+    
+        if ($ccity != ""){
         
+            $sqlChangeCity = "update Company set ccity='{$ccity}' where cusername='{$username}';";
+            $resultChangeCity = mysqli_query($conToDB, $sqlChangeCity);
+//            echo 'resultChangeCity:';
+//            var_dump($resultChangeCity);
+//            echo '<br>';
+    
+        }
+    
+    
+        if ($cstate != ""){
         
-        $result = mysqli_fetch_all($result, MYSQLI_ASSOC);
-    ?>
+            $sqlChangeState = "update Company set cstate='{$cstate}' where cusername='{$username}';";
+            $resultChangeState = mysqli_query($conToDB, $sqlChangeState);
+//            echo 'resultChangeState:';
+//            var_dump($resultChangeState);
+//            echo '<br>';
+    
+        }
+    
+        if ($ccountry != ""){
+        
+            $sqlChangeCountry = "update Company set ccountry='{$ccountry}' where cusername='{$username}';";
+            $resultChangeCountry = mysqli_query($conToDB, $sqlChangeCountry);
+//            echo 'resultChangeCountry:';
+//            var_dump($resultChangeCountry);
+//            echo '<br>';
+    
+        }
+    
+        if ($industry != ""){
+        
+            $sqlChangeIndustry = "update Company set industry='{$industry}' where cusername='{$username}';";
+            $resultChangeIndustry = mysqli_query($conToDB, $sqlChangeIndustry);
+//            echo 'resultChangeIndustry:';
+//            var_dump($resultChangeIndustry);
+//            echo '<br>';
+    
+        }
+        ?>
+</div>
+
+<div class="changeResult" align="center">
+    <h3>Here is your new profile</h3>
+    <table>
+        <tr>
+            <td>Name: </td>
+            <td><?php echo $cname?></td>
+        </tr>
+        <tr>
+            <td>City: </td>
+            <td><?php echo $ccity?></td>
+        </tr>
+        <tr>
+            <td>State: </td>
+            <td><?php echo $cstate?></td>
+        </tr>
+        <tr>
+            <td>Country: </td>
+            <td><?php echo $ccountry?></td>
+        </tr>
+        <tr>
+            <td>Industry: </td>
+            <td><?php echo $industry?></td>
+        </tr>
+    </table>
+    
 </div>
 
 

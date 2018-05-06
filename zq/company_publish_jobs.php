@@ -1,3 +1,16 @@
+<?php
+    
+    include_once '../lib/fun.php';
+    include_once '../lib/dbinfo.php';
+    session_start();
+    $username = $_SESSION['user'];
+    $conToDB = mysqlInit($DBhost, $DBuser, $DBpassword, $DBdatabase, $port);
+    $sqlGetCompanyInfo = "select * from Company where cusername = '{$username}';";
+    $resultCompanyInfo = mysqli_query($conToDB, $sqlGetCompanyInfo);
+    $companyInfo = mysqli_fetch_all($resultCompanyInfo, MYSQLI_ASSOC);
+    var_dump($companyInfo);
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -28,16 +41,27 @@
     </div>
     <div class="wrapper">
       <?php
+          //Job Table Attributes:
+//          `jid` INT NOT NULL auto_increment,
+//  `title` VARCHAR(100) NOT NULL,
+//  `cid` INT NOT NULL,
+//  `jcity` VARCHAR(20) NOT NULL,
+//  `jstate` VARCHAR(20) NOT NULL,
+//  `jcountry` VARCHAR(20) NOT NULL,
+//  `salary` MEDIUMINT NOT NULL,
+//  `degree` VARCHAR(20) NOT NULL,
+//  `major` VARCHAR(20) NOT NULL,
+//  `jdescription` TEXT NOT NULL,
         $hellostr = "You can create a new job now";
         echo "<p>$hellostr</p>";
       ?>
       <div class="create-job">
-        <form class="create-job-form" action="create_job.php" method="post">
+        <form class="create-job-form" action="company_publish_jobs_result.php" method="post">
           <fieldset>
             <h2>Create a New Job</h2>
             <p>Required fields are followed by <strong><abbr title="required">*</abbr></strong>.</p>
             <p>
-              <label for="company-name" style="font-weight:bold;">Company Name: somena</label>
+              <label for="company-name" style="font-weight:bold;">Company Name: <?php echo $companyInfo[0]['cname']?></label>
             </p>
             <p>
               <label for="job-title" style="font-weight:bold;">Job Title: </label>
