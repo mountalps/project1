@@ -10,16 +10,14 @@ include_once '../lib/dbinfo.php';
     </head>
     <body>
         <?php
-        // $fromsid = $_POST['fromsid'];
-        // $tosid = $_POST['tosid'];
-        // $conn = new mysqli($DBhost, $DBuser, $DBpassword, $DBdatabase, $port);
-        // if ($conn->connect_error) {
-        //     die("Connection failed: " . $conn->connect_error);
-        // }
-        // $conn->query("insert into NotificationToStudent values(null, {$tosid}, 'unread', 'FriendReq');");
-        // $insertednid = $conn->query("select ns.nid from NotificationToStudent ns where ns.tosid = {$tosid} and ns.notificationtype='FriendReq';")->fetch_assoc()['nid'];
-        // echo $insertednid;
-        // $conn->query("insert into FriendReq values({$insertednid}, now(), {$fromsid}, {$tosid}, 'pending');");
+        $fromsid = $_POST['fromsid'];
+        $tosid = $_POST['tosid'];
+        $conn = new mysqli($DBhost, $DBuser, $DBpassword, $DBdatabase, $port);
+        if ($conn->connect_error) {
+            die("Connection failed: " . $conn->connect_error);
+        }
+        $conn->query("insert into NotificationToStudent values(null, {$fromsid}, null, {$tosid}, 'pending', now(), 'FriendReq');");
+        // $insertednid = $conn->query("select ns.nid from NotificationToStudent ns where ns.tosid = {$tosid} and ns.fromsid = {$fromsid} and ns.notificationtype='FriendReq' and ns.nstatus = 'pending';")->fetch_assoc()['nid'];
         ?>
         <p>Friend request send</p>
         <a href="javascript:history.go(-2)">GO BACK</a>

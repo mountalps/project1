@@ -28,6 +28,12 @@ CREATE TABLE `Company` (
   PRIMARY KEY (`cid`)
   );
 
+-- drop table Forward;
+-- drop table Application;
+-- drop table Push;
+-- drop table Broadcast;
+-- drop table Job;
+
 CREATE TABLE `Job` (
   `jid` INT NOT NULL auto_increment,
   `title` VARCHAR(100) NOT NULL,
@@ -38,11 +44,15 @@ CREATE TABLE `Job` (
   `salary` MEDIUMINT NOT NULL,
   `degree` VARCHAR(20) NOT NULL,
   `major` VARCHAR(20) NOT NULL,
-  `jdesciption` TEXT NOT NULL,
+  `jdescription` TEXT NOT NULL,
   PRIMARY KEY (`jid`),
   FOREIGN KEY (`cid`) REFERENCES `Company` (`cid`)
   );
 
+-- drop table Forward;
+-- drop table Push;
+-- drop table Tips;
+-- drop table NotificationToStudent;
 #NotificationToStudent(nid, ntime, nstatus, notificationtype)
 CREATE TABLE `NotificationToStudent` (
   `nid` INT NOT NULL auto_increment,
@@ -50,6 +60,7 @@ CREATE TABLE `NotificationToStudent` (
   `fromcid` INT,
   `tosid` INT NOT NULL,
   `nstatus` VARCHAR(20) NOT NULL,
+  `ntime` datetime not null,
   `notificationtype` VARCHAR(20) NOT NULL,
   PRIMARY KEY (`nid`),
   FOREIGN KEY (`tosid`) REFERENCES `Student` (`sid`),

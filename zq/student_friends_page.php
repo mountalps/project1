@@ -64,7 +64,7 @@ include_once '../lib/dbinfo.php';
                             <button type="submit" name="sid" value="<?php echo $row['sid']; ?>"><?php echo $row['sname']; ?></button>
             <?php
                         echo " in ".$row['university'];
-                        echo " major in ".$row['major'];
+                        echo ", major in ".$row['major'];
                         echo "</p></div>";
             ?>
                         </form>
