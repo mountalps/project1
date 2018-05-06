@@ -75,6 +75,7 @@ include_once '../lib/dbinfo.php';
                     ?>
                         <form class="job-apply" action="job-apply.php" method="post">
                             <input type="hidden" name="sid" value="<?php echo $sidpost; ?>">
+                            <input type="hidden" name="cid" value="<?php echo $cid; ?>">
                             <button type="submit" name="jid" value="<?php echo $jid; ?>">Apply this job</button>
                         </form>
                     <?php } else  if ($countj > 0){?>
