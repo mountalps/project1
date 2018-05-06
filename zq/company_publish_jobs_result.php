@@ -36,8 +36,27 @@
     $job_degree = $_POST['job-degree'];
     $job_major = $_POST['job-major'];
     $job_description = $_POST['job-description'];
+    $job_expires = $_POST['job-expires'];
+    $job_expires = (int)$job_expires;
     
-//    var_dump($job_title);
+    date_default_timezone_set("America/New_York");
+    $timeStamp = time();
+    $time_now = date('Y-m-d H:i:s', $timeStamp);
+    
+    if ($job_expires == "1")
+        $job_expires = date('Y-m-d H:i:s', strtotime("+1 months", strtotime($time_now)));
+    elseif ($job_expires == "2")
+        $job_expires = date('Y-m-d H:i:s', strtotime("+2 months", strtotime($time_now)));
+    elseif ($job_expires == "3")
+        $job_expires = date('Y-m-d H:i:s', strtotime("+3 months", strtotime($time_now)));
+    elseif ($job_expires == "6")
+        $job_expires = date('Y-m-d H:i:s', strtotime("+6 months", strtotime($time_now)));
+    
+    
+//    var_dump($job_expires);
+    
+    
+    //    var_dump($job_title);
 //    var_dump($job_city);
 //    var_dump($job_state);
 //    var_dump($job_country);
@@ -79,7 +98,7 @@
     //  `jdescription` TEXT NOT NULL,
     
     $sqlPublishAJob = "insert into Job values
-(null, '{$job_title}', '{$companyInfo[0]['cid']}', '{$job_city}', '{$job_state}', '{$job_country}', '{$job_salary}', '{$job_degree}', '{$job_major}', '{$job_description}');";
+(null, '{$job_title}', '{$companyInfo[0]['cid']}', '{$job_city}', '{$job_state}', '{$job_country}', '{$job_salary}', '{$job_degree}', '{$job_major}', '{$job_description}', '{$job_expires}');";
     $resultPublishAJob = mysqli_query($conToDB, $sqlPublishAJob);
 ?>
 

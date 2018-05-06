@@ -91,10 +91,20 @@
               <label for="job-major" style="font-weight:bold;">Prefered Major: </label>
               <input type="text" name="job-major" placeholder="e.g. Computer Science" required>
             </p>
+              <p>
+                  <label for="job-expires" style="font-weight:bold;">Expires after: </label>
+                  <select name="job-expires" id="">
+                      <option value="1">1 month</option>
+                      <option value="2">2 months</option>
+                      <option value="3">3 months</option>
+                      <option value="6">6 months</option>
+                  </select>
+              </p>
             <p>
               <label for="job-description" style="font-weight:bold;">Job Description: <br></label>
               <textarea name="job-description" rows="8" cols="50" required></textarea>
             </p>
+            
             <p>
               <input type="submit" name="submit-creat-job" value="Create Job">
             </p>
