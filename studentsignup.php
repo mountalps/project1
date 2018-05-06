@@ -56,7 +56,7 @@ if ($restrict == "no" || $restrict == null){
             $password = encryptPassword($password);
             #student(sid, username, password, sname, university, degree, major, GPA, keywords, resume, restrict)
             $connect = mysqlInit($DBhost, $DBuser, $DBpassword, $DBdatabase, $port);
-            $sqlConfirmNoDuplicate = "select * from Student where username = '{$username}';";
+            $sqlConfirmNoDuplicate = "(select cid as num from Company where cusername = '{$cusername}') union (select sid as num from Student where username='{$cusername}');";
             $resultConfirmNoDuplicate = mysqli_query($connect, $sqlConfirmNoDuplicate);
             $confirmResult = mysqli_fetch_all($resultConfirmNoDuplicate, MYSQLI_ASSOC);
         ?>

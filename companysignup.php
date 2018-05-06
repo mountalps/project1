@@ -63,7 +63,7 @@ $industry = $_POST['industry'];
 
     $cpassword = encryptPassword($cpassword);
     $connect = mysqlInit($DBhost, $DBuser, $DBpassword, $DBdatabase, $port);
-    $sqlConfirmNoDuplicate = "select * from Company where cusername = '{$cusername}';";
+    $sqlConfirmNoDuplicate = "(select cid as num from Company where cusername = '{$cusername}') union (select sid as num from Student where username='{$cusername}');";
     $resultConfirmNoDuplicate = mysqli_query($connect, $sqlConfirmNoDuplicate);
     $confirmResult = mysqli_fetch_all($resultConfirmNoDuplicate, MYSQLI_ASSOC);
 
