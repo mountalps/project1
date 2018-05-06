@@ -143,9 +143,6 @@
             <br>
     
         <?php endforeach;?>
-
-
-
     </div>
 </body>
 </html>
