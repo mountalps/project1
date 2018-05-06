@@ -45,9 +45,12 @@ include_once '../lib/dbinfo.php';
         </div>
         <div class="wrapper">
             <?php
-                $result = ($conn->query("select s.university, s.major from Student s where s.sid = ".$sid.";"))->fetch_assoc();
+                $result = ($conn->query("select s.university, s.major, s.degree, s.GPA, s.restrict from Student s where s.sid = ".$sid.";"))->fetch_assoc();
                 $studentuniversity = $result['university'];
                 $studentmajor = $result['major'];
+                $gpa = $result['GPA'];
+                $degree = $result['degree'];
+                $restrict = $result['restrict'];
             ?>
                 <div class="public-student-info">
                     <p>Name : <?php echo $studentname; ?></p>
@@ -55,6 +58,15 @@ include_once '../lib/dbinfo.php';
                     <p>Major : <?php echo $studentmajor; ?></p>
                 </div>
             <?php
+                if ($restrict == "0"){
+                    echo "hello";
+            ?>
+                    <div class="private-student-info">
+                        <p>GPA: <?php echo $gpa; ?></p>
+                        <p>Degree: <?php echo $degree; ?></p>
+                    </div>
+            <?php
+                }
                 if ($currentusersid == $sid) {
                     header("Location: 0_student-homepage.php");
                     exit;
@@ -62,14 +74,19 @@ include_once '../lib/dbinfo.php';
                 $torf = ($conn->query("select True as result from Friend f, Student s where s.username = '{$username}' and (s.sid = f.sid1 or s.sid = f.sid2) and (f.sid1 = {$sid} or f.sid2 = {$sid});"))->fetch_assoc()['result'];
 
                 if ($torf == 1) {
-                    $result = ($conn->query("select s.degree, s.GPA from Student s where s.sid = ".$sid.";"))->fetch_assoc();
-                    $gpa = $result['GPA'];
-                    $degree = $result['degree'];
+                    if ($restrict == "1") {
             ?>
-                    <div class="private-student-info">
-                        <p>GPA: <?php echo $gpa; ?></p>
-                        <p>Degree: <?php echo $degree; ?></p>
-                    </div>
+                        <div class="private-student-info">
+                            <p>GPA: <?php echo $gpa; ?></p>
+                            <p>Degree: <?php echo $degree; ?></p>
+                        </div>
+                        <form class="remove-friend" action="remove-friend.php" method="post" id="remove-friend-form">
+                            <input type="hidden" name="sid2" value="<?php echo $currentusersid; ?>">
+                            <button type="submit" name="sid1" value="<?php echo $sid; ?>" onclick="return confirm('Are you sure you want to DELETE this message?')">DELETE friend <?php echo $row['sname']; ?></button>
+                        </form>
+            <?php
+                    }
+             ?>
                     <div class="friend-message">
                         <p><br>You can send a message to your friend:</p>
                         <form class="tips-form" action="submit_tips.php" method="post">
@@ -112,7 +129,7 @@ include_once '../lib/dbinfo.php';
                     }
                 }
             ?>
-    </div>
+        </div>
 </body>
 
 </html>
