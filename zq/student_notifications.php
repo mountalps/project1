@@ -63,6 +63,34 @@ include_once '../lib/dbinfo.php';
             $resultt = $conn->query($queryt);
         ?>
         <ul>
+
+            <li>
+            <div class="pushed-jobs">
+                <h3>Suggested Jobs:</h3>
+                <?php
+                    $resultpj = $conn->query("select ns.tosid, c.cname, ns.nid, p.jid, j.title, j.jcity, j.jstate, j.salary  from NotificationToStudent ns, Push p, Job j, Company c where ns.fromcid=c.cid and p.jid = j.jid and p.nid = ns.nid and ns.tosid = {$sid} and ns.notificationtype='Push' and ns.nstatus='unread';");
+                    if ($resultpj->num_rows > 0) {
+                        // echo "<p>Here are some friend requests:</p>";
+                        while ($row = $resultpj->fetch_assoc()) {
+                ?>
+                            <div class="job">
+                                <p><form class="job-info" action="job_info.php" method="post" id="job-info-form">
+                                    <input type="hidden" name="nid" value="<?php echo $row['nid']; ?>">
+                                    <input type="hidden" name="sid" value="<?php echo $sid; ?>">
+                                    <button type="submit" name="jid" value="<?php echo $row['jid']; ?>"><?php echo $row['title']; ?></button>
+                                     <?php echo "at {$row['jcity']}, {$row['jstate']} for {$row['salary']}. Company: {$row['cname']}"; ?>
+                                </form></p>
+                            </div>
+                <?php
+                        }
+                    }
+                ?>
+            </div>
+            </li>
+
+
+
+
             <li>
             <div class="friend-request">
                 <h3>Friend Requests:</h3>

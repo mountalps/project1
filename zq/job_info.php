@@ -29,7 +29,10 @@ include_once '../lib/dbinfo.php';
         $cid = $row['cid'];
         $cname = $row['cname'];
         $expired = $row['expired'];
-
+        $nid = $_POST['nid'];
+        if ($nid!="") {
+            $conn->query("update NotificationToStudent set nstatus='read' where nid={$nid};");
+        }
     ?>
     <title><?php echo $studentname; ?></title>
     <style>
