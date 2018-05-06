@@ -80,13 +80,13 @@ include_once '../lib/dbinfo.php';
                             <p>GPA: <?php echo $gpa; ?></p>
                             <p>Degree: <?php echo $degree; ?></p>
                         </div>
-                        <form class="remove-friend" action="remove-friend.php" method="post" id="remove-friend-form">
-                            <input type="hidden" name="sid2" value="<?php echo $currentusersid; ?>">
-                            <button type="submit" name="sid1" value="<?php echo $sid; ?>" onclick="return confirm('Are you sure you want to DELETE this message?')">DELETE friend <?php echo $row['sname']; ?></button>
-                        </form>
             <?php
                     }
              ?>
+                     <form class="remove-friend" action="remove-friend.php" method="post" id="remove-friend-form">
+                         <input type="hidden" name="sid2" value="<?php echo $currentusersid; ?>">
+                         <button type="submit" name="sid1" value="<?php echo $sid; ?>" onclick="return confirm('Are you sure you want to DELETE this message?')">DELETE friend <?php echo $row['sname']; ?></button>
+                     </form>
                     <div class="friend-message">
                         <p><br>You can send a message to your friend:</p>
                         <form class="tips-form" action="submit_tips.php" method="post">

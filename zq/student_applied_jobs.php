@@ -59,13 +59,14 @@ include_once '../lib/dbinfo.php';
       echo "<h2>$hellostr</h2>";
       ?>
       </div>
-      <div class="all-friends">
+      <div class="all-jobs">
+          <h4>Applied Jobs:</h4>
       <?php
       $query = "
       select j.title, j.jcity, j.jstate, j.jcountry, c.cname, a.atime from Application a, Company c, Job j where a.tocid=c.cid and a.fromsid = ".$sid." and a.jid=j.jid;";
       $result = $conn->query($query);
       if ($result->num_rows > 0) {
-        echo "<br><br>Here are your applied jobs:<br><br>";
+        echo "<p>Here are your applied jobs:</p>";
           while ($row = $result->fetch_assoc()) {
             echo "<div class='applied-job'><p>";
             echo $row['title'];
@@ -74,7 +75,7 @@ include_once '../lib/dbinfo.php';
             echo "</p></div>";
           }
       } else {
-        echo "<br><br>You don't have any friends yet.<br><br>";
+        echo "<p>You don't have any friends yet.</p>";
       }
       $conn->close();
       ?>

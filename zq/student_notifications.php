@@ -46,10 +46,10 @@ include_once '../lib/dbinfo.php';
             }
             // the rest of the text
             $hellostr = "Helloha " . $sname . ",";
-            echo "<h2>$hellostr</h2>";
+            echo "<h1>$hellostr</h1>";
         ?>
         <div>
-            <p>Here are your notifications:</p>
+            <h2>Here are your notifications:</h2>
         </div>
         <?php
             $queryfq = "select s2.sname, s.university, ns.nid, ns.fromsid from NotificationToStudent ns, Student s, Student s2 where ns.tosid = s.sid and ns.fromsid = s2.sid and s.username = '{$username}' and ns.nstatus = 'pending';";
@@ -62,11 +62,13 @@ include_once '../lib/dbinfo.php';
             $resultf = $conn->query($queryf);
             $resultt = $conn->query($queryt);
         ?>
-
+        <ul>
+            <li>
             <div class="friend-request">
+                <h3>Friend Requests:</h3>
                 <?php
                     if ($resultfq->num_rows > 0) {
-                        echo "<br><br>Here are some friend requests:<br><br>";
+                        // echo "<p>Here are some friend requests:</p>";
                         while ($row = $resultfq->fetch_assoc()) {
                             echo "<div class='friend-request-message' style='display:block;'><p>";
                             echo "You received a friend request from ";
@@ -87,10 +89,13 @@ include_once '../lib/dbinfo.php';
                     }
                 ?>
             </div>
+            </li>
+            <li>
             <div class="forward">
+                <h3>Forwared Jobs From Friend:</h3>
                 <?php
                     if ($resultf->num_rows > 0) {
-                        echo "<br><br>Here are some job forwards:<br><br>";
+                        // echo "<p>Here are some job forwards:</p>";
                         while ($row = $resultf->fetch_assoc()) {
                             echo "<div class='forwarded-message'><p>";
                             echo "You received a job forward from ";
@@ -111,12 +116,15 @@ include_once '../lib/dbinfo.php';
                     }
                 ?>
             </div>
-
+            </li>
+            <li>
             <div class="tips">
+                <h3>Student Messages:</h3>
+                <h4>Unread Messages:</h4>
                 <?php
                     $readtips = [];
                     if ($resultt->num_rows > 0) {
-                        echo "<br><br>Here are some messages(tips):<br><br>";
+                        // echo "<p>Here are some messages(tips):</p>";
                         while ($row = $resultt->fetch_assoc()) {
                             if ($row['nstatus'] == 'unread') {
                                 echo "<div class='unread-message'><p>";
@@ -146,12 +154,13 @@ include_once '../lib/dbinfo.php';
                             }
                         }
                     } else {
-                        echo "You Don't have no tips from other student";
+                        echo "<p>You Don't have any tips from other student</p>";
                     }
                 ?>
+                <h4>Messages Already Read:</h4>
                 <?php
                     if ($readtips != []) {
-                        echo "<p>You have some read tips:</p>";
+                        // echo "<p>You have some read tips:</p>";
                 ?>
                         <button onclick="myFunction()" id="hide-button-1">Show read tips</button>
                         <script type="text/javascript">
@@ -170,7 +179,7 @@ include_once '../lib/dbinfo.php';
                         <div id="read-tips" style="display:none;">
                             <?php
                                 foreach ($readtips as $row) {
-                                    echo "<div class='read-tip-area'>";
+                                    echo "<div class='read-tip-area'><p>";
                                     echo "You read a message from ";
                             ?>
                                     <form class="student-info" action="student_info.php" method="post" id="student-info-form">
@@ -179,7 +188,7 @@ include_once '../lib/dbinfo.php';
                             <?php
                                     echo " on ".$row['ttime']."<br>";
                                     echo $row['content'];
-                                    echo "</div>";
+                                    echo "</p></div>";
                             ?>
                                     <div class="tip-unread-button">
                                         <form class="tip-read-form" action="handle-read-tip.php" method="post">
@@ -204,6 +213,8 @@ include_once '../lib/dbinfo.php';
             $conn->close();
         ?>
             </div>
+            </li>
+        </ul>
         <?php
             // if ($result->num_rows > 0) {
             //     while ($row = $result->fetch_assoc()) {
