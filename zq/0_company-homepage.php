@@ -2,6 +2,13 @@
     include_once '../lib/fun.php';
     include_once '../lib/dbinfo.php';
     
+    $checkUser = checkLogin();
+//    var_dump($checkUser);
+    if ($checkUser == "student"){
+        header('Location: 0_student-homepage.php');
+        exit;
+    }
+    
     session_start();
     $username = $_SESSION['user'];
     $conToDB = mysqlInit($DBhost, $DBuser, $DBpassword, $DBdatabase, $port);
@@ -49,6 +56,9 @@
         </div>
       </nav>
     </div>
+    
+    
+    
 <!--    <div class="wrapper">-->
 <!--      <div>-->
 <!--      --><?php
