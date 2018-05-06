@@ -2,14 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8aa35af9-4704-4c2e-9ded-47aa05ea5462" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/sqldialects.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/zq/company_modify_profile.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/zq/company_modify_profile_result.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/create.sql" beforeDir="false" afterPath="$PROJECT_DIR$/SQLfile/create.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/insert.sql" beforeDir="false" afterPath="$PROJECT_DIR$/SQLfile/insert.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/studentsignup.php" beforeDir="false" afterPath="$PROJECT_DIR$/studentsignup.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/zq/0_company-homepage.php" beforeDir="false" afterPath="$PROJECT_DIR$/zq/0_company-homepage.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SQLfile/insert.sql" beforeDir="false" afterPath="$PROJECT_DIR$/SQLfile/insert.sql" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -62,17 +55,17 @@
       <file leaf-file-name="create.sql" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/SQLfile/create.sql">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="203">
-              <caret line="73" column="2" lean-forward="true" selection-start-line="73" selection-start-column="2" selection-end-line="76" selection-end-column="21" />
+            <state relative-caret-position="220">
+              <caret line="61" column="23" lean-forward="true" selection-start-line="61" selection-start-column="23" selection-end-line="61" selection-end-column="23" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="insert.sql" pinned="false" current-in-tab="true">
+      <file leaf-file-name="insert.sql" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/SQLfile/insert.sql">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="108">
-              <caret line="79" column="33" selection-start-line="79" selection-start-column="33" selection-end-line="79" selection-end-column="33" />
+            <state relative-caret-position="541">
+              <caret line="116" column="47" lean-forward="true" selection-start-line="116" selection-start-column="47" selection-end-line="116" selection-end-column="47" />
             </state>
           </provider>
         </entry>
@@ -104,11 +97,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="studentsignup.php" pinned="false" current-in-tab="false">
+      <file leaf-file-name="studentsignup.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/studentsignup.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="286">
-              <caret line="61" column="102" selection-start-line="61" selection-start-column="88" selection-end-line="61" selection-end-column="102" />
+            <state relative-caret-position="1513">
+              <caret line="89" column="21" lean-forward="true" selection-start-line="89" selection-start-column="21" selection-end-line="89" selection-end-column="21" />
             </state>
           </provider>
         </entry>
@@ -264,12 +257,12 @@
       <workItem from="1525373538435" duration="49000" />
       <workItem from="1525379693376" duration="214000" />
       <workItem from="1525450869973" duration="1240000" />
-      <workItem from="1525573438341" duration="5903000" />
+      <workItem from="1525573438341" duration="6508000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="36681000" />
+    <option name="totallyTimeSpent" value="37286000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1440" height="877" extended-state="6" />
@@ -614,13 +607,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/studentsignup.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="286">
-          <caret line="61" column="102" selection-start-line="61" selection-start-column="88" selection-end-line="61" selection-end-column="102" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/zq/company_modify_profile.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-302">
@@ -635,17 +621,24 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/SQLfile/create.sql">
+    <entry file="file://$PROJECT_DIR$/SQLfile/insert.sql">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="203">
-          <caret line="73" column="2" lean-forward="true" selection-start-line="73" selection-start-column="2" selection-end-line="76" selection-end-column="21" />
+        <state relative-caret-position="541">
+          <caret line="116" column="47" lean-forward="true" selection-start-line="116" selection-start-column="47" selection-end-line="116" selection-end-column="47" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/SQLfile/insert.sql">
+    <entry file="file://$PROJECT_DIR$/SQLfile/create.sql">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="108">
-          <caret line="79" column="33" selection-start-line="79" selection-start-column="33" selection-end-line="79" selection-end-column="33" />
+        <state relative-caret-position="220">
+          <caret line="61" column="23" lean-forward="true" selection-start-line="61" selection-start-column="23" selection-end-line="61" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/studentsignup.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1513">
+          <caret line="89" column="21" lean-forward="true" selection-start-line="89" selection-start-column="21" selection-end-line="89" selection-end-column="21" />
         </state>
       </provider>
     </entry>

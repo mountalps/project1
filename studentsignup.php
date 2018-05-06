@@ -19,19 +19,13 @@ $GPA = $_POST['GPA'];
 $keywords = $_POST['keywords'];
 $resume = $_POST['resume'];
 $restrict = $_POST['restrict'];
-<<<<<<< HEAD
+
 
 if ($restrict == "yes"){
-    $restrict = 1;
+    $restrict = "1";
 }
-if ($restrict == "no" || $restrict == null){
-    $restrict = 0;
-=======
-if ($restrict == 'yes'){
-    $restrict = '1';
-} else if ($restrict == "no" || $restrict == null){
-    $restrict = '0';
->>>>>>> 63108bdeb0483e91d1725b580bbc484404189d63
+else if ($restrict == "no" || $restrict == null) {
+    $restrict = "0";
 }
 
 var_dump($restrict);

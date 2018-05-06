@@ -1,6 +1,7 @@
 #student(sid, username, password, sname, university, degree, major, GPA, keywords, resume, restrict)
 #name, a login name, and a password.
-use dbproject;
+#use dbproject;
+use dbproject_new;
 insert into Student
 values 
 (null, 'aa', '720bd597dca3a367d63e03553964b78b', 'Freeman', 'New York University', 'Computer Science', 'Master', 3.24, 'Stringtough', null, 0),
@@ -64,18 +65,18 @@ values
 
 
 #(nid, tocid, nstatus, notificationtype)
-insert into NotificationToCompany
-values 
-(null, 1, 'unread', 'Application'),
-(null, 2, 'unread', 'Application'),
-(null, 3, 'unread', 'Application'),
-(null, 4, 'unread', 'Application'),
-(null, 5, 'unread', 'Application'),
-(null, 6, 'unread', 'Application'),
-(null, 7, 'unread', 'Application'),
-(null, 8, 'unread', 'Application'),
-(null, 9, 'unread', 'Application'),
-(null, 10, 'unread', 'Application');
+# insert into NotificationToCompany
+# values
+# (null, 1, 'unread', 'Application'),
+# (null, 2, 'unread', 'Application'),
+# (null, 3, 'unread', 'Application'),
+# (null, 4, 'unread', 'Application'),
+# (null, 5, 'unread', 'Application'),
+# (null, 6, 'unread', 'Application'),
+# (null, 7, 'unread', 'Application'),
+# (null, 8, 'unread', 'Application'),
+# (null, 9, 'unread', 'Application'),
+# (null, 10, 'unread', 'Application');
 
 #Job (atime, fromsid, tocid, jid)
 insert into Application
@@ -92,18 +93,26 @@ values ('2017-06-08 11:11:11', 4, 1, 1),
 
 
 #(nid, tosid, nstatus, notificationtype)
-insert into NotificationToStudent
-values 
-(null, 10, 'unread', 'Announcement'),
-(null, 6, 'unread', 'Announcement'),
-(null, 4, 'unread', 'Announcement'),
-(null, 10, 'unread', 'FriendReq'),
-(null, 5, 'unread', 'FriendReq'),
-(null, 5, 'unread', 'FriendReq'),
-(null, 7, 'unread', 'Forward'),
-(null, 8, 'unread', 'Forward'),
-(null, 16, 'unread', 'Tips'),
-(null, 19, 'unread', 'Tips');
+# `nid` INT NOT NULL auto_increment,
+# `fromsid` INT,
+# `fromcid` INT,
+# `tosid` INT NOT NULL,
+# `nstatus` VARCHAR(20) NOT NULL,
+# `ntime` datetime not null,
+# `notificationtype` VARCHAR(20) NOT NULL,
+
+# insert into NotificationToStudent
+# values
+# (null, 10, 'unread', 'Announcement'),
+# (null, 6, 'unread', 'Announcement'),
+# (null, 4, 'unread', 'Announcement'),
+# (null, 10, 'unread', 'FriendReq'),
+# (null, 5, 'unread', 'FriendReq'),
+# (null, 5, 'unread', 'FriendReq'),
+# (null, 7, 'unread', 'Forward'),
+# (null, 8, 'unread', 'Forward'),
+# (null, 16, 'unread', 'Tips'),
+# (null, 19, 'unread', 'Tips');
 
 #Announcement (nid, atime, fromcid, jid, tosid)
 insert into Announcement
