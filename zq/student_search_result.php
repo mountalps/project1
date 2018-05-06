@@ -116,20 +116,22 @@ include_once '../lib/dbinfo.php';
                     foreach ($student_query_result as $result) {
                       if ($result->num_rows > 0) {
                           while ($row = $result->fetch_assoc()) {
-                              $students[] = $row["sname"];
-                  ?>
-                                  <p><form class="student-info" action="student_info.php" method="post" id="student-info-form">
-                                      <button type="submit" name="sid" value="<?php echo $row['sid']; ?>"><?php echo $row['sname']; ?></button>
-                                  </form></p>
-                  <?php
+                              $students[] = $row;
                           }
                       } else {
                           echo "<p>Sorry, we currentally do not have any students.</p>";
                       }
                     }
-                    $checkerstu
-                    foreach (array_unique($students) as $key) {
-                        echo $key."<br>";
+                    $checkerstu = [];
+                    foreach ($students as $row) {
+                        if (!in_array($row, $checkerstu)) {
+                ?>
+                            <p><form class="student-info" action="student_info.php" method="post" id="student-info-form">
+                                <button type="submit" name="sid" value="<?php echo $row['sid']; ?>"><?php echo $row['sname']; ?></button>
+                            </form></p>
+                <?php
+                            $checkerstu[] = $row;
+                        }
                     }
                 ?>
             </div>
