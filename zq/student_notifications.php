@@ -52,9 +52,9 @@ include_once '../lib/dbinfo.php';
             <p>Here are your notifications:</p>
         </div>
         <?php
-            $queryfq = "select s2.sname, s.university, ns.nid, fq.fromsid from NotificationToStudent ns, FriendReq fq, Student s, Student s2 where ns.nid = fq.nid and fq.tosid = s.sid and fq.fromsid = s2.sid and s.username = '{$username}' and fq.fqstatus = 'pending';";
+            $queryfq = "select s2.sname, s.university, ns.nid, ns.fromsid from NotificationToStudent ns, Student s, Student s2 where ns.tosid = s.sid and ns.fromsid = s2.sid and s.username = '{$username}' and ns.nstatus = 'pending';";
 
-            $queryf = "select f.fromsid, j.jid, j.title, s.sname, j.jcity, j.jstate, j.jcountry, f.fromsid from NotificationToStudent ns, Forward f, Announcement a, Job j, Student s where s.sid = f.fromsid and ns.nid = f.fid and f.nid = a.nid and a.jid = j.jid;";
+            $queryf = "select ns.fromsid, j.jid, j.title, s.sname, j.jcity, j.jstate, j.jcountry from NotificationToStudent ns, Forward f, Job j, Student s, Student s2 where s.sid = ns.fromsid and s2.sid = ns.tosid and ns.nid = f.nid and f.jid = j.jid and s2.username = '{$username}';";
 
             $queryt = "select t.content, s.sname, t.ttime, ns.nstatus, ns.nid, ns.fromsid from NotificationToStudent ns, Tips t, Student s, Student s1 where t.nid = ns.nid and ns.fromsid = s.sid and ns.tosid=s1.sid and s1.username = '{$username}';";
 

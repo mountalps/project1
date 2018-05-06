@@ -21,8 +21,7 @@ $resume = $_POST['resume'];
 $restrict = $_POST['restrict'];
 if ($restrict == 'yes'){
     $restrict = '1';
-}
-if ($restrict == "no" || $restrict == null){
+} else if ($restrict == "no" || $restrict == null){
     $restrict = '0';
 }
 
