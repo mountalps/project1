@@ -84,6 +84,7 @@ CREATE TABLE `Application` (
 CREATE TABLE `Push` (
   `nid` INT NOT NULL,
   `jid` INT NOT NULL,
+  `ptime` datetime not null,
   PRIMARY KEY (`nid`),
   FOREIGN KEY (`nid`) REFERENCES `NotificationToStudent` (`nid`),
   FOREIGN KEY (`jid`) REFERENCES `Job` (`jid`)
@@ -108,6 +109,7 @@ CREATE TABLE `Broadcast` (
 CREATE TABLE `Forward` (
   `nid` INT NOT NULL,
   `jid` INT NOT NULL,
+  `ftime` datetime not null,
   PRIMARY KEY (`nid`),
   FOREIGN KEY (`nid`) REFERENCES `NotificationToStudent` (`nid`),
   FOREIGN KEY (`jid`) REFERENCES `Job` (`jid`)
@@ -117,6 +119,7 @@ CREATE TABLE `Forward` (
 CREATE TABLE `Tips` (
   `nid` INT NOT NULL,
   `content` TEXT NOT NULL,
+  `ttime` datetime not null,
   PRIMARY KEY (`nid`),
   FOREIGN KEY (`nid`) REFERENCES `NotificationToStudent` (`nid`)
   );

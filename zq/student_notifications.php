@@ -56,7 +56,7 @@ include_once '../lib/dbinfo.php';
 
             $queryf = "select f.fromsid, j.jid, j.title, s.sname, j.jcity, j.jstate, j.jcountry, f.fromsid from NotificationToStudent ns, Forward f, Announcement a, Job j, Student s where s.sid = f.fromsid and ns.nid = f.fid and f.nid = a.nid and a.jid = j.jid;";
 
-            $queryt = "select t.content, s.sname, t.ttime, ns.nstatus, ns.nid, t.fromsid from NotificationToStudent ns, Tips t, Student s, Student s1 where ns.nid = t.nid and t.fromsid = s.sid and ns.tosid=s1.sid and s1.username = '{$username}';";
+            $queryt = "select t.content, s.sname, t.ttime, ns.nstatus, ns.nid, ns.fromsid from NotificationToStudent ns, Tips t, Student s, Student s1 where t.nid = ns.nid and ns.fromsid = s.sid and ns.tosid=s1.sid and s1.username = '{$username}';";
 
             $resultfq = $conn->query($queryfq);
             $resultf = $conn->query($queryf);
@@ -135,6 +135,11 @@ include_once '../lib/dbinfo.php';
                                         <button type="submit" name="read-tip" value="<?php echo $row['nid']; ?>">mark the message from <?php echo $row['sname'] ?> as read</button>
                                     </form>
                                 </div>
+                                <div class="tip-delete-button">
+                                    <form class="tip-delete-form" action="delete-tip.php" method="post">
+                                        <button type="submit" name="delete-tip" value="<?php echo $row['nid']; ?>" onclick="return confirm('Are you sure you want to DELETE this message?')">DELETE the message from <?php echo $row['sname'] ?></button>
+                                    </form>
+                                </div>
                 <?php
                             } else {
                                 $readtips[] = $row;
@@ -179,6 +184,11 @@ include_once '../lib/dbinfo.php';
                                     <div class="tip-unread-button">
                                         <form class="tip-read-form" action="handle-read-tip.php" method="post">
                                             <button type="submit" name="unread-tip" value="<?php echo $row['nid']; ?>">mark the message from <?php echo $row['sname'] ?> as unread</button>
+                                        </form>
+                                    </div>
+                                    <div class="tip-delete-button">
+                                        <form class="tip-delete-form" action="delete-tip.php" method="post">
+                                            <button type="submit" name="delete-tip" value="<?php echo $row['nid']; ?>" onclick="return confirm('Are you sure you want to DELETE this message?')">DELETE the message from <?php echo $row['sname'] ?></button>
                                         </form>
                                     </div>
                             <?php
