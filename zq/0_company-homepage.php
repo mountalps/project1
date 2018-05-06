@@ -146,9 +146,9 @@
             $applicants = mysqli_fetch_all($resultApplicants, MYSQLI_ASSOC);
             ?>
             <?php foreach ($applicants as &$applicant): ?>
-                <?php
-                echo "{$applicant['sname']}";
-                ?>
+                <form action="student_info.php" method="post">
+                    <button type="submit" name="sid" value="<?php echo $applicant['sid']; ?>"><?php echo $applicant['sname']; ?></button>
+                </form>
             <?php endforeach;?>
         <?php endforeach;?>
         <br>
