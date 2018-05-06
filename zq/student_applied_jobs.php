@@ -34,10 +34,6 @@ include_once '../lib/dbinfo.php';
     <div class="wrapper">
       <div>
       <?php
-      // get the sid from signin page
-      $sid = $_SESSION['studentid'];
-      $sid = 4;
-
       // database connection
       session_start();
       $username = $_SESSION['user'];
@@ -45,40 +41,44 @@ include_once '../lib/dbinfo.php';
       if ($conn->connect_error) {
           die("Connection failed: " . $conn->connect_error);
       }
-      $query = "SELECT sname FROM Student s WHERE s.sid = 1";
-      $result = $conn->query($query);
-      $sname = "";
-      if ($result->num_rows > 0) {
-          while ($row = $result->fetch_assoc()) {
-              $sname = $row['sname'];
-          }
-      }
+      $result = $conn->query("SELECT sname, sid FROM Student s WHERE s.username= '{$username}';")->fetch_assoc();
+      $sname = $result['sname'];
+      $sid = $result['sid'];
 
       // the rest of the text
       $hellostr = "Hello " . $sname . ",";
-      echo "<h2>$hellostr</h2>";
+      echo "<h1>$hellostr</h1>";
       ?>
       </div>
       <div class="all-jobs">
-          <h4>Applied Jobs:</h4>
-      <?php
-      $query = "
-      select j.title, j.jcity, j.jstate, j.jcountry, c.cname, a.atime from Application a, Company c, Job j where a.tocid=c.cid and a.fromsid = ".$sid." and a.jid=j.jid;";
-      $result = $conn->query($query);
-      if ($result->num_rows > 0) {
-        echo "<p>Here are your applied jobs:</p>";
-          while ($row = $result->fetch_assoc()) {
-            echo "<div class='applied-job'><p>";
-            echo $row['title'];
-            echo " in ".$row['jcity'].", ".$row['jstate'].", ".$row['jcountry'];
-            echo "on ".$row['atime'];
-            echo "</p></div>";
-          }
-      } else {
-        echo "<p>You don't have any friends yet.</p>";
-      }
-      $conn->close();
-      ?>
+          <h2>Applied Jobs:</h2>
+          <?php
+              $query = "
+              select j.jid, j.title, j.jcity, j.jstate, j.jcountry, c.cname, c.cid, a.atime from Application a, Company c, Job j where a.tocid=c.cid and a.fromsid = ".$sid." and a.jid=j.jid;";
+              $result = $conn->query($query);
+              if ($result->num_rows > 0) {
+                echo "<p>Here are your applied jobs:</p>";
+                  while ($row = $result->fetch_assoc()) {
+                    // echo "<div class='applied-job'><p>";
+                    // echo $row['title'];
+                    // echo " in ".$row['jcity'].", ".$row['jstate'].", ".$row['jcountry'];
+                    // echo "on ".$row['atime'];
+                    // echo "</p></div>";
+            ?>
+                    <div class="job">
+                        <p><form class="job-info" action="job_info.php" method="post" id="job-info-form">
+                            <input type="hidden" name="sid" value="<?php echo $sid; ?>">
+                            <button type="submit" name="jid" value="<?php echo $row['jid']; ?>"><?php echo $row['title']; ?></button>
+                             <?php echo "at {$row['jcity']}, {$row['jstate']} on {$row['atime']}"; ?>
+                        </form></p>
+                    </div>
+            <?php
+                  }
+              } else {
+                echo "<p>You don't have any friends yet.</p>";
+              }
+              $conn->close();
+          ?>
       </div>
     </div>
 </body>

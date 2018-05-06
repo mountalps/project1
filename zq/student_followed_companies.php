@@ -41,6 +41,11 @@ include_once '../lib/dbinfo.php';
       if ($conn->connect_error) {
           die("Connection failed: " . $conn->connect_error);
       }
+      $testresult = $conn->query("select sid from Student where username = '{$username}';");
+      if ($testresult->num_rows == 0) {
+          header("Location: ../index.html");
+          exit;
+      }
       $sname = ($conn->query("SELECT sname FROM Student s WHERE s.username = '{$username}';"))->fetch_assoc()['sname'];
       // the rest of the text
       $hellostr = "Hello " . $sname . ",";
