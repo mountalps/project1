@@ -47,7 +47,7 @@ include_once '../lib/dbinfo.php';
             <?php
                 $sname = $conn->query("select sname from Student s WHERE s.username = '{$username}'")->fetch_assoc()['sname'];
                 $hellostr = "Hello " . $sname . ",";
-                echo "<h2>$hellostr</h2>";
+                echo "<h1>$hellostr</h1>";
             ?>
         </div>
         <div class="search-keywords">
@@ -103,17 +103,17 @@ include_once '../lib/dbinfo.php';
         </div>
         <div class="display-search-result-student">
             <div class="display-student">
+                <h2><p>Students accoring to your search:</p></h2>
                 <?php
                     $students = [];
                     foreach ($student_query_result as $result) {
                       if ($result->num_rows > 0) {
-                          echo "<p>Students accoring to your search:</p>";
                           while ($row = $result->fetch_assoc()) {
                               $students[] = $row["sname"];
                   ?>
-                              <p><form class="student-info" action="student_info.php" method="post" id="student-info-form">
-                                  <button type="submit" name="sid" value="<?php echo $row['sid']; ?>"><?php echo $row['sname']; ?></button>
-                              </form></p>
+                                  <p><form class="student-info" action="student_info.php" method="post" id="student-info-form">
+                                      <button type="submit" name="sid" value="<?php echo $row['sid']; ?>"><?php echo $row['sname']; ?></button>
+                                  </form></p>
                   <?php
                           }
                       } else {
@@ -126,39 +126,51 @@ include_once '../lib/dbinfo.php';
                 ?>
             </div>
             <div class="display-job">
+                <h2><p>Jobs accoring to your search:</p></h2>
                 <?php
-                    $students = [];
+                    $jobs = [];
                     foreach ($job_query_result as $result) {
                         if ($result->num_rows > 0) {
-                            echo "entered if";
+                            // echo "entered if";
                             while ($row = $result->fetch_assoc()) {
-                                $students[] = $row["title"];
+                                $jobs[] = $row["title"];
+                ?>
+                                <p><form class="job-info" action="job_info.php" method="post" id="job-info-form">
+                                    <button type="submit" name="jid" value="<?php echo $row['jid']; ?>"><?php echo $row['title']; ?></button>
+                                </form></p>
+                <?php
                             }
                         } else {
                             echo "<p>Sorry, we currentally do not have any avaliable jobs.</p>";
                         }
                     }
-                    foreach (array_unique($students) as $key) {
-                        echo $key."<br>";
-                    }
+                    // foreach (array_unique($students) as $key) {
+                    //     echo $key."<br>";
+                    // }
                 ?>
             </div>
             <div class="display-company">
+                <h2><p>Companies accoring to your search:</p></h2>
                 <?php
-                    $students = [];
+                    $companies = [];
                     foreach ($company_query_result as $result) {
                         if ($result->num_rows > 0) {
-                            echo "entered if";
+                            // echo "entered if";
                             while ($row = $result->fetch_assoc()) {
-                                $students[] = $row["cname"];
+                                $companies[] = $row["cname"];
+                ?>
+                                <p><form class="company-info" action="company_info.php" method="post" id="company-info-form">
+                                    <button type="submit" name="cid" value="<?php echo $row['cid']; ?>"><?php echo $row['cname']; ?></button>
+                                </form></p>
+                <?php
                             }
                         } else {
                             echo "<p>Sorry, we currentally do not have any avaliable companies.</p>";
                         }
                     }
-                    foreach (array_unique($students) as $key) {
-                        echo $key."<br>";
-                    }
+                    // foreach (array_unique($companies) as $key) {
+                    //     echo $key."<br>";
+                    // }
                 ?>
             </div>
         </div>
