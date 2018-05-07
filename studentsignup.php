@@ -18,6 +18,7 @@ $GPA = htmlspecialchars($_POST['GPA']);
 $keywords = htmlspecialchars($_POST['keywords']);
 $resume = htmlspecialchars($_POST['resume']);
 $restrict = htmlspecialchars($_POST['restrict']);
+//var_dump($resume);
 
 
 
