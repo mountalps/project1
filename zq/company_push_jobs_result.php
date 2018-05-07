@@ -17,18 +17,25 @@
     
     session_start();
     $username = $_SESSION['user'];
-    $conToDB = mysqlInit($DBhost, $DBuser, $DBpassword, $DBdatabase, $port);
     
+//    $sqlGetCompanyInfo = "select * from Company where cusername = '{$username}';";
+//    $resultCompanyInfo = mysqli_query($conToDB, $sqlGetCompanyInfo);
+//    $companyInfo = mysqli_fetch_all($resultCompanyInfo, MYSQLI_ASSOC);
     
-    $sqlGetCompanyInfo = "select * from Company where cusername = '{$username}';";
-    $resultCompanyInfo = mysqli_query($conToDB, $sqlGetCompanyInfo);
-    $companyInfo = mysqli_fetch_all($resultCompanyInfo, MYSQLI_ASSOC);
+    $conn_protect = new mysqli($DBhost, $DBuser, $DBpassword, $DBdatabase);
+    //    var_dump($DBdatabase);
+    $getCompanyInfo = $conn_protect->prepare("select * from Company where cusername = ?;");
+    $getCompanyInfo->bind_param("s", $cusername_protect);
+    $cusername_protect = $username;
+    $getCompanyInfo->execute();
+    $companyInfo = $getCompanyInfo->get_result();
+    $companyInfo = $companyInfo->fetch_all();
     
-    $university = $_POST['university'];
-    $major = $_POST['major'];
-    $degree = $_POST['degree'];
-    $GPA = $_POST['GPA'];
-    $job_id = $_POST['job_id'];
+    $university = htmlspecialchars($_POST['university']);
+    $major = htmlspecialchars($_POST['major']);
+    $degree = htmlspecialchars($_POST['degree']);
+    $GPA = htmlspecialchars($_POST['GPA']);
+    $job_id = htmlspecialchars($_POST['job_id']);
     
 //    var_dump($university);
 //    var_dump($major);
@@ -67,12 +74,27 @@
     }
     
 //    var_dump($university);
+    $conToDB = mysqlInit($DBhost, $DBuser, $DBpassword, $DBdatabase, $port);
     $sqlGetStudentInfo = "select * from Student where university {$university} and major {$major} and GPA {$GPA};";
     $resultGetStudentInfo = mysqli_query($conToDB, $sqlGetStudentInfo);
     $studentInfo = mysqli_fetch_all($resultGetStudentInfo, MYSQLI_ASSOC);
+//    var_dump($studentInfo);
 //    var_dump($studentInfo[0]);
     
-
+    
+//    $conn_protect = new mysqli($DBhost, $DBuser, $DBpassword, $DBdatabase);
+//    //    var_dump($DBdatabase);
+//    $sqlGetStudentInfo = $conn_protect->prepare("select * from Student where university ? and major ? and GPA ?;");
+//    var_dump($sqlGetStudentInfo);
+//    $sqlGetStudentInfo->bind_param("ssd", $university_protect, $major_protect, $GPA_protect);
+//    $university_protect = $university;
+//    $major_protect = $major;
+//    $GPA_protect = $GPA;
+//
+//    $sqlGetStudentInfo->execute();
+//    $studentInfo = $sqlGetStudentInfo->get_result();
+//    $studentInfo = $studentInfo->fetch_all();
+//    var_dump($studentInfo);
     
 //    `NotificationToStudent` (
 //`nid` INT NOT NULL auto_increment,
@@ -130,8 +152,10 @@
             $studentNum = count($studentInfo);
             $pushNum = 0;
             foreach ($studentInfo as $student){
-                $cid = $companyInfo[0]['cid'];
+                $cid = $companyInfo[0][0];
+//                var_dump($cid);
                 $sid = $student['sid'];
+//                var_dump($sid);
             
                 date_default_timezone_set("America/New_York");
                 $timeStamp = time();
@@ -145,6 +169,7 @@
                 $sqlGetNID = "select * from NotificationToStudent where fromcid ='{$cid}' and tosid = '{$sid}' and ntime = '{$time_now}';";
                 $pushResult = mysqli_query($conToDB, $sqlGetNID);
                 $pushResult = mysqli_fetch_all($pushResult, MYSQLI_ASSOC);
+//                var_dump($pushResult);
 //            var_dump($pushResult);
                 $nid = $pushResult[0]['nid'];
 //            var_dump($nid);
@@ -152,8 +177,10 @@
                 $sqlPush = "insert into Push values
 ('{$nid}', '{$job_id}', '{$time_now}');";
                 $push = mysqli_query($conToDB, $sqlPush);
+//                var_dump($push);
                 if ($push)
                     $pushNum += 1;
+//                var_dump($pushNum);
             
             }
         
