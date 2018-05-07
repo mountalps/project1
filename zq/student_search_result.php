@@ -87,7 +87,7 @@ if ($checkUser != "student"){
                         // student
                         $username_protect = "{$username}";
                         $keywords_protect = "%{$k}%";
-                        if ($tempstudentprepare = $conn->prepare("select sid, sname from Student where username<>? and concat(sname, university) like ? ;")) {
+                        if ($tempstudentprepare = $conn->prepare("select sid, sname from Student where username<>? and concat(sname, university, resume) like ? ;")) {
                             // $tempstudentprepare = $conn->prepare("select sid, sname from Student where username<>? and concat(sname, university) like ? ;");
                             $tempstudentprepare->bind_param("ss", $username_protect, $keywords_protect);
                             // $tempstudentprepare->execute();
