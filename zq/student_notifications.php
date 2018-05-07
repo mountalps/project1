@@ -147,7 +147,7 @@ if ($checkUser != "student"){
                                      <?php echo "at {$row['jcity']}, {$row['jstate']}"; ?>
                                 </form></p>
                     <?php
-                            echo ' in '.$row['jcity'].', '.$row['jstate'].', '.$row['jcountry'];
+                            // echo ' in '.$row['jcity'].', '.$row['jstate'].', '.$row['jcountry'];
                             echo "</p></div>";
                         }
                     }

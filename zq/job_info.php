@@ -111,7 +111,7 @@ if ($checkUser != "student"){
                         }
                     </script>
                     <?php
-                        $result123 = $conn->query("select s.sname, s.sid from Student s, Friend f where (f.sid1={$sidpost} and s.sid = f.sid2) or (f.sid2={$sidpost} and s.sid=f.sid1);");
+                        $result123 = $conn->query("select s.sname, s.sid from Student s, Friend f where (f.sid1={$sidpost} and s.sid = f.sid2) or (f.sid2={$sidpost} and s.sid=f.sid1) and s.sid not in (select ns.tosid from Forward f, NotificationToStudent ns where f.jid = {$jid} and ns.fromsid = {$sidpost});");
                         if ($result123->num_rows > 0) {
                     ?>
                             <div class="friend-forward-list" id="friend-forward-list-1" style="display:none;">
@@ -131,7 +131,12 @@ if ($checkUser != "student"){
                                 </form>
                                 <p>Hold down the Ctrl (windows) / Command (Mac) button to select multiple options.</p>
                             </div>
-                    <?php } ?>
+                    <?php } else {
+                    ?>
+                    <div class="friend-forward-list" id="friend-forward-list-1" style="display:none; background-color:#f1f1f1;">
+                        <h3>You alread forward this job to all of your friends.</h3>
+                    </div>
+                <?php } ?>
                 </div>
             </div>
             <div class="job-body">
