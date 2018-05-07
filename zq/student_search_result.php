@@ -4,7 +4,7 @@ include_once '../lib/dbinfo.php';
 $checkUser = checkLogin();
 //    var_dump($checkUser);
 if ($checkUser != "student"){
-    header('Location: 0_student-homepage.php');
+    header('Location: 0_company-homepage.php');
     exit;
 }
 ?>
@@ -68,17 +68,49 @@ if ($checkUser != "student"){
             <div class="query-prepare">
                 <!-- can only search student, company, jobs -->
                 <?php
-                    $keyword = $_GET["keyword"];
+                    $keyword = htmlspecialchars($_GET["keyword"]);
                     $pieces = explode(" ", $keyword);
                     //echo count($pieces);
                     $querylistsudent = [];
                     $querylistjob = [];
                     $querylistcompany = [];
                     foreach($pieces as $k){
-                        //echo "$k<br>";
-                        $querylistsudent[] = "select sid, sname from Student where username <> '{$username}' and concat(sname, university) like '%".$k."%';";
-                        $querylistjob[] = "select * from Job where concat(title, jcity, jstate, jcountry, jdescription) like '%".$k."%';";
-                        $querylistcompany[] = "select cid, cname from Company where concat(cname, industry) like '%".$k."%';";
+                        // $sqlConfirmNoDuplicate = $conn_protect->prepare("(select cid as num from Company where cusername = ?) union (select sid as num from Student where username=?);");
+                        // $sqlConfirmNoDuplicate->bind_param("ss", $username_protect, $username_protect);
+                        // $username_protect = $username;
+                        // $sqlConfirmNoDuplicate->execute();
+                        // $confirmResult = $sqlConfirmNoDuplicate->get_result();
+                        // $confirmResult = $confirmResult->fetch_all();
+                        // echo "here";
+
+                        // student
+                        $username_protect = "{$username}";
+                        $keywords_protect = "%{$k}%";
+                        if ($tempstudentprepare = $conn->prepare("select sid, sname from Student where username<>? and concat(sname, university) like ? ;")) {
+                            // $tempstudentprepare = $conn->prepare("select sid, sname from Student where username<>? and concat(sname, university) like ? ;");
+                            $tempstudentprepare->bind_param("ss", $username_protect, $keywords_protect);
+                            // $tempstudentprepare->execute();
+                            $querylistsudent[] = $tempstudentprepare;
+                        }
+                        // $querylistsudent[] = "select sid, sname from Student where username <> '{$username}' and concat(sname, university) like '%".$k."%';";
+
+                        // job
+                        // $querylistjob[] = "select * from Job where concat(title, jcity, jstate, jcountry, jdescription) like '%".$k."%';";
+                        if ($tempsjobprepare = $conn->prepare("select * from Job where concat(title, jcity, jstate, jcountry, jdescription) like ? ;")) {
+                            // $tempstudentprepare = $conn->prepare("select sid, sname from Student where username<>? and concat(sname, university) like ? ;");
+                            $tempsjobprepare->bind_param("s", $keywords_protect);
+                            // $tempstudentprepare->execute();
+                            $querylistjob[] = $tempsjobprepare;
+                        }
+
+                        // cpmpany
+                        // $querylistcompany[] = "select cid, cname from Company where concat(cname, industry) like '%".$k."%';";
+                        if ($tempscompanyprepare = $conn->prepare("select cid, cname from Company where concat(cname, industry) like ? ;")) {
+                            // $tempstudentprepare = $conn->prepare("select sid, sname from Student where username<>? and concat(sname, university) like ? ;");
+                            $tempscompanyprepare->bind_param("s", $keywords_protect);
+                            // $tempstudentprepare->execute();
+                            $querylistcompany[] = $tempscompanyprepare;
+                        }
                     }
                 ?>
             </div>
@@ -89,7 +121,10 @@ if ($checkUser != "student"){
                 <?php
                     foreach ($querylistsudent as $qstudent){
                         // echo $qstudent."<br>";
-                        $student_query_result[] = $conn->query($qstudent);
+                        // $student_query_result[] = $conn->query($qstudent);
+                        $qstudent->execute();
+                        $student_query_result[] = $qstudent->get_result();
+                        $qstudent->close();
                     }
                     // $student_query_result_unique = array_unique($student_query_result);
                 ?>
@@ -99,7 +134,10 @@ if ($checkUser != "student"){
                 <?php
                     foreach ($querylistjob as $qjob){
                         // echo $qjob."<br>";
-                        $job_query_result[] = $conn->query($qjob);
+                        // $job_query_result[] = $conn->query($qjob);
+                        $qjob->execute();
+                        $job_query_result[] = $qjob->get_result();
+                        $qjob->close();
                     }
                     // $job_query_result_unique = array_unique($job_query_result);
                 ?>
@@ -109,7 +147,10 @@ if ($checkUser != "student"){
                 <?php
                     foreach ($querylistcompany as $qcompany){
                         // echo $qcompany."<br>";
-                        $company_query_result[] = $conn->query($qcompany);
+                        // $company_query_result[] = $conn->query($qcompany);
+                        $qcompany->execute();
+                        $company_query_result[] = $qcompany->get_result();
+                        $qcompany->close();
                     }
                     // $company_query_result_unique = array_unique($company_query_result);
                 ?>

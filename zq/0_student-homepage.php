@@ -4,7 +4,7 @@ include_once '../lib/dbinfo.php';
 $checkUser = checkLogin();
 //    var_dump($checkUser);
 if ($checkUser != "student"){
-    header('Location: 0_student-homepage.php');
+    header('Location: ../index.html');
     exit;
 }
 ?>
