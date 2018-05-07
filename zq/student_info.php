@@ -58,12 +58,13 @@ if ($checkUser != "student"){
     </div>
     <div class="wrapper">
         <?php
-            $result = ($conn->query("select s.university, s.major, s.degree, s.GPA, s.restrict from Student s where s.sid = ".$sid.";"))->fetch_assoc();
+            $result = ($conn->query("select s.university, s.major, s.degree, s.GPA, s.restrict, s.resume from Student s where s.sid = ".$sid.";"))->fetch_assoc();
             $studentuniversity = $result['university'];
             $studentmajor = $result['major'];
             $gpa = $result['GPA'];
             $degree = $result['degree'];
             $restrict = $result['restrict'];
+            $resume = $result['resume'];
         ?>
             <div class="public-student-info">
                 <h2><p>Name : <?php echo $studentname; ?></p></h2>
@@ -77,6 +78,7 @@ if ($checkUser != "student"){
                 <div class="private-student-info">
                     <h2><p>GPA: <?php echo $gpa; ?></p></h2>
                     <h2><p>Degree: <?php echo $degree; ?></p></h2>
+                    <h2><p>Resume: <?php echo $resume; ?></p></h2>
                 </div>
         <?php
             }
