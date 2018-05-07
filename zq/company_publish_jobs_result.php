@@ -19,10 +19,18 @@
     
     session_start();
     $username = $_SESSION['user'];
-    $conToDB = mysqlInit($DBhost, $DBuser, $DBpassword, $DBdatabase, $port);
-    $sqlGetCompanyInfo = "select * from Company where cusername = '{$username}';";
-    $resultCompanyInfo = mysqli_query($conToDB, $sqlGetCompanyInfo);
-    $companyInfo = mysqli_fetch_all($resultCompanyInfo, MYSQLI_ASSOC);
+    
+    $conn_protect = new mysqli($DBhost, $DBuser, $DBpassword, $DBdatabase);
+//    var_dump($conn_protect);
+    
+    $getCompanyInfo = $conn_protect->prepare("select * from Company where cusername = ?;");
+//    var_dump($getCompanyInfo);
+//    echo '__________';
+    $getCompanyInfo->bind_param("s", $cusername_protect);
+    $cusername_protect = $username;
+    $getCompanyInfo->execute();
+    $companyInfo = $getCompanyInfo->get_result();
+    $companyInfo = $companyInfo->fetch_all();
 //    var_dump($companyInfo);
     
     
@@ -38,15 +46,15 @@
     //  `major` VARCHAR(20) NOT NULL,
     //  `jdescription` TEXT NOT NULL,
     
-    $job_title = $_POST['job-title'];
-    $job_city = $_POST['job-city'];
-    $job_state = $_POST['job-state'];
-    $job_country = $_POST['job-country'];
-    $job_salary = $_POST['job-salary'];
-    $job_degree = $_POST['job-degree'];
-    $job_major = $_POST['job-major'];
-    $job_description = $_POST['job-description'];
-    $job_expires = $_POST['job-expires'];
+    $job_title = htmlspecialchars($_POST['job-title']);
+    $job_city = htmlspecialchars($_POST['job-city']);
+    $job_state = htmlspecialchars($_POST['job-state']);
+    $job_country = htmlspecialchars($_POST['job-country']);
+    $job_salary = htmlspecialchars($_POST['job-salary']);
+    $job_degree = htmlspecialchars($_POST['job-degree']);
+    $job_major = htmlspecialchars($_POST['job-major']);
+    $job_description = htmlspecialchars($_POST['job-description']);
+    $job_expires = htmlspecialchars($_POST['job-expires']);
     $job_expires = (int)$job_expires;
     
     date_default_timezone_set("America/New_York");
@@ -107,9 +115,33 @@
     //  `major` VARCHAR(20) NOT NULL,
     //  `jdescription` TEXT NOT NULL,
     
-    $sqlPublishAJob = "insert into Job values
-(null, '{$job_title}', '{$companyInfo[0]['cid']}', '{$job_city}', '{$job_state}', '{$job_country}', '{$job_salary}', '{$job_degree}', '{$job_major}', '{$job_description}', '{$job_expires}');";
-    $resultPublishAJob = mysqli_query($conToDB, $sqlPublishAJob);
+    $conn_protect1 = new mysqli($DBhost, $DBuser, $DBpassword, $DBdatabase);//No error
+//    var_dump($conn_protect1);
+    $publishJob = $conn_protect1->prepare("insert into Job (jid, title, cid, jcity, jstate, jcountry, salary, degree, major, jdescription, expirationDate) values(?,?,?,?,?,?,?,?,?,?,?);");
+//    var_dump($publishJob);
+    
+    $publishJob->bind_param("isisssdssss", $jid_protect, $title_protect, $cid_protect, $jcity_protect, $jstate_protect, $jcountry_protect, $salary_protect, $degree_protect, $major_protect, $jdescription_protect, $expirationDate_protect);
+    $jid_protect = null;
+    $title_protect = $job_title;
+    $cid_protect = $companyInfo[0][0];
+    $jcity_protect = $job_city;
+    $jstate_protect = $job_state;
+    $jcountry_protect = $job_country;
+    $salary_protect = $job_salary;
+    $degree_protect = $job_degree;
+    $major_protect = $job_major;
+    $jdescription_protect = $job_description;
+    $expirationDate_protect = $job_expires;
+    
+//    var_dump($companyInfo[0][0]);
+    $publishJob->execute();
+    $affectedRows = $publishJob->affected_rows;
+//    var_dump($affectedRows);
+    if ($affectedRows >= 1)
+        $resultPublishAJob = 'true';
+    else
+        $resultPublishAJob = 'false';
+    
 ?>
 
 <!DOCTYPE html>

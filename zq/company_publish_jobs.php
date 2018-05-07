@@ -13,10 +13,20 @@
     
     session_start();
     $username = $_SESSION['user'];
-    $conToDB = mysqlInit($DBhost, $DBuser, $DBpassword, $DBdatabase, $port);
-    $sqlGetCompanyInfo = "select * from Company where cusername = '{$username}';";
-    $resultCompanyInfo = mysqli_query($conToDB, $sqlGetCompanyInfo);
-    $companyInfo = mysqli_fetch_all($resultCompanyInfo, MYSQLI_ASSOC);
+    
+    $conn_protect = new mysqli($DBhost, $DBuser, $DBpassword, $DBdatabase);
+    var_dump($DBdatabase);
+    $getCompanyInfo = $conn_protect->prepare("select * from Company where cusername = ?;");
+    $getCompanyInfo->bind_param("s", $cusername_protect);
+    $cusername_protect = $username;
+    $getCompanyInfo->execute();
+    $companyInfo = $getCompanyInfo->get_result();
+    $companyInfo = $companyInfo->fetch_all();
+    
+//    $conToDB = mysqlInit($DBhost, $DBuser, $DBpassword, $DBdatabase, $port);
+//    $sqlGetCompanyInfo = "select * from Company where cusername = '{$username}';";
+//    $resultCompanyInfo = mysqli_query($conToDB, $sqlGetCompanyInfo);
+//    $companyInfo = mysqli_fetch_all($resultCompanyInfo, MYSQLI_ASSOC);
 //    var_dump($companyInfo);
     
     
@@ -74,7 +84,7 @@
             <h2>Create a New Job</h2>
             <p>Required fields are followed by <strong><abbr title="required">*</abbr></strong>.</p>
             <p>
-              <label for="company-name" style="font-weight:bold;">Company Name: <?php echo $companyInfo[0]['cname']?></label>
+              <label for="company-name" style="font-weight:bold;">Company Name: <?php echo $companyInfo[0][3]?></label>
             </p>
             <p>
               <label for="job-title" style="font-weight:bold;">Job Title: </label>

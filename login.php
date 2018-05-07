@@ -49,17 +49,11 @@ $loginCategory = htmlspecialchars($_POST['loginRadio']);
             $login->execute();
             $result = $login->get_result();
             $result = $result->fetch_all();
-            var_dump($result[0]['password']);
-            var_dump($password);
             
-//            $conToDB = mysqlInit($DBhost, $DBuser, $DBpassword, $DBdatabase, $port);
-//            $sql = "select * from Student where username = '{$username}'";
-//            $result = mysqli_query($conToDB, $sql);
-//            $result = mysqli_fetch_all($result, MYSQLI_ASSOC);
             ?>
         <?php if (is_array($result) && !empty($result)):?>
 
-            <?php if(encryptPassword($password) === $result[0]['password']):?>
+            <?php if(encryptPassword($password) === $result[0][2]):?>
                 <?php
                     echo 'success!';
                     session_start();
@@ -83,7 +77,9 @@ $loginCategory = htmlspecialchars($_POST['loginRadio']);
         <?php if($loginCategory === "company"):?>
                 <?php
 //            echo '111';
-                $conToDB = mysqlInit($DBhost, $DBuser, $DBpassword, $DBdatabase, $port);
+
+
+//                $conToDB = mysqlInit($DBhost, $DBuser, $DBpassword, $DBdatabase, $port);
 
 //            if (!$conToDB){
 //                echo 'connection failed!';
@@ -92,12 +88,22 @@ $loginCategory = htmlspecialchars($_POST['loginRadio']);
 //            else{
 //                echo 'connection success!';
 //            }
-                $sql = "select * from Company where cusername = '{$username}'";
-                $result = mysqli_query($conToDB, $sql);
-                $result = mysqli_fetch_all($result, MYSQLI_ASSOC);
+            $conn_protect = new mysqli($DBhost, $DBuser, $DBpassword, $DBdatabase);
+            $login = $conn_protect->prepare("select * from Company where cusername = ?;");
+            $login->bind_param("s", $cusername_protect);
+            $cusername_protect = $username;
+            $login->execute();
+            $result = $login->get_result();
+            $result = $result->fetch_all();
+            
+            
+            
+//                $sql = "select * from Company where cusername = '{$username}'";
+//                $result = mysqli_query($conToDB, $sql);
+//                $result = mysqli_fetch_all($result, MYSQLI_ASSOC);
                 ?>
                 <?php if (is_array($result) && !empty($result)):?>
-                    <?php if(encryptPassword($password) === $result[0]['cpassword']):?>
+                    <?php if(encryptPassword($password) === $result[0][2]):?>
                         <?php
                         echo 'success!';
                         session_start();
