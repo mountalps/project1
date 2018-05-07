@@ -87,7 +87,10 @@
                 </tr>
                 <tr>
                     <td>Resume:</td>
-                    <td><input type="file" name="resume" size="35"></td>
+                    <!-- <td><input type="file" name="resume" size="35"></td> -->
+                    <td>
+                        <textarea name="resume" rows="10" cols="50" maxlength="4800"></textarea>
+                    </td>
                 </tr>
                 <tr>
                     <td>Restrict:</td>

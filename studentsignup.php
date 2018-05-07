@@ -52,7 +52,7 @@ else if ($restrict == "no" || $restrict == null) {
     <?php if($sname == null):?>
         <h1>Please input your name!</h1>
     <?php endif;?>
-        
+
         <button onclick="window.location.href='index.html'">Return To Start Page</button>
 
     <?php else:?>
@@ -64,7 +64,7 @@ else if ($restrict == "no" || $restrict == null) {
 //            $sqlConfirmNoDuplicate = "(select cid as num from Company where cusername = '{$username}') union (select sid as num from Student where username='{$username}');";
 //            $resultConfirmNoDuplicate = mysqli_query($connect, $sqlConfirmNoDuplicate);
 //            $confirmResult = mysqli_fetch_all($resultConfirmNoDuplicate, MYSQLI_ASSOC);
-    
+
         $conn_protect = new mysqli($DBhost, $DBuser, $DBpassword, $DBdatabase);
         $sqlConfirmNoDuplicate = $conn_protect->prepare("(select cid as num from Company where cusername = ?) union (select sid as num from Student where username=?);");
         $sqlConfirmNoDuplicate->bind_param("ss", $username_protect, $username_protect);
@@ -84,8 +84,8 @@ else if ($restrict == "no" || $restrict == null) {
         $GPA = (int)$GPA;
 //        var_dump($resume);
             $conn_protect = new mysqli($DBhost, $DBuser, $DBpassword, $DBdatabase);
-            $createStudentAccount = $conn_protect->prepare("insert into Student (sid, username, password, sname, university, major, degree, GPA, keywords, `restrict`) values(?,?,?,?,?,?,?,?,?,?);");
-            $createStudentAccount->bind_param("dssssssdss", $sid_protect, $username_protect, $password_protect, $sname_protect, $university_protect, $major_protect, $degree_protect, $GPA_protect, $keywords_protect, $restrict_protect);
+            $createStudentAccount = $conn_protect->prepare("insert into Student (sid, username, password, sname, university, major, degree, GPA, keywords, `resume`, `restrict`) values(?,?,?,?,?,?,?,?,?,?,?);");
+            $createStudentAccount->bind_param("dssssssdss", $sid_protect, $username_protect, $password_protect, $sname_protect, $university_protect, $major_protect, $degree_protect, $GPA_protect, $keywords_protect, $resume_protect, $restrict_protect);
             $sid_protect = null;
             $username_protect = $username;
             $password_protect = $password;
@@ -95,6 +95,7 @@ else if ($restrict == "no" || $restrict == null) {
             $degree_protect = $degree;
             $GPA_protect = $GPA;
             $keywords_protect = $keywords;
+            $resume_protect = $resume;
             $restrict_protect = $restrict;
             $createStudentAccount->execute();
             $affectedRows = $createStudentAccount->affected_rows;
@@ -102,7 +103,7 @@ else if ($restrict == "no" || $restrict == null) {
                 $result = 'true';
             else
                 $result = 'false';
-            
+
         ?>
 
         <?php if ($result == 'true'):?>
@@ -114,7 +115,7 @@ else if ($restrict == "no" || $restrict == null) {
                 $_SESSION['user'] = $username;
                 header('Location:./zq/0_student-homepage.php');
                 exit;
-                
+
                 ?>
         <?php else:?>
             <h2>Sign Up Unsuccessfully!</h2>
