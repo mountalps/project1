@@ -1,16 +1,17 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: wesley
- * Date: 5/5/18
- * Time: 23:06
- */
+    /**
+     * Created by PhpStorm.
+     * User: wesley
+     * Date: 5/6/18
+     * Time: 10:31
+     */
     include_once '../lib/fun.php';
     include_once '../lib/dbinfo.php';
 
+
     $checkUser = checkLogin();
     //    var_dump($checkUser);
-    if ($checkUser == "student"){
+    if ($checkUser != "student"){
         header('Location: 0_company-homepage.php');
         exit;
     }
@@ -18,13 +19,25 @@
     session_start();
     $username = $_SESSION['user'];
 
-    $cpassword = htmlspecialchars($_POST['cpassword']);
-    $cname = htmlspecialchars($_POST['cname']);
-    $ccity = htmlspecialchars($_POST['ccity']);
-    $cstate = htmlspecialchars($_POST['cstate']);
-    $ccountry = htmlspecialchars($_POST['ccountry']);
-    $industry = htmlspecialchars($_POST['industry']);
+    $password = htmlspecialchars($_POST['password']);
+    $sname = htmlspecialchars($_POST['sname']);
+    $university = htmlspecialchars($_POST['university']);
+    $major = htmlspecialchars($_POST['major']);
+    $degree = htmlspecialchars($_POST['degree']);
+    $GPA = htmlspecialchars($_POST['GPA']);
+    $keywords = htmlspecialchars($_POST['keywords']);
+    $resume = htmlspecialchars($_POST['resume']);
+    $restrict = htmlspecialchars($_POST['restrict']);
+
+//    var_dump($username);
+//    var_dump($cpassword);
+//    var_dump($cname);
+//    var_dump($ccity);
+//    var_dump($cstate);
+//    var_dump($ccountry);
+//    var_dump($industry);
 ?>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -40,22 +53,23 @@
     </style>
 </head>
 <body>
-<div class="navivation">
-    <nav>
-        <div class="wrapper">
-            <a class="active" href="0_company-homepage.php">Home</a> |
-            <a href="company_jobs.php">Your Jobs</a> |
-            <a href="company_publish_jobs.php">Publish A Job</a> |
-            <a href="company_push_jobs.php">Push A Job</a> |
-            <a href="company_modify_profile.php">Modify Profile</a> |
-            <a href="../lib/logout.php">Log Out</a> |
-            <form action="company_search_result.php" method="get" id="keyword_search">
-                <input type="text" placeholder="Search..." name="keyword">
-                <button type="submit">search</button>
-            </form>
-        </div>
-    </nav>
-</div>
+    <div class="navivation">
+        <nav>
+            <div class="wrapper">
+                <a class="active" href="0_student-homepage.php">Home</a> |
+                <a href="student_notifications.php">Notifications</a> |
+                <a href="student_friends_page.php">Friends</a> |
+                <a href="student_followed_companies.php">Followed Companies</a> |
+                <a href="student_applied_jobs.php">Applied Jobs</a> |
+                <a href="student_modify_profile.php">Modify Profile</a> |
+                <a href="../lib/logout.php">Log Out</a> |
+                <form action="student_search_result.php" method="get" id="keyword_search">
+                    <input type="text" placeholder="Search..." name="keyword">
+                    <button type="submit">search</button>
+                </form>
+            </div>
+        </nav>
+    </div>
 
 <div class="wrapper">
     <?php
@@ -67,22 +81,22 @@
 //        $ccountry = $_POST['ccountry'];
 //        $industry = $_POST['industry'];
         $conn_protect = new mysqli($DBhost, $DBuser, $DBpassword, $DBdatabase);
-
-        if ($cpassword != ""){
-            $cpassword = encryptPassword($cpassword);
-            $sqlChangePassword = $conn_protect->prepare("update Company set cpassword=? where cusername=?;");
-            $sqlChangePassword->bind_param("ss", $cpassword_protect, $cusername_protect);
+        $username_protect = $username;
+        if ($password != ""){
+            $password = encryptPassword($password);
+            $sqlChangePassword = $conn_protect->prepare("update Student set password=? where username=?;");
+            $sqlChangePassword->bind_param("ss", $password_protect, $username_protect);
 //            $sqlChangePassword = "update Company set cpassword='{$cpassword}' where cusername='{$username}';";
-            $cpassword_protect = $cpassword;
-            $cusername_protect = $username;
+            $password_protect = $password;
             $sqlChangePassword->execute();
+            $sqlChangePassword->close();
 //            $resultChangePassword = mysqli_query($conToDB, $sqlChangePassword);
 //            echo 'resultChangePassword:';
 //            var_dump($resultChangePassword);
 //            echo '<br>';
         }
 
-        if ($cname != ""){
+        if ($sname != ""){
 
 //            $sqlChangeName = "update Company set cname='{$cname}' where cusername='{$username}';";
 //            $resultChangeName = mysqli_query($conToDB, $sqlChangeName);
@@ -90,16 +104,16 @@
 //            var_dump($resultChangeName);
 //            echo '<br>';
 
-            $sqlChangeName = $conn_protect->prepare("update Company set cname=? where cusername=?;");
-            $sqlChangeName->bind_param("ss", $cname_protect, $cusername_protect);
+            $sqlChangeName = $conn_protect->prepare("update Student set sname=? where username=?;");
+            $sqlChangeName->bind_param("ss", $sname_protect, $username_protect);
 //            $sqlChangePassword = "update Company set cpassword='{$cpassword}' where cusername='{$username}';";
-            $cname_protect = $cname;
-            $cusername_protect = $username;
+            $sname_protect = $sname;
             $sqlChangeName->execute();
+            // $sqlChangeName->close();
 
         }
 
-        if ($ccity != ""){
+        if ($university != ""){
 
 //            $sqlChangeCity = "update Company set ccity='{$ccity}' where cusername='{$username}';";
 //            $resultChangeCity = mysqli_query($conToDB, $sqlChangeCity);
@@ -107,17 +121,18 @@
 //            var_dump($resultChangeCity);
 //            echo '<br>';
 
-            $sqlChangeCity = $conn_protect->prepare("update Company set ccity=? where cusername=?;");
-            $sqlChangeCity->bind_param("ss", $ccity_protect, $cusername_protect);
+            $sqlChangeUniversity = $conn_protect->prepare("update Student set university=? where username=?;");
+            $sqlChangeUniversity->bind_param("ss", $university_protect, $username_protect);
 //            $sqlChangePassword = "update Company set cpassword='{$cpassword}' where cusername='{$username}';";
-            $ccity_protect = $ccity;
-            $cusername_protect = $username;
-            $sqlChangeCity->execute();
+            $university_protect = $university;
+            // $username_protect =
+            $sqlChangeUniversity->execute();
+            // $sqlChangeUniversity->close();
 
         }
 
 
-        if ($cstate != ""){
+        if ($major != ""){
 
 //            $sqlChangeState = "update Company set cstate='{$cstate}' where cusername='{$username}';";
 //            $resultChangeState = mysqli_query($conToDB, $sqlChangeState);
@@ -125,16 +140,16 @@
 //            var_dump($resultChangeState);
 //            echo '<br>';
 
-            $sqlChangeState = $conn_protect->prepare("update Company set cstate=? where cusername=?;");
-            $sqlChangeState->bind_param("ss", $cstate_protect, $cusername_protect);
+            $sqlChangeMajor = $conn_protect->prepare("update Studnet set major=? where username=?;");
+            $sqlChangeMajor->bind_param("ss", $major_protect, $username_protect);
 //            $sqlChangePassword = "update Company set cpassword='{$cpassword}' where cusername='{$username}';";
-            $cstate_protect = $cstate;
-            $cusername_protect = $username;
-            $sqlChangeState->execute();
+            $major_protect = $major;
+            $sqlChangeMajor->execute();
+            // $sqlChangeMajor->close();
 
         }
 
-        if ($ccountry != ""){
+        if ($degree != ""){
 
 //            $sqlChangeCountry = "update Company set ccountry='{$ccountry}' where cusername='{$username}';";
 //            $resultChangeCountry = mysqli_query($conToDB, $sqlChangeCountry);
@@ -142,16 +157,16 @@
 //            var_dump($resultChangeCountry);
 //            echo '<br>';
 
-            $sqlChangeCountry  = $conn_protect->prepare("update Company set ccountry=? where cusername=?;");
-            $sqlChangeCountry ->bind_param("ss", $ccountry_protect, $cusername_protect);
+            $sqlChangeDegree  = $conn_protect->prepare("update Student set degree=? where username=?;");
+            $sqlChangeDegree->bind_param("ss", $degree_protect, $username_protect);
 //            $sqlChangePassword = "update Company set cpassword='{$cpassword}' where cusername='{$username}';";
-            $ccountry_protect = $ccountry;
-            $cusername_protect = $username;
-            $sqlChangeCountry ->execute();
+            $degree_protect = $degree;
+            $sqlChangeDegree->execute();
+            // $sqlChangeDegree->close();
 
         }
 
-        if ($industry != ""){
+        if ($GPA != ""){
 
 //            $sqlChangeIndustry = "update Company set industry='{$industry}' where cusername='{$username}';";
 //            $resultChangeIndustry = mysqli_query($conToDB, $sqlChangeIndustry);
@@ -159,12 +174,63 @@
 //            var_dump($resultChangeIndustry);
 //            echo '<br>';
 
-            $sqlChangeIndustry  = $conn_protect->prepare("update Company set industry=? where cusername=?;");
-            $sqlChangeIndustry ->bind_param("ss", $cindustry_protect, $cusername_protect);
+            $sqlChangeGPA  = $conn_protect->prepare("update Student set GPA=? where username=?;");
+            $sqlChangeGPA->bind_param("ss", $gpa_protect, $username_protect);
 //            $sqlChangePassword = "update Company set cpassword='{$cpassword}' where cusername='{$username}';";
-            $cindustry_protect = $industry;
-            $cusername_protect = $username;
-            $sqlChangeIndustry ->execute();
+            $gpa_protect = $GPA;
+            $sqlChangeGPA->execute();
+            // $sqlChangeGPA->close();
+
+        }
+
+        if ($keywords != ""){
+
+//            $sqlChangeIndustry = "update Company set industry='{$industry}' where cusername='{$username}';";
+//            $resultChangeIndustry = mysqli_query($conToDB, $sqlChangeIndustry);
+//            echo 'resultChangeIndustry:';
+//            var_dump($resultChangeIndustry);
+//            echo '<br>';
+
+            $sqlChangeKeywords  = $conn_protect->prepare("update Student set keywords=? where username=?;");
+            $sqlChangeKeywords->bind_param("ss", $keywords_protect, $username_protect);
+//            $sqlChangePassword = "update Company set cpassword='{$cpassword}' where cusername='{$username}';";
+            $keywords_protect = $keywords;
+            $sqlChangeKeywords->execute();
+            // $sqlChangeKeywords->close();
+
+        }
+
+        if ($resume != ""){
+
+//            $sqlChangeIndustry = "update Company set industry='{$industry}' where cusername='{$username}';";
+//            $resultChangeIndustry = mysqli_query($conToDB, $sqlChangeIndustry);
+//            echo 'resultChangeIndustry:';
+//            var_dump($resultChangeIndustry);
+//            echo '<br>';
+
+            $sqlChangeResume  = $conn_protect->prepare("update Student set resume=? where username=?;");
+            $sqlChangeResume->bind_param("ss", $resume_protect, $username_protect);
+//            $sqlChangePassword = "update Company set cpassword='{$cpassword}' where cusername='{$username}';";
+            $resume_protect = $resume;
+            $sqlChangeResume->execute();
+            // $sqlChangeResume->close();
+
+        }
+
+        if ($restrict != ""){
+
+//            $sqlChangeIndustry = "update Company set industry='{$industry}' where cusername='{$username}';";
+//            $resultChangeIndustry = mysqli_query($conToDB, $sqlChangeIndustry);
+//            echo 'resultChangeIndustry:';
+//            var_dump($resultChangeIndustry);
+//            echo '<br>';
+
+            $sqlChangeRestrict  = $conn_protect->prepare("update Student set restrict=? where username=?;");
+            $sqlChangeRestrict->bind_param("ss", $restrict_protect, $username_protect);
+//            $sqlChangePassword = "update Company set cpassword='{$cpassword}' where cusername='{$username}';";
+            $restrict_protect = $restrict;
+            $sqlChangeRestrict->execute();
+            // $sqlChangeRestrict->close();
 
         }
         ?>
@@ -172,33 +238,18 @@
 
 <div class="changeResult" align="center">
     <h3>Here is your new profile</h3>
-    <table>
-        <tr>
-            <td>Name: </td>
-            <td><?php echo $cname?></td>
-        </tr>
-        <tr>
-            <td>City: </td>
-            <td><?php echo $ccity?></td>
-        </tr>
-        <tr>
-            <td>State: </td>
-            <td><?php echo $cstate?></td>
-        </tr>
-        <tr>
-            <td>Country: </td>
-            <td><?php echo $ccountry?></td>
-        </tr>
-        <tr>
-            <td>Industry: </td>
-            <td><?php echo $industry?></td>
-        </tr>
-    </table>
-
+    <?php
+    echo $password;
+    echo $sname;
+    echo $university;
+    echo $major;
+    echo $degree;
+    echo $GPA;
+    echo $keywords;
+    echo $resume;
+    echo $restrict;
+     ?>
 </div>
-
-
-
 
 </body>
 </html>
