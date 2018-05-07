@@ -30,6 +30,7 @@ if ($checkUser != "student"){
           <a href="student_friends_page.php">Friends</a> |
           <a href="student_followed_companies.php">Followed Companies</a> |
           <a href="student_applied_jobs.php">Applied Jobs</a> |
+          <a href="student_modify_profile.php">Modify Profile</a> |
           <a href="../lib/logout.php">Log Out</a> |
           <form action="student_search_result.php" method="get" id="keyword_search">
               <input type="text" placeholder="Search..." name="keyword">

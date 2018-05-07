@@ -1,40 +1,30 @@
 <?php
-    /**
-     * Created by PhpStorm.
-     * User: wesley
-     * Date: 5/6/18
-     * Time: 10:31
-     */
+/**
+ * Created by PhpStorm.
+ * User: wesley
+ * Date: 5/5/18
+ * Time: 23:06
+ */
     include_once '../lib/fun.php';
     include_once '../lib/dbinfo.php';
-    
-    
+
     $checkUser = checkLogin();
     //    var_dump($checkUser);
     if ($checkUser == "student"){
-        header('Location: 0_student-homepage.php');
+        header('Location: 0_company-homepage.php');
         exit;
     }
-    
+
     session_start();
     $username = $_SESSION['user'];
-    
+
     $cpassword = htmlspecialchars($_POST['cpassword']);
     $cname = htmlspecialchars($_POST['cname']);
     $ccity = htmlspecialchars($_POST['ccity']);
     $cstate = htmlspecialchars($_POST['cstate']);
     $ccountry = htmlspecialchars($_POST['ccountry']);
     $industry = htmlspecialchars($_POST['industry']);
-    
-//    var_dump($username);
-//    var_dump($cpassword);
-//    var_dump($cname);
-//    var_dump($ccity);
-//    var_dump($cstate);
-//    var_dump($ccountry);
-//    var_dump($industry);
 ?>
-
 
 <!DOCTYPE html>
 <html lang="en">
@@ -77,7 +67,7 @@
 //        $ccountry = $_POST['ccountry'];
 //        $industry = $_POST['industry'];
         $conn_protect = new mysqli($DBhost, $DBuser, $DBpassword, $DBdatabase);
-        
+
         if ($cpassword != ""){
             $cpassword = encryptPassword($cpassword);
             $sqlChangePassword = $conn_protect->prepare("update Company set cpassword=? where cusername=?;");
@@ -91,91 +81,91 @@
 //            var_dump($resultChangePassword);
 //            echo '<br>';
         }
-    
+
         if ($cname != ""){
-            
+
 //            $sqlChangeName = "update Company set cname='{$cname}' where cusername='{$username}';";
 //            $resultChangeName = mysqli_query($conToDB, $sqlChangeName);
 //            echo 'resultChangeName:';
 //            var_dump($resultChangeName);
 //            echo '<br>';
-    
+
             $sqlChangeName = $conn_protect->prepare("update Company set cname=? where cusername=?;");
             $sqlChangeName->bind_param("ss", $cname_protect, $cusername_protect);
 //            $sqlChangePassword = "update Company set cpassword='{$cpassword}' where cusername='{$username}';";
             $cname_protect = $cname;
             $cusername_protect = $username;
             $sqlChangeName->execute();
-    
+
         }
-    
+
         if ($ccity != ""){
-        
+
 //            $sqlChangeCity = "update Company set ccity='{$ccity}' where cusername='{$username}';";
 //            $resultChangeCity = mysqli_query($conToDB, $sqlChangeCity);
 //            echo 'resultChangeCity:';
 //            var_dump($resultChangeCity);
 //            echo '<br>';
-    
+
             $sqlChangeCity = $conn_protect->prepare("update Company set ccity=? where cusername=?;");
             $sqlChangeCity->bind_param("ss", $ccity_protect, $cusername_protect);
 //            $sqlChangePassword = "update Company set cpassword='{$cpassword}' where cusername='{$username}';";
             $ccity_protect = $ccity;
             $cusername_protect = $username;
             $sqlChangeCity->execute();
-    
+
         }
-    
-    
+
+
         if ($cstate != ""){
-        
+
 //            $sqlChangeState = "update Company set cstate='{$cstate}' where cusername='{$username}';";
 //            $resultChangeState = mysqli_query($conToDB, $sqlChangeState);
 //            echo 'resultChangeState:';
 //            var_dump($resultChangeState);
 //            echo '<br>';
-    
+
             $sqlChangeState = $conn_protect->prepare("update Company set cstate=? where cusername=?;");
             $sqlChangeState->bind_param("ss", $cstate_protect, $cusername_protect);
 //            $sqlChangePassword = "update Company set cpassword='{$cpassword}' where cusername='{$username}';";
             $cstate_protect = $cstate;
             $cusername_protect = $username;
             $sqlChangeState->execute();
-    
+
         }
-    
+
         if ($ccountry != ""){
-        
+
 //            $sqlChangeCountry = "update Company set ccountry='{$ccountry}' where cusername='{$username}';";
 //            $resultChangeCountry = mysqli_query($conToDB, $sqlChangeCountry);
 //            echo 'resultChangeCountry:';
 //            var_dump($resultChangeCountry);
 //            echo '<br>';
-    
+
             $sqlChangeCountry  = $conn_protect->prepare("update Company set ccountry=? where cusername=?;");
             $sqlChangeCountry ->bind_param("ss", $ccountry_protect, $cusername_protect);
 //            $sqlChangePassword = "update Company set cpassword='{$cpassword}' where cusername='{$username}';";
             $ccountry_protect = $ccountry;
             $cusername_protect = $username;
             $sqlChangeCountry ->execute();
-    
+
         }
-    
+
         if ($industry != ""){
-        
+
 //            $sqlChangeIndustry = "update Company set industry='{$industry}' where cusername='{$username}';";
 //            $resultChangeIndustry = mysqli_query($conToDB, $sqlChangeIndustry);
 //            echo 'resultChangeIndustry:';
 //            var_dump($resultChangeIndustry);
 //            echo '<br>';
-    
+
             $sqlChangeIndustry  = $conn_protect->prepare("update Company set industry=? where cusername=?;");
             $sqlChangeIndustry ->bind_param("ss", $cindustry_protect, $cusername_protect);
 //            $sqlChangePassword = "update Company set cpassword='{$cpassword}' where cusername='{$username}';";
             $cindustry_protect = $industry;
             $cusername_protect = $username;
             $sqlChangeIndustry ->execute();
-    
+
         }
         ?>
 </div>
@@ -204,7 +194,7 @@
             <td><?php echo $industry?></td>
         </tr>
     </table>
-    
+
 </div>
 
 
