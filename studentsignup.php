@@ -28,7 +28,7 @@ else if ($restrict == "no" || $restrict == null) {
     $restrict = "0";
 }
 
-var_dump($restrict);
+//var_dump($restrict);
 
 ?>
 
@@ -52,6 +52,7 @@ var_dump($restrict);
     <?php if($sname == null):?>
         <h1>Please input your name!</h1>
     <?php endif;?>
+        
         <button onclick="window.location.href='index.html'">Return To Start Page</button>
 
     <?php else:?>
@@ -60,9 +61,10 @@ var_dump($restrict);
             $password = encryptPassword($password);
             #student(sid, username, password, sname, university, degree, major, GPA, keywords, resume, restrict)
             $connect = mysqlInit($DBhost, $DBuser, $DBpassword, $DBdatabase, $port);
-            $sqlConfirmNoDuplicate = "(select cid as num from Company where cusername = '{$cusername}') union (select sid as num from Student where username='{$cusername}');";
+            $sqlConfirmNoDuplicate = "(select cid as num from Company where cusername = '{$username}') union (select sid as num from Student where username='{$username}');";
             $resultConfirmNoDuplicate = mysqli_query($connect, $sqlConfirmNoDuplicate);
             $confirmResult = mysqli_fetch_all($resultConfirmNoDuplicate, MYSQLI_ASSOC);
+//            var_dump($confirmResult);
         ?>
 
         <?php if(count($confirmResult)!=0):?>
@@ -70,7 +72,9 @@ var_dump($restrict);
             <button onclick="window.location.href='index.html'">Return To Start Page</button>
         <?php else:?>
         <?php
-            var_dump($restrict);
+//            var_dump($restrict);
+        $GPA = (int)$GPA;
+        var_dump($resume);
         $sql = "insert into Student values
 (null, '{$username}', '{$password}', '{$sname}', '{$university}', '{$major}', '{$degree}', '{$GPA}', '{$keywords}', '{$resume}', '{$restrict}');";
         $result = mysqli_query($connect, $sql);

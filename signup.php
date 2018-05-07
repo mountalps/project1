@@ -19,6 +19,11 @@ $signUpCategory = $_POST['signUpRadio'];
 <body>
     <h1 align="center">Welcome to join us !!!!</h1>
     <hr>
+    <?php if($signUpCategory == null): ?>
+    <h2>Please Select Your Category To Sign Up!</h2>
+    <button onclick="window.location.href='index.html'">Go Back</button>
+    <?php endif;?>
+    
 
         <!---------------------------------------------------------------------->
         <!--------------When the client select to sign up as a student:--------->

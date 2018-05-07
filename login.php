@@ -34,6 +34,8 @@ $loginCategory = $_POST['loginRadio'];
         <?php if($loginCategory == null):?>
             <h1>Please select your category!</h1>
         <?php endif;?>
+        <button onclick="window.location.href='index.html'">Return To Start Page</button>
+
 
 
     <?php else:?>
