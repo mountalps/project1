@@ -13,7 +13,7 @@ CREATE TABLE `Student` (
   `keywords` VARCHAR(500),
   `resume` Varchar(20),
   #`restrict` bit NOT NULL,
-  `restrict` VARCHAR(1) NOT NULL,
+  `restrict` VARCHAR(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`sid`)
   );
 
