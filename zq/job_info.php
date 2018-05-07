@@ -110,19 +110,28 @@ if ($checkUser != "student"){
                             }
                         }
                     </script>
-                    <div class="friend-forward-list" id="friend-forward-list-1" style="display:none;">
-                        <form id="form" action="" method="post">
-                            <div>
-                                <select id="inscompSelected" multiple="multiple" class="lstSelected">
-                                    <option value="1">1</option>
-                                    <option value="2">2</option>
-                                    <option value="3">3</option>
-                                    <option value="4">4</option>
-                                </select>
-                                <input type="submit" value="submit">
+                    <?php
+                        $result123 = $conn->query("select s.sname, s.sid from Student s, Friend f where (f.sid1={$sidpost} and s.sid = f.sid2) or (f.sid2={$sidpost} and s.sid=f.sid1);");
+                        if ($result123->num_rows > 0) {
+                    ?>
+                            <div class="friend-forward-list" id="friend-forward-list-1" style="display:none;">
+                                <form id="form" action="student-forward-to-friends.php" method="post">
+                                    <div>
+                                        <select name="forwardfriends[]" multiple="multiple" class="lstSelected">
+                                            <!-- <option value="Batman">Batman</option> -->
+                                            <?php
+                                                while ($row123 = $result123->fetch_assoc()) {
+                                                    echo "<option value=\"".$row123['sid']."\">".$row123['sname']."</option>";
+                                                }
+                                            ?>
+                                        </select>
+                                        <button type="submit" name="fromsid" value="<?php echo $sidpost; ?>">Forward this job to them</button>
+                                        <input type="hidden" name="jid" value="<?php echo $jid; ?>">
+                                    </div>
+                                </form>
+                                <p>Hold down the Ctrl (windows) / Command (Mac) button to select multiple options.</p>
                             </div>
-                        </form>
-                    </div>
+                    <?php } ?>
                 </div>
             </div>
             <div class="job-body">
