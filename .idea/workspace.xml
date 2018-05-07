@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="8aa35af9-4704-4c2e-9ded-47aa05ea5462" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/SQLfile/create.sql" beforeDir="false" afterPath="$PROJECT_DIR$/SQLfile/create.sql" afterDir="false" />
-    </list>
+    <list default="true" id="8aa35af9-4704-4c2e-9ded-47aa05ea5462" name="Default" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -30,10 +28,10 @@
       <file leaf-file-name="company_modify_profile_result.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/zq/company_modify_profile_result.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1173">
-              <caret line="69" column="21" selection-end-line="214" />
+            <state relative-caret-position="397">
+              <caret line="83" column="39" lean-forward="true" selection-start-line="83" selection-start-column="39" selection-end-line="83" selection-end-column="39" />
               <folding>
-                <element signature="e#2072#2154#0#PHP" expanded="true" />
+                <element signature="e#2108#2190#0#PHP" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -118,10 +116,10 @@
         <option value="$PROJECT_DIR$/zq/company_push_jobs.php" />
         <option value="$PROJECT_DIR$/zq/company_push_jobs_result.php" />
         <option value="$PROJECT_DIR$/zq/company_publish_jobs.php" />
-        <option value="$PROJECT_DIR$/zq/company_modify_profile_result.php" />
         <option value="$PROJECT_DIR$/zq/0_company-homepage.php" />
         <option value="$PROJECT_DIR$/zq/company_modify_profile.php" />
         <option value="$PROJECT_DIR$/SQLfile/create.sql" />
+        <option value="$PROJECT_DIR$/zq/company_modify_profile_result.php" />
       </list>
     </option>
   </component>
@@ -231,12 +229,12 @@
       <workItem from="1525373538435" duration="49000" />
       <workItem from="1525379693376" duration="214000" />
       <workItem from="1525450869973" duration="1240000" />
-      <workItem from="1525573438341" duration="46450000" />
+      <workItem from="1525573438341" duration="47047000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="77228000" />
+    <option name="totallyTimeSpent" value="77825000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1440" height="877" extended-state="6" />
@@ -611,10 +609,10 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/zq/company_modify_profile_result.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1173">
-          <caret line="69" column="21" selection-end-line="214" />
+        <state relative-caret-position="397">
+          <caret line="83" column="39" lean-forward="true" selection-start-line="83" selection-start-column="39" selection-end-line="83" selection-end-column="39" />
           <folding>
-            <element signature="e#2072#2154#0#PHP" expanded="true" />
+            <element signature="e#2108#2190#0#PHP" expanded="true" />
           </folding>
         </state>
       </provider>
