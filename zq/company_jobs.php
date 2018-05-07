@@ -2,6 +2,13 @@
     include_once '../lib/fun.php';
     include_once '../lib/dbinfo.php';
     
+    $checkUser = checkLogin();
+    //    var_dump($checkUser);
+    if ($checkUser == "student"){
+        header('Location: 0_student-homepage.php');
+        exit;
+    }
+    
     session_start();
     $username = $_SESSION['user'];
     $conToDB = mysqlInit($DBhost, $DBuser, $DBpassword, $DBdatabase, $port);
@@ -24,7 +31,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Your Jobs</title>
+    <title>Jobster Company Home</title>
     <style>
         form {display: inline-block;}
         nav {background-color: #EEE}
@@ -36,7 +43,6 @@
     <nav>
         <div class="wrapper">
             <a class="active" href="0_company-homepage.php">Home</a> |
-            <a href="company_notifications.php">Notifications</a> |
             <a href="company_jobs.php">Your Jobs</a> |
             <a href="company_publish_jobs.php">Publish A Job</a> |
             <a href="company_push_jobs.php">Push A Job</a> |
