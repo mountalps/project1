@@ -65,6 +65,7 @@ if ($checkUser != "student"){
             $degree = $result['degree'];
             $restrict = $result['restrict'];
             $resume = $result['resume'];
+            // var_dump($resume);
         ?>
             <div class="public-student-info">
                 <h2><p>Name : <?php echo $studentname; ?></p></h2>
@@ -94,6 +95,7 @@ if ($checkUser != "student"){
                     <div class="private-student-info">
                         <h2><p>GPA: <?php echo $gpa; ?></p></h2>
                         <h2><p>Degree: <?php echo $degree; ?></p></h2>
+                        <h2><p>Resume: <?php echo $resume; ?></p></h2>
                     </div>
         <?php
                 }
