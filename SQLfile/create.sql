@@ -11,7 +11,7 @@ CREATE TABLE `Student` (
   `degree` VARCHAR(20),
   `GPA` DECIMAL(3,2) ,
   `keywords` VARCHAR(500),
-  `resume` Varchar(20),
+  `resume` Varchar(5000),
   #`restrict` bit NOT NULL,
   `restrict` VARCHAR(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`sid`)
