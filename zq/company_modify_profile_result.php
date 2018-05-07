@@ -185,23 +185,44 @@
     <table>
         <tr>
             <td>Name: </td>
-            <td><?php echo $cname?></td>
+            <td><?php if ($cname != null)
+                        echo $cname;
+                      else
+                          echo 'Not Changed!';
+                ?>
+            </td>
         </tr>
         <tr>
             <td>City: </td>
-            <td><?php echo $ccity?></td>
+            <td><?php if ($ccity != null)
+                    echo $ccity;
+                else
+                    echo 'Not Changed!';
+                ?></td>
         </tr>
         <tr>
             <td>State: </td>
-            <td><?php echo $cstate?></td>
+            <td><?php if ($cstate != null)
+                    echo $cstate;
+                else
+                    echo 'Not Changed!';
+                ?></td>
         </tr>
         <tr>
             <td>Country: </td>
-            <td><?php echo $ccountry?></td>
+            <td><?php if ($ccountry != null)
+                    echo $ccountry;
+                else
+                    echo 'Not Changed!';
+                ?></td>
         </tr>
         <tr>
             <td>Industry: </td>
-            <td><?php echo $industry?></td>
+            <td><?php if ($industry != null)
+                    echo $industry;
+                else
+                    echo 'Not Changed!';
+                ?></td>
         </tr>
     </table>
 
