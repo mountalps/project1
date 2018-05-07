@@ -48,10 +48,10 @@
             <a href="company_push_jobs.php">Push A Job</a> |
             <a href="company_modify_profile.php">Modify Profile</a> |
             <a href="../lib/logout.php">Log Out</a> |
-            <form action="company_search_result.php" method="get" id="keyword_search">
-                <input type="text" placeholder="Search..." name="keyword">
-                <button type="submit">search</button>
-            </form>
+            <!--          <form action="company_search_result.php" method="get" id="keyword_search">-->
+            <!--              <input type="text" placeholder="Search..." name="keyword">-->
+            <!--              <button type="submit">search</button>-->
+            <!--          </form>-->
         </div>
     </nav>
 </div>
