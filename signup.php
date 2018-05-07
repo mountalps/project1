@@ -23,7 +23,7 @@ $signUpCategory = $_POST['signUpRadio'];
     <h2>Please Select Your Category To Sign Up!</h2>
     <button onclick="window.location.href='index.html'">Go Back</button>
     <?php endif;?>
-    
+
 
         <!---------------------------------------------------------------------->
         <!--------------When the client select to sign up as a student:--------->
@@ -78,7 +78,10 @@ $signUpCategory = $_POST['signUpRadio'];
                     </tr>
                     <tr>
                         <td>Resume:</td>
-                        <td><input type="file" name="resume" size="35"></td>
+                        <!-- <td><input type="file" name="resume" size="35"></td> -->
+                        <td>
+                            <textarea name="resume" rows="10" cols="50" maxlength="4800"></textarea>
+                        </td>
                     </tr>
                     <tr>
                         <td>Restrict:</td>
