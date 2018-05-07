@@ -23,7 +23,7 @@ if ($checkUser != "student"){
         $jid = $_POST['jid'];
         $sidpost = $_POST['sid'];
         $usersid = $conn->query("select sid from Student where username = '{$username}';")->fetch_assoc()['sid'];
-        $row = $conn->query("select title, cid, jcity, jstate, jcountry, salary, degree, major, jdescription, expirationDate <= now() as expired From Job where jid={$jid};")->fetch_assoc();
+        $row = $conn->query("select j.title, j.cid, c.cname, j.jcity, j.jstate, j.jcountry, j.salary, j.degree, j.major, j.jdescription, j.expirationDate <= now() as expired From Job j, Company c where j.jid={$jid} and j.cid = c.cid;")->fetch_assoc();
         $title = $row['title'];
         $jcity = $row['jcity'];
         $jstate = $row['jstate'];
@@ -71,6 +71,12 @@ if ($checkUser != "student"){
                 <div class="job-title">
                     <h1><?php echo $title; ?></h1>
                 </div>
+                <div class="job-company">
+                    <h1>Company:</h1>
+                        <p><form class="company-info" action="company_info.php" method="post">
+                            <button type="submit" name="cid" value="<?php echo $cid; ?>"><?php echo $cname; ?></button>
+                        </form></p>
+                </div>
                 <div class="job-apply">
                     <?php
                     // echo $usersid;
@@ -110,19 +116,33 @@ if ($checkUser != "student"){
                             }
                         }
                     </script>
-                    <div class="friend-forward-list" id="friend-forward-list-1" style="display:none;">
-                        <form id="form" action="" method="post">
-                            <div>
-                                <select id="inscompSelected" multiple="multiple" class="lstSelected">
-                                    <option value="1">1</option>
-                                    <option value="2">2</option>
-                                    <option value="3">3</option>
-                                    <option value="4">4</option>
-                                </select>
-                                <input type="submit" value="submit">
+                    <?php
+                        $result123 = $conn->query("select s.sname, s.sid from Student s, Friend f where (f.sid1={$sidpost} and s.sid = f.sid2) or (f.sid2={$sidpost} and s.sid=f.sid1) and s.sid not in (select ns.tosid from Forward f, NotificationToStudent ns where f.jid = {$jid} and ns.fromsid = {$sidpost});");
+                        if ($result123->num_rows > 0) {
+                    ?>
+                            <div class="friend-forward-list" id="friend-forward-list-1" style="display:none;">
+                                <form id="form" action="student-forward-to-friends.php" method="post">
+                                    <div>
+                                        <select name="forwardfriends[]" multiple="multiple" class="lstSelected">
+                                            <!-- <option value="Batman">Batman</option> -->
+                                            <?php
+                                                while ($row123 = $result123->fetch_assoc()) {
+                                                    echo "<option value=\"".$row123['sid']."\">".$row123['sname']."</option>";
+                                                }
+                                            ?>
+                                        </select>
+                                        <button type="submit" name="fromsid" value="<?php echo $sidpost; ?>">Forward this job to them</button>
+                                        <input type="hidden" name="jid" value="<?php echo $jid; ?>">
+                                    </div>
+                                </form>
+                                <p>Hold down the Ctrl (windows) / Command (Mac) button to select multiple options.</p>
                             </div>
-                        </form>
+                    <?php } else {
+                    ?>
+                    <div class="friend-forward-list" id="friend-forward-list-1" style="display:none; background-color:#f1f1f1;">
+                        <h3>You alread forward this job to all of your friends.</h3>
                     </div>
+                <?php } ?>
                 </div>
             </div>
             <div class="job-body">
