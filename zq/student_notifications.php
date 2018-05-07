@@ -1,6 +1,12 @@
 <?php
 include_once '../lib/fun.php';
 include_once '../lib/dbinfo.php';
+$checkUser = checkLogin();
+//    var_dump($checkUser);
+if ($checkUser != "student"){
+    header('Location: 0_student-homepage.php');
+    exit;
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -20,6 +26,7 @@ include_once '../lib/dbinfo.php';
                 <a href="student_friends_page.php">Friends</a> |
                 <a href="student_followed_companies.php">Followed Companies</a> |
                 <a href="student_applied_jobs.php">Applied Jobs</a> |
+                <a href="../lib/logout.php">Log Out</a> |
                 <form action="student_search_result.php" method="get" id="keyword_search">
                     <input type="text" placeholder="Search..." name="keyword">
                     <button type="submit">search</button>

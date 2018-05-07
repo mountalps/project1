@@ -1,6 +1,12 @@
 <?php
 include_once '../lib/fun.php';
 include_once '../lib/dbinfo.php';
+$checkUser = checkLogin();
+//    var_dump($checkUser);
+if ($checkUser != "student"){
+    header('Location: 0_student-homepage.php');
+    exit;
+}
 ?>
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
