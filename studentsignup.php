@@ -17,7 +17,8 @@ $degree = htmlspecialchars($_POST['degree']);
 $GPA = htmlspecialchars($_POST['GPA']);
 $keywords = htmlspecialchars($_POST['keywords']);
 $resume = htmlspecialchars($_POST['resume']);
-$restrict = htmlspecialchars($_POST['restrict']);
+//$restrict = htmlspecialchars($_POST['restrict']);
+$restrict = $_POST['restrict'];
 //var_dump($resume);
 
 

@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8aa35af9-4704-4c2e-9ded-47aa05ea5462" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/studentsignup.php" beforeDir="false" afterPath="$PROJECT_DIR$/studentsignup.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/zq/company_check_student.php" beforeDir="false" afterPath="$PROJECT_DIR$/zq/company_check_student.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -48,11 +48,20 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="studentsignup.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="studentsignup.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/studentsignup.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="286">
-              <caret line="31" column="22" lean-forward="true" selection-start-line="31" selection-start-column="22" selection-end-line="31" selection-end-column="22" />
+            <state relative-caret-position="605">
+              <caret line="131" lean-forward="true" selection-start-line="131" selection-end-line="131" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="company_check_student.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/zq/company_check_student.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="508">
+              <caret line="90" column="13" lean-forward="true" selection-start-line="90" selection-start-column="13" selection-end-line="90" selection-end-column="13" />
             </state>
           </provider>
         </entry>
@@ -97,7 +106,6 @@
         <option value="$PROJECT_DIR$/index.html" />
         <option value="$PROJECT_DIR$/zq/company_search_result.php" />
         <option value="$PROJECT_DIR$/lib/fun.php" />
-        <option value="$PROJECT_DIR$/zq/company_check_student.php" />
         <option value="$PROJECT_DIR$/zq/company_jobs.php" />
         <option value="$PROJECT_DIR$/zq/company_notifications.php" />
         <option value="$PROJECT_DIR$/signup.php" />
@@ -113,6 +121,7 @@
         <option value="$PROJECT_DIR$/zq/company_modify_profile_result.php" />
         <option value="$PROJECT_DIR$/SQLfile/create.sql" />
         <option value="$PROJECT_DIR$/studentsignup.php" />
+        <option value="$PROJECT_DIR$/zq/company_check_student.php" />
       </list>
     </option>
   </component>
@@ -222,15 +231,15 @@
       <workItem from="1525373538435" duration="49000" />
       <workItem from="1525379693376" duration="214000" />
       <workItem from="1525450869973" duration="1240000" />
-      <workItem from="1525573438341" duration="48889000" />
+      <workItem from="1525573438341" duration="49277000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="79667000" />
+    <option name="totallyTimeSpent" value="80055000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="23" width="1440" height="877" extended-state="6" />
+    <frame x="-1" y="23" width="1440" height="877" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info anchor="bottom" id="TODO" order="6" />
@@ -240,7 +249,7 @@
       <window_info anchor="bottom" id="Run" order="2" weight="0.32893" />
       <window_info anchor="bottom" id="Version Control" order="7" />
       <window_info anchor="bottom" id="Terminal" order="7" />
-      <window_info content_ui="combo" id="Project" order="0" weight="0.3938053" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.39341918" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="right" id="Database" order="3" weight="0.22532189" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -464,13 +473,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/zq/company_check_student.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="667">
-          <caret line="63" column="6" selection-start-line="63" selection-start-column="6" selection-end-line="63" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/zq/company_notifications.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="561">
@@ -605,8 +607,15 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/studentsignup.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="286">
-          <caret line="31" column="22" lean-forward="true" selection-start-line="31" selection-start-column="22" selection-end-line="31" selection-end-column="22" />
+        <state relative-caret-position="605">
+          <caret line="131" lean-forward="true" selection-start-line="131" selection-end-line="131" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/zq/company_check_student.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="508">
+          <caret line="90" column="13" lean-forward="true" selection-start-line="90" selection-start-column="13" selection-end-line="90" selection-end-column="13" />
         </state>
       </provider>
     </entry>

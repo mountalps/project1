@@ -87,7 +87,7 @@
         </tr>
         <tr>
             <td>Resume:</td>
-            <td></td>
+            <td><?php echo "{$studentInfo[0]['resume']}";?></td>
         </tr>
     
     </table>
