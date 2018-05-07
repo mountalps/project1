@@ -254,14 +254,14 @@
 <div class="changeResult" align="center">
     <h3>Here is your new profile</h3>
     <?php
-    echo $sname;
-    echo $university;
-    echo $major;
-    echo $degree;
-    echo $GPA;
-    echo $keywords;
-    echo $resume;
-    echo $restrict;
+    echo $sname.'<br>';
+    echo $university.'<br>';
+    echo $major.'<br>';
+    echo $degree.'<br>';
+    echo $GPA.'<br>';
+    echo $keywords.'<br>';
+    echo $resume.'<br>';
+    echo $restrict.'<br>';
      ?>
 </div>
 
