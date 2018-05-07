@@ -23,7 +23,7 @@ if ($checkUser != "student"){
         $jid = $_POST['jid'];
         $sidpost = $_POST['sid'];
         $usersid = $conn->query("select sid from Student where username = '{$username}';")->fetch_assoc()['sid'];
-        $row = $conn->query("select title, cid, jcity, jstate, jcountry, salary, degree, major, jdescription, expirationDate <= now() as expired From Job where jid={$jid};")->fetch_assoc();
+        $row = $conn->query("select j.title, j.cid, c.cname, j.jcity, j.jstate, j.jcountry, j.salary, j.degree, j.major, j.jdescription, j.expirationDate <= now() as expired From Job j, Company c where j.jid={$jid} and j.cid = c.cid;")->fetch_assoc();
         $title = $row['title'];
         $jcity = $row['jcity'];
         $jstate = $row['jstate'];
@@ -70,6 +70,12 @@ if ($checkUser != "student"){
             <div class="job-head">
                 <div class="job-title">
                     <h1><?php echo $title; ?></h1>
+                </div>
+                <div class="job-company">
+                    <h1>Company:</h1>
+                        <p><form class="company-info" action="company_info.php" method="post">
+                            <button type="submit" name="cid" value="<?php echo $cid; ?>"><?php echo $cname; ?></button>
+                        </form></p>
                 </div>
                 <div class="job-apply">
                     <?php
