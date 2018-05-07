@@ -18,7 +18,7 @@ if ($checkUser != "student"){
         <?php
             $fromsid = $_POST['fromsid'];
             $tosid = $_POST['tosid'];
-            $text = $_POST['tips-area'];
+            $text = htmlspecialchars($_POST['tips-area']);
             session_start();
             $username = $_SESSION['user'];
             $conn = new mysqli($DBhost, $DBuser, $DBpassword, $DBdatabase, $port);
@@ -31,10 +31,23 @@ if ($checkUser != "student"){
                     $result = $conn->query("select ns.nid from NotificationToStudent ns where ns.fromsid = {$fromsid} and ns.tosid = {$tosid} and ns.nstatus = 'unread' and ns.notificationtype = 'Tips' and ns.ntime = '{$timeinserted}';")->fetch_assoc();
                 }
                 $nid = $result['nid'];
-                $conn->query("insert into Tips values({$nid}, '{$text}', '{$timeinserted}');");
+                // $conn->query("insert into Tips values({$nid}, '{$text}', '{$timeinserted}');");
+                $sendtip_protected = $conn->prepare("insert into Tips values(?,?,?);");
+                $sendtip_protected->bind_param("iss", $nid, $text, $timeinserted);
+                $sendtip_protected->execute();
+                $affectedRows = $sendtip_protected->affected_rows;
+                $sendtip_protected->close();
+                if ($affectedRows >= 1) {
+        ?>
+                    <p>Tips sent</p>
+        <?php
+                } else {
+        ?>
+                    <p>Tips NOT sent</p>
+        <?php
+                }
             }
         ?>
-        <p>Tips sent</p>
         <a href="javascript:history.go(-2)">GO BACK</a>
     </body>
 </html>
