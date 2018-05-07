@@ -8,17 +8,17 @@
 include_once './lib/fun.php';
 include_once './lib/dbinfo.php';
 
-$sid = $_POST['sid'];
-$username = $_POST['username'];
-$password = $_POST['password'];
-$sname = $_POST['sname'];
-$university = $_POST['university'];
-$major = $_POST['major'];
-$degree = $_POST['degree'];
-$GPA = $_POST['GPA'];
-$keywords = $_POST['keywords'];
-$resume = $_POST['resume'];
-$restrict = $_POST['restrict'];
+$username = htmlspecialchars($_POST['username']);
+$password = htmlspecialchars($_POST['password']);
+$sname = htmlspecialchars($_POST['sname']);
+$university = htmlspecialchars($_POST['university']);
+$major = htmlspecialchars($_POST['major']);
+$degree = htmlspecialchars($_POST['degree']);
+$GPA = htmlspecialchars($_POST['GPA']);
+$keywords = htmlspecialchars($_POST['keywords']);
+$resume = htmlspecialchars($_POST['resume']);
+$restrict = htmlspecialchars($_POST['restrict']);
+
 
 
 if ($restrict == "yes"){
@@ -58,12 +58,20 @@ else if ($restrict == "no" || $restrict == null) {
     <?php else:?>
 
         <?php
-            $password = encryptPassword($password);
+         $password = encryptPassword($password);
             #student(sid, username, password, sname, university, degree, major, GPA, keywords, resume, restrict)
-            $connect = mysqlInit($DBhost, $DBuser, $DBpassword, $DBdatabase, $port);
-            $sqlConfirmNoDuplicate = "(select cid as num from Company where cusername = '{$username}') union (select sid as num from Student where username='{$username}');";
-            $resultConfirmNoDuplicate = mysqli_query($connect, $sqlConfirmNoDuplicate);
-            $confirmResult = mysqli_fetch_all($resultConfirmNoDuplicate, MYSQLI_ASSOC);
+//            $connect = mysqlInit($DBhost, $DBuser, $DBpassword, $DBdatabase, $port);
+//            $sqlConfirmNoDuplicate = "(select cid as num from Company where cusername = '{$username}') union (select sid as num from Student where username='{$username}');";
+//            $resultConfirmNoDuplicate = mysqli_query($connect, $sqlConfirmNoDuplicate);
+//            $confirmResult = mysqli_fetch_all($resultConfirmNoDuplicate, MYSQLI_ASSOC);
+    
+        $conn_protect = new mysqli($DBhost, $DBuser, $DBpassword, $DBdatabase);
+        $sqlConfirmNoDuplicate = $conn_protect->prepare("(select cid as num from Company where cusername = ?) union (select sid as num from Student where username=?);");
+        $sqlConfirmNoDuplicate->bind_param("ss", $username_protect, $username_protect);
+        $username_protect = $username;
+        $sqlConfirmNoDuplicate->execute();
+        $confirmResult = $sqlConfirmNoDuplicate->get_result();
+        $confirmResult = $confirmResult->fetch_all();
 //            var_dump($confirmResult);
         ?>
 
@@ -74,10 +82,27 @@ else if ($restrict == "no" || $restrict == null) {
         <?php
 //            var_dump($restrict);
         $GPA = (int)$GPA;
-        var_dump($resume);
-        $sql = "insert into Student values
-(null, '{$username}', '{$password}', '{$sname}', '{$university}', '{$major}', '{$degree}', '{$GPA}', '{$keywords}', '{$resume}', '{$restrict}');";
-        $result = mysqli_query($connect, $sql);
+//        var_dump($resume);
+            $conn_protect = new mysqli($DBhost, $DBuser, $DBpassword, $DBdatabase);
+            $createStudentAccount = $conn_protect->prepare("insert into Student (sid, username, password, sname, university, major, degree, GPA, keywords, `restrict`) values(?,?,?,?,?,?,?,?,?,?);");
+            $createStudentAccount->bind_param("dssssssdss", $sid_protect, $username_protect, $password_protect, $sname_protect, $university_protect, $major_protect, $degree_protect, $GPA_protect, $keywords_protect, $restrict_protect);
+            $sid_protect = null;
+            $username_protect = $username;
+            $password_protect = $password;
+            $sname_protect = $sname;
+            $university_protect = $university;
+            $major_protect = $major;
+            $degree_protect = $degree;
+            $GPA_protect = $GPA;
+            $keywords_protect = $keywords;
+            $restrict_protect = $restrict;
+            $createStudentAccount->execute();
+            $affectedRows = $createStudentAccount->affected_rows;
+            if ($affectedRows >= 1)
+                $result = 'true';
+            else
+                $result = 'false';
+            
         ?>
 
         <?php if ($result == 'true'):?>
@@ -85,10 +110,10 @@ else if ($restrict == "no" || $restrict == null) {
             <button onclick="window.location.href='index.html'">Back to login</button>
             <?php
 
-//                session_start();
-//                $_SESSION['user'] = $username;
-//                header('Location:./zq/0_student-homepage.php');
-//                exit;
+                session_start();
+                $_SESSION['user'] = $username;
+                header('Location:./zq/0_student-homepage.php');
+                exit;
                 
                 ?>
         <?php else:?>

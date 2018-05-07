@@ -8,9 +8,9 @@
 include_once './lib/fun.php';
 include_once './lib/dbinfo.php';
 
-$username = trim($_POST['username']);
-$password = trim($_POST['password']);
-$loginCategory = $_POST['loginRadio'];
+$username = htmlspecialchars($_POST['username']);
+$password = htmlspecialchars($_POST['password']);
+$loginCategory = htmlspecialchars($_POST['loginRadio']);
 
 ?>
 
@@ -41,10 +41,21 @@ $loginCategory = $_POST['loginRadio'];
     <?php else:?>
         <?php if($loginCategory == "student"):?>
         <?php
-            $conToDB = mysqlInit($DBhost, $DBuser, $DBpassword, $DBdatabase, $port);
-            $sql = "select * from Student where username = '{$username}'";
-            $result = mysqli_query($conToDB, $sql);
-            $result = mysqli_fetch_all($result, MYSQLI_ASSOC);
+        
+            $conn_protect = new mysqli($DBhost, $DBuser, $DBpassword, $DBdatabase);
+            $login = $conn_protect->prepare("select * from Student where username = ?;");
+            $login->bind_param("s", $username_protect);
+            $username_protect = $username;
+            $login->execute();
+            $result = $login->get_result();
+            $result = $result->fetch_all();
+            var_dump($result[0]['password']);
+            var_dump($password);
+            
+//            $conToDB = mysqlInit($DBhost, $DBuser, $DBpassword, $DBdatabase, $port);
+//            $sql = "select * from Student where username = '{$username}'";
+//            $result = mysqli_query($conToDB, $sql);
+//            $result = mysqli_fetch_all($result, MYSQLI_ASSOC);
             ?>
         <?php if (is_array($result) && !empty($result)):?>
 

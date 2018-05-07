@@ -8,13 +8,13 @@
 include_once './lib/fun.php';
 include_once './lib/dbinfo.php';
 
-$cusername = $_POST['cusername'];
-$cpassword = $_POST['cpassword'];
-$cname = $_POST['cname'];
-$ccity = $_POST['ccity'];
-$cstate = $_POST['cstate'];
-$ccountry = $_POST['ccountry'];
-$industry = $_POST['industry'];
+$cusername = htmlspecialchars($_POST['cusername']);
+$cpassword = htmlspecialchars($_POST['cpassword']);
+$cname = htmlspecialchars($_POST['cname']);
+$ccity = htmlspecialchars($_POST['ccity']);
+$cstate = htmlspecialchars($_POST['cstate']);
+$ccountry = htmlspecialchars($_POST['ccountry']);
+$industry = htmlspecialchars($_POST['industry']);
 
 ?>
 
@@ -62,10 +62,18 @@ $industry = $_POST['industry'];
     <?php
 
     $cpassword = encryptPassword($cpassword);
-    $connect = mysqlInit($DBhost, $DBuser, $DBpassword, $DBdatabase, $port);
-    $sqlConfirmNoDuplicate = "(select cid as num from Company where cusername = '{$cusername}') union (select sid as num from Student where username='{$cusername}');";
-    $resultConfirmNoDuplicate = mysqli_query($connect, $sqlConfirmNoDuplicate);
-    $confirmResult = mysqli_fetch_all($resultConfirmNoDuplicate, MYSQLI_ASSOC);
+//    $connect = mysqlInit($DBhost, $DBuser, $DBpassword, $DBdatabase, $port);
+    $conn_protect = new mysqli($DBhost, $DBuser, $DBpassword, $DBdatabase);
+    $sqlConfirmNoDuplicate = $conn_protect->prepare("(select cid as num from Company where cusername = ?) union (select sid as num from Student where username=?);");
+    $sqlConfirmNoDuplicate->bind_param("ss", $username_protect, $username_protect);
+    $username_protect = $cusername;
+    $sqlConfirmNoDuplicate->execute();
+    $confirmResult = $sqlConfirmNoDuplicate->get_result();
+    $confirmResult = $confirmResult->fetch_all();
+    
+//    $sqlConfirmNoDuplicate = "(select cid as num from Company where cusername = '{$cusername}') union (select sid as num from Student where username='{$cusername}');";
+//    $resultConfirmNoDuplicate = mysqli_query($connect, $sqlConfirmNoDuplicate);
+//    $confirmResult = mysqli_fetch_all($resultConfirmNoDuplicate, MYSQLI_ASSOC);
 
     ?>
 
@@ -74,10 +82,29 @@ $industry = $_POST['industry'];
         <button onclick="window.location.href='index.html'">Return To Start Page</button>
     <?php else:?>
         <?php
-        $sql = "insert into Company values
-(null, '{$cusername}', '{$cpassword}', '{$cname}', '{$ccity}', '{$cstate}', '{$ccountry}', '{$industry}');";
-        $result = mysqli_query($connect, $sql);
-        var_dump($result);
+        
+        $conn_protect = new mysqli($DBhost, $DBuser, $DBpassword, $DBdatabase);
+        $createCompanyAccount = $conn_protect->prepare("insert into Company (cid, cusername, cpassword, cname, ccity, cstate, ccountry, industry) values(?,?,?,?,?,?,?,?);");
+        $createCompanyAccount->bind_param("dsssssss", $cid_protect, $cusername_protect, $cpassword_protect, $cname_protect, $ccity_protect, $cstate_protect, $ccountry_protect, $industry_protect);
+        $cid_protect = null;
+        $cusername_protect = $cusername;
+        $cpassword_protect = $cpassword;
+        $cname_protect = $cname;
+        $ccity_protect = $ccity;
+        $cstate_protect = $cstate;
+        $ccountry_protect = $ccountry;
+        $industry_protect = $industry;
+        $createCompanyAccount->execute();
+        $affectedRows = $createCompanyAccount->affected_rows;
+        if ($affectedRows >= 1)
+            $result = 'true';
+        else
+            $result = 'false';
+        
+//        $sql = "insert into Company values
+//(null, '{$cusername}', '{$cpassword}', '{$cname}', '{$ccity}', '{$cstate}', '{$ccountry}', '{$industry}');";
+//        $result = mysqli_query($connect, $sql);
+//        var_dump($result);
         ?>
 
         <?php if ($result == 'true'):?>
