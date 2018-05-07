@@ -83,7 +83,7 @@ else if ($restrict == "no" || $restrict == null) {
         <?php else:?>
         <?php
 //            var_dump($restrict);
-        $GPA = (int)$GPA;
+        $GPA = (double)$GPA;
 //        var_dump($resume);
             $conn_protect = new mysqli($DBhost, $DBuser, $DBpassword, $DBdatabase);
             $createStudentAccount = $conn_protect->prepare("insert into Student (sid, username, password, sname, university, major, degree, GPA, keywords, `resume`, `restrict`) values(?,?,?,?,?,?,?,?,?,?,?);");

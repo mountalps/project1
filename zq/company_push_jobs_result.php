@@ -69,7 +69,7 @@
     }
     else{
         
-        $GPA = (int)$GPA;
+        $GPA = (double)$GPA;
         $GPA = ">="."'".$GPA."'";
     }
     

@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8aa35af9-4704-4c2e-9ded-47aa05ea5462" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/zq/company_check_student.php" beforeDir="false" afterPath="$PROJECT_DIR$/zq/company_check_student.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/studentsignup.php" beforeDir="false" afterPath="$PROJECT_DIR$/studentsignup.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -48,20 +48,20 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="studentsignup.php" pinned="false" current-in-tab="false">
+      <file leaf-file-name="studentsignup.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/studentsignup.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="605">
-              <caret line="131" lean-forward="true" selection-start-line="131" selection-end-line="131" />
+            <state relative-caret-position="391">
+              <caret line="85" column="23" selection-start-line="85" selection-start-column="23" selection-end-line="85" selection-end-column="23" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="company_check_student.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="company_check_student.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/zq/company_check_student.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="508">
-              <caret line="90" column="13" lean-forward="true" selection-start-line="90" selection-start-column="13" selection-end-line="90" selection-end-column="13" />
+            <state relative-caret-position="384">
+              <caret line="75" column="5" selection-start-line="75" selection-start-column="5" selection-end-line="75" selection-end-column="5" />
             </state>
           </provider>
         </entry>
@@ -120,8 +120,8 @@
         <option value="$PROJECT_DIR$/zq/company_modify_profile.php" />
         <option value="$PROJECT_DIR$/zq/company_modify_profile_result.php" />
         <option value="$PROJECT_DIR$/SQLfile/create.sql" />
-        <option value="$PROJECT_DIR$/studentsignup.php" />
         <option value="$PROJECT_DIR$/zq/company_check_student.php" />
+        <option value="$PROJECT_DIR$/studentsignup.php" />
       </list>
     </option>
   </component>
@@ -231,12 +231,12 @@
       <workItem from="1525373538435" duration="49000" />
       <workItem from="1525379693376" duration="214000" />
       <workItem from="1525450869973" duration="1240000" />
-      <workItem from="1525573438341" duration="49277000" />
+      <workItem from="1525573438341" duration="49549000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="80055000" />
+    <option name="totallyTimeSpent" value="80327000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-1" y="23" width="1440" height="877" extended-state="6" />
@@ -605,17 +605,17 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/studentsignup.php">
+    <entry file="file://$PROJECT_DIR$/zq/company_check_student.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="605">
-          <caret line="131" lean-forward="true" selection-start-line="131" selection-end-line="131" />
+        <state relative-caret-position="384">
+          <caret line="75" column="5" selection-start-line="75" selection-start-column="5" selection-end-line="75" selection-end-column="5" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/zq/company_check_student.php">
+    <entry file="file://$PROJECT_DIR$/studentsignup.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="508">
-          <caret line="90" column="13" lean-forward="true" selection-start-line="90" selection-start-column="13" selection-end-line="90" selection-end-column="13" />
+        <state relative-caret-position="391">
+          <caret line="85" column="23" selection-start-line="85" selection-start-column="23" selection-end-line="85" selection-end-column="23" />
         </state>
       </provider>
     </entry>
