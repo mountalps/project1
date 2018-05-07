@@ -85,7 +85,7 @@ else if ($restrict == "no" || $restrict == null) {
 //        var_dump($resume);
             $conn_protect = new mysqli($DBhost, $DBuser, $DBpassword, $DBdatabase);
             $createStudentAccount = $conn_protect->prepare("insert into Student (sid, username, password, sname, university, major, degree, GPA, keywords, `resume`, `restrict`) values(?,?,?,?,?,?,?,?,?,?,?);");
-            $createStudentAccount->bind_param("dssssssdss", $sid_protect, $username_protect, $password_protect, $sname_protect, $university_protect, $major_protect, $degree_protect, $GPA_protect, $keywords_protect, $resume_protect, $restrict_protect);
+            $createStudentAccount->bind_param("dssssssdsss", $sid_protect, $username_protect, $password_protect, $sname_protect, $university_protect, $major_protect, $degree_protect, $GPA_protect, $keywords_protect, $resume_protect, $restrict_protect);
             $sid_protect = null;
             $username_protect = $username;
             $password_protect = $password;
