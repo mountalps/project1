@@ -19,15 +19,33 @@
     
     session_start();
     $username = $_SESSION['user'];
-    $conToDB = mysqlInit($DBhost, $DBuser, $DBpassword, $DBdatabase, $port);
-    $sqlGetCompanyInfo = "select * from Company where cusername = '{$username}';";
-    $resultCompanyInfo = mysqli_query($conToDB, $sqlGetCompanyInfo);
-    $companyInfo = mysqli_fetch_all($resultCompanyInfo, MYSQLI_ASSOC);
+//    $conToDB = mysqlInit($DBhost, $DBuser, $DBpassword, $DBdatabase, $port);
+//    $sqlGetCompanyInfo = "select * from Company where cusername = '{$username}';";
+//    $resultCompanyInfo = mysqli_query($conToDB, $sqlGetCompanyInfo);
+//    $companyInfo = mysqli_fetch_all($resultCompanyInfo, MYSQLI_ASSOC);
     
-    $cid = $companyInfo[0]['cid'];
+    $conn_protect = new mysqli($DBhost, $DBuser, $DBpassword, $DBdatabase);
+//    var_dump($DBdatabase);
+    $getCompanyInfo = $conn_protect->prepare("select * from Company where cusername = ?;");
+    $getCompanyInfo->bind_param("s", $cusername_protect);
+    $cusername_protect = $username;
+    $getCompanyInfo->execute();
+    $companyInfo = $getCompanyInfo->get_result();
+    $companyInfo = $companyInfo->fetch_all();
+    
+    $cid = $companyInfo[0][0];
     $sqlGetAvailableJobInfo = "select * from Job where cid = '{$cid}' and expirationDate > now();";
-    $resultAvailableJobInfo = mysqli_query($conToDB, $sqlGetAvailableJobInfo);
-    $availableJobInfo = mysqli_fetch_all($resultAvailableJobInfo, MYSQLI_ASSOC);
+    $sqlGetAvailableJobInfo = $conn_protect->prepare("select * from Job where cid = ? and expirationDate > now();");
+    $sqlGetAvailableJobInfo->bind_param("i", $cid_protect);
+    $cid_protect = $cid;
+    $sqlGetAvailableJobInfo->execute();
+    $resultAvailableJobInfo = $sqlGetAvailableJobInfo->get_result();
+    $availableJobInfo = $resultAvailableJobInfo->fetch_all();
+//    var_dump($availableJobInfo);
+    
+//    $resultAvailableJobInfo = mysqli_query($conToDB, $sqlGetAvailableJobInfo);
+//    $availableJobInfo = mysqli_fetch_all($resultAvailableJobInfo, MYSQLI_ASSOC);
+//    variant_round($availableJobInfo);
 
     
 ?>
@@ -89,7 +107,7 @@
                 <td>
                     <select name="job_id" id="">
                         <?php foreach ($availableJobInfo as &$job): ?>
-                            <?php echo "<option value='{$job['jid']}'>{$job['jid']}-{$job['title']}</option>"?>
+                            <?php echo "<option value='{$job[0]}'>{$job[0]}-{$job[1]}</option>"?>
                         <?php endforeach;?>
                     </select>
                     (only availabe jobs listed here)

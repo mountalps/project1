@@ -15,7 +15,7 @@
     $username = $_SESSION['user'];
     
     $conn_protect = new mysqli($DBhost, $DBuser, $DBpassword, $DBdatabase);
-    var_dump($DBdatabase);
+//    var_dump($DBdatabase);
     $getCompanyInfo = $conn_protect->prepare("select * from Company where cusername = ?;");
     $getCompanyInfo->bind_param("s", $cusername_protect);
     $cusername_protect = $username;

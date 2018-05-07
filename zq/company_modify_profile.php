@@ -17,6 +17,11 @@
     
     session_start();
     $username = $_SESSION['user'];
+    $conToDB = mysqlInit($DBhost, $DBuser, $DBpassword, $DBdatabase, $port);
+    $sqlGetCompanyInfo = "select * from Company where cusername = '{$username}';";
+    $resultCompanyInfo = mysqli_query($conToDB, $sqlGetCompanyInfo);
+    $companyInfo = mysqli_fetch_all($resultCompanyInfo, MYSQLI_ASSOC);
+//    var_dump($companyInfo);
     
 ?>
 
@@ -63,25 +68,25 @@
                 </tr>
                 <tr>
                     <td>Company Name:</td>
-                    <td><input type="text" name = "cname"  size="35"></td>
+                    <td><input type="text" name = "cname"  size="35" placeholder="<?php echo $companyInfo[0]['cname'];?>"></td>
                 </tr>
             
                 <tr>
                     <td>city:</td>
-                    <td><input type="text" name="ccity" size="35"></td>
+                    <td><input type="text" name="ccity" size="35" placeholder="<?php echo $companyInfo[0]['ccity'];?>"></td>
                 </tr>
             
                 <tr>
                     <td>state:</td>
-                    <td><input type="text" name="cstate" size="35"></td>
+                    <td><input type="text" name="cstate" size="35" placeholder="<?php echo $companyInfo[0]['cstate'];?>"></td>
                 </tr>
                 <tr>
                     <td>country:</td>
-                    <td><input type="text" name="ccountry" size="35"></td>
+                    <td><input type="text" name="ccountry" size="35" placeholder="<?php echo $companyInfo[0]['ccountry'];?>"></td>
                 </tr>
                 <tr>
                     <td>industry:</td>
-                    <td><input type="text" name="industry" size="35"></td>
+                    <td><input type="text" name="industry" size="35" placeholder="<?php echo $companyInfo[0]['industry'];?>"></td>
                 </tr>
                 <tr>
                     <td></td>
