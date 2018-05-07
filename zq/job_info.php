@@ -1,6 +1,12 @@
 <?php
 include_once '../lib/fun.php';
 include_once '../lib/dbinfo.php';
+$checkUser = checkLogin();
+//    var_dump($checkUser);
+if ($checkUser != "student"){
+    header('Location: 0_student-homepage.php');
+    exit;
+}
 ?>
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
@@ -51,6 +57,7 @@ include_once '../lib/dbinfo.php';
                 <a href="student_friends_page.php">Friends</a> |
                 <a href="student_followed_companies.php">Followed Companies</a> |
                 <a href="student_applied_jobs.php">Applied Jobs</a> |
+                <a href="../lib/logout.php">Log Out</a> |
                 <form action="student_search_result.php" method="get" id="keyword_search">
                     <input type="text" placeholder="Search..." name="keyword">
                     <button type="submit">search</button>
@@ -87,6 +94,35 @@ include_once '../lib/dbinfo.php';
                     <?php } else{
                         echo "<button type='button' name='button'>This job expired</button>";
                     }?>
+                </div>
+                <div class="job-forward">
+                    <button onclick="myFunction()" id="hide-forward-button-1">Forward this job to your friends</button>
+                    <script type="text/javascript">
+                        function myFunction() {
+                            var x = document.getElementById("friend-forward-list-1");
+                            var y = document.getElementById("hide-forward-button-1");
+                            if (x.style.display === "none") {
+                                x.style.display = "block";
+                                y.innerText = "[hide] Forward this job to your friends";
+                            } else {
+                                y.innerText = "Forward this job to your friends";
+                                x.style.display = "none";
+                            }
+                        }
+                    </script>
+                    <div class="friend-forward-list" id="friend-forward-list-1" style="display:none;">
+                        <form id="form" action="" method="post">
+                            <div>
+                                <select id="inscompSelected" multiple="multiple" class="lstSelected">
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                </select>
+                                <input type="submit" value="submit">
+                            </div>
+                        </form>
+                    </div>
                 </div>
             </div>
             <div class="job-body">
