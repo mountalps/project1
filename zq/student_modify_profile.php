@@ -54,7 +54,7 @@
     <div class="modify_student_profile">
         <h1>Please input what you want to change</h1>
         <h4>If you don't want to change some profile, just leave it blank</h4>
-        <form action="#" method="post">
+        <form action="student_modify_profile_result.php" method="post">
             <table>
                 <tr>
                     <td>New Password:</td>
