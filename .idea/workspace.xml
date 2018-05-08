@@ -1,18 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="8aa35af9-4704-4c2e-9ded-47aa05ea5462" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/zq/0_company-homepage.php" beforeDir="false" afterPath="$PROJECT_DIR$/zq/0_company-homepage.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/zq/company_check_student.php" beforeDir="false" afterPath="$PROJECT_DIR$/zq/company_check_student.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/zq/company_jobs.php" beforeDir="false" afterPath="$PROJECT_DIR$/zq/company_jobs.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/zq/company_modify_profile.php" beforeDir="false" afterPath="$PROJECT_DIR$/zq/company_modify_profile.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/zq/company_modify_profile_result.php" beforeDir="false" afterPath="$PROJECT_DIR$/zq/company_modify_profile_result.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/zq/company_publish_jobs.php" beforeDir="false" afterPath="$PROJECT_DIR$/zq/company_publish_jobs.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/zq/company_publish_jobs_result.php" beforeDir="false" afterPath="$PROJECT_DIR$/zq/company_publish_jobs_result.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/zq/company_push_jobs.php" beforeDir="false" afterPath="$PROJECT_DIR$/zq/company_push_jobs.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/zq/company_push_jobs_result.php" beforeDir="false" afterPath="$PROJECT_DIR$/zq/company_push_jobs_result.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/zq/company_search_result.php" beforeDir="false" afterPath="$PROJECT_DIR$/zq/company_search_result.php" afterDir="false" />
-    </list>
+    <list default="true" id="8aa35af9-4704-4c2e-9ded-47aa05ea5462" name="Default" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -295,16 +284,15 @@
       <workItem from="1525373538435" duration="49000" />
       <workItem from="1525379693376" duration="214000" />
       <workItem from="1525450869973" duration="1240000" />
-      <workItem from="1525573438341" duration="50036000" />
+      <workItem from="1525573438341" duration="50627000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="80814000" />
+    <option name="totallyTimeSpent" value="81405000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-1" y="23" width="1440" height="877" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="PHP-CGI Server" order="7" />
