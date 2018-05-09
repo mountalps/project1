@@ -75,7 +75,7 @@ if ($checkUser != "student"){
             <li>
             <div class="pushed-jobs">
                 <h3>Suggested Jobs:</h3>
-                <button onclick="myFunction2()" id="hide-push-button-1">Hide promot chekced jobs</button>
+                <button onclick="myFunction2()" id="hide-push-button-1">Show promot chekced jobs</button>
                 <script type="text/javascript">
                     function myFunction2() {
                         var y = document.getElementById("hide-push-button-1");
@@ -99,7 +99,7 @@ if ($checkUser != "student"){
                         // echo "<p>Here are some friend requests:</p>";
                         while ($row = $resultpj->fetch_assoc()) {
                             if ($row['nstatus'] == 'read'){
-                                echo "<div class='push-message-read' style='background-color:#e1e1e1;display:block;'>";
+                                echo "<div class='push-message-read' style='background-color:#e1e1e1;display:none;'>";
                                 echo "<div style='color:red;'>Your alread checked this job</div>";
                             } else {
                                 echo "<div class='push-message' style='background-color:#e1e1e1; display:block;'>";
@@ -152,7 +152,7 @@ if ($checkUser != "student"){
             <li>
             <div class="forward">
                 <h3>Forwared Jobs From Friend:</h3>
-                <button onclick="myFunction1()" id="hide-forward-button-1">Hide clicked forwared jobs</button>
+                <button onclick="myFunction1()" id="hide-forward-button-1">Show clicked forwared jobs</button>
                 <script type="text/javascript">
                     function myFunction1() {
                         var y = document.getElementById("hide-forward-button-1");
@@ -176,7 +176,7 @@ if ($checkUser != "student"){
                         // echo "<p>Here are some job forwards:</p>";
                         while ($row = $resultf->fetch_assoc()) {
                             if ($row['nstatus'] == 'read'){
-                                echo "<div class='forwarded-message-read' style='background-color:#e1e1e1;display:block;'><p>";
+                                echo "<div class='forwarded-message-read' style='background-color:#e1e1e1;display:none;'><p>";
                                 echo "<div style='color:red;'>Your alread checked this job</div>";
                             } else {
                                 echo "<div class='forwarded-message' style='background-color:#e1e1e1; display:block;'><p>";
