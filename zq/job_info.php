@@ -149,13 +149,26 @@ if ($checkUser != "student"){
                 </div>
             </div>
             <div class="job-body">
-                <h2>Job Location: <?php echo "{$jcity}, {$jstate}, {$jcountry}"; ?></h2>
-                <h2>Job Salary: <?php echo "{$jsalary}"; ?></h2>
-                <h2>Job Location: <?php echo "{$jcity}, {$jstate}, {$jcountry}"; ?></h2>
-                <h2>Job Major Prefered: <?php echo "{$jmajor}"; ?></h2>
-                <h2>Job Degree Prifered: <?php echo "{$jdegree}"; ?></h2>
+                <table border="1 pix">
+                    <tr>
+                        <td>Job Location</td>
+                        <td><?php echo "{$jcity}, {$jstate}, {$jcountry}"; ?></td>
+                    </tr>
+                    <tr>
+                        <td>Job Salary</td>
+                        <td><?php echo "{$jsalary}"; ?></td>
+                    </tr>
+                    <tr>
+                        <td>Job Major Prefered</td>
+                        <td><?php echo "{$jmajor}"; ?></td>
+                    </tr>
+                    <tr>
+                        <td>Job Degree Prifered</td>
+                        <td><?php echo "{$jdegree}"; ?></td>
+                    </tr>
+                </table>
                 <div class="job-description" style="width:50%;">
-                    <h2>Job Description:</h2>
+                    <h4>Job Description:</h4>
                     <p><?php echo $jdescription; ?></p>
                 </div>
             </div>
