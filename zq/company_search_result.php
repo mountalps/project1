@@ -234,7 +234,7 @@ if ($checkUser != "company"){
                     // echo $row[0];
                     if (!in_array($row, $checkercom)) {
                         ?>
-                        <p><form class="company-info" action="company_info.php" method="post" id="company-info-form">
+                        <p><form class="company-info" action="company_info_for_company.php" method="post" id="company-info-form">
                             <button type="submit" name="cid" value="<?php echo $row['cid']; ?>"><?php echo $row['cname']; ?></button>
                         </form></p>
                         <?php
