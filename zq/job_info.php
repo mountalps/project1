@@ -120,7 +120,7 @@ if ($checkUser != "student"){
                         }
                     </script>
                     <?php
-                        $result123 = $conn->query("select s.sname, s.sid from Student s, Friend f where (f.sid1={$sidpost} and s.sid = f.sid2) or (f.sid2={$sidpost} and s.sid=f.sid1) and s.sid not in (select ns.tosid from Forward f, NotificationToStudent ns where f.jid = {$jid} and ns.fromsid = {$sidpost});");
+                        $result123 = $conn->query("select s.sname, s.sid from Student s, Friend f where (f.sid1={$sidpost} and s.sid = f.sid2) or (f.sid2={$sidpost} and s.sid=f.sid1) and s.sid not in (select ns.tosid from Forward f, NotificationToStudent ns where f.jid = {$jid} and ns.fromsid = {$sidpost} and ns.nid = f.nid) ;");
                         if ($result123->num_rows > 0) {
                     ?>
                             <div class="friend-forward-list" id="friend-forward-list-1" style="display:none;">
