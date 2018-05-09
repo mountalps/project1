@@ -36,6 +36,7 @@
     <nav>
         <div class="wrapper">
             <a class="active" href="0_company-homepage.php">Home</a> |
+            <a href="company_notifications.php">Notifications</a> |
             <a href="company_jobs.php">Your Jobs</a> |
             <a href="company_publish_jobs.php">Publish A Job</a> |
             <a href="company_push_jobs.php">Push A Job</a> |
