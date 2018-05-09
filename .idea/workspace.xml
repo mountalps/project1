@@ -2,8 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8aa35af9-4704-4c2e-9ded-47aa05ea5462" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/zq/company_mark_notification.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/zq/company_notifications.php" beforeDir="false" afterPath="$PROJECT_DIR$/zq/company_notifications.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -67,11 +65,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="company_notifications.php" pinned="false" current-in-tab="false">
+      <file leaf-file-name="company_notifications.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/zq/company_notifications.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="303">
-              <caret line="42" column="12" lean-forward="true" selection-start-line="34" selection-start-column="4" selection-end-line="42" selection-end-column="12" />
+            <state relative-caret-position="673">
+              <caret line="158" column="22" selection-start-line="158" selection-start-column="22" selection-end-line="158" selection-end-column="22" />
               <folding>
                 <element signature="n#style#0;n#h2#1;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
               </folding>
@@ -79,47 +77,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="company_mark_notification.php" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/zq/company_mark_notification.php">
+      <file leaf-file-name="student_notifications.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/zq/student_notifications.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="486">
-              <caret line="71" column="46" selection-start-line="71" selection-start-column="46" selection-end-line="71" selection-end-column="46" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="studentsignup.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/studentsignup.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="170">
-              <caret line="10" column="49" lean-forward="true" selection-start-line="10" selection-end-line="10" selection-end-column="49" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="emptyHTML.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/emptyHTML.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="136">
-              <caret line="8" column="7" lean-forward="true" selection-end-line="9" selection-end-column="7" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="create.sql" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/SQLfile/create.sql">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="381">
-              <caret line="78" column="39" selection-start-line="78" selection-start-column="36" selection-end-line="78" selection-end-column="39" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="logout.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/lib/logout.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="102">
-              <caret line="11" column="37" lean-forward="true" selection-start-line="11" selection-start-column="4" selection-end-line="11" selection-end-column="37" />
+            <state relative-caret-position="-164">
+              <caret line="74" column="15" selection-start-line="74" selection-start-column="15" selection-end-line="74" selection-end-column="15" />
             </state>
           </provider>
         </entry>
@@ -182,8 +144,9 @@
         <option value="$PROJECT_DIR$/zq/company_info_for_company.php" />
         <option value="$PROJECT_DIR$/SQLfile/create.sql" />
         <option value="$PROJECT_DIR$/zq/0_company-homepage.php" />
-        <option value="$PROJECT_DIR$/zq/company_notifications.php" />
         <option value="$PROJECT_DIR$/zq/company_mark_notification.php" />
+        <option value="$PROJECT_DIR$/zq/student_notifications.php" />
+        <option value="$PROJECT_DIR$/zq/company_notifications.php" />
       </list>
     </option>
   </component>
@@ -296,12 +259,12 @@
       <workItem from="1525812463251" duration="124000" />
       <workItem from="1525837132501" duration="483000" />
       <workItem from="1525838010294" duration="1499000" />
-      <workItem from="1525876719809" duration="6963000" />
+      <workItem from="1525876719809" duration="7600000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="90474000" />
+    <option name="totallyTimeSpent" value="91111000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1440" height="877" extended-state="0" />
@@ -342,13 +305,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/login.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="6" column="3" selection-start-line="6" selection-start-column="3" selection-end-line="6" selection-end-column="3" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/index.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="615">
@@ -692,16 +648,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/zq/company_notifications.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="303">
-          <caret line="42" column="12" lean-forward="true" selection-start-line="34" selection-start-column="4" selection-end-line="42" selection-end-column="12" />
-          <folding>
-            <element signature="n#style#0;n#h2#1;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/lib/logout.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="102">
@@ -711,8 +657,25 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/zq/company_mark_notification.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="486">
-          <caret line="71" column="46" selection-start-line="71" selection-start-column="46" selection-end-line="71" selection-end-column="46" />
+        <state relative-caret-position="350">
+          <caret line="63" lean-forward="true" selection-start-line="63" selection-end-line="63" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/zq/student_notifications.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-164">
+          <caret line="74" column="15" selection-start-line="74" selection-start-column="15" selection-end-line="74" selection-end-column="15" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/zq/company_notifications.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="673">
+          <caret line="158" column="22" selection-start-line="158" selection-start-column="22" selection-end-line="158" selection-end-column="22" />
+          <folding>
+            <element signature="n#style#0;n#h2#1;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

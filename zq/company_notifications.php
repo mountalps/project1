@@ -28,9 +28,10 @@
     $resultNewApplicationInfo = mysqli_query($conToDB, $sqlNewApplicationInfo);
     $newApplicationInfo = mysqli_fetch_all($resultNewApplicationInfo, MYSQLI_ASSOC);
     
-    $sqlNewApplicationInfo = "select * from Application where tocid = '{$cid}' and astatus = 'unread';";
-    $resultNewApplicationInfo = mysqli_query($conToDB, $sqlNewApplicationInfo);
-    $newApplicationInfo = mysqli_fetch_all($resultNewApplicationInfo, MYSQLI_ASSOC);
+    $sqlAllApplicationInfo = "select * from Application where tocid = '{$cid}' and astatus = 'read';";
+    $resultAllApplicationInfo = mysqli_query($conToDB, $sqlAllApplicationInfo);
+    $allApplicationInfo = mysqli_fetch_all($resultAllApplicationInfo, MYSQLI_ASSOC);
+    var_dump($allApplicationInfo);
     
 ?>
 
@@ -107,8 +108,53 @@
                 <input type="submit" name="markread" value="Mark as Read">
             </form>
             </p>
-        
-        
+        <?php endforeach;?>
+    <?php endif;?>
+    
+    
+    <button onclick="myFunction2()" id="hide-push-button-1">Hide read notifications</button>
+    <script type="text/javascript">
+        function myFunction2() {
+            var y = document.getElementById("hide-push-button-1");
+            if (y.innerText === "Hide read notifications") {
+                y.innerText = "Show read notifications";
+            } else {
+                y.innerText = "Hide read notifications";
+            }
+            for (let el of document.querySelectorAll('.push-message-read')) {
+                if (el.style.display === "none") {
+                    el.style.display = 'block';
+                } else {
+                    el.style.display = 'none';
+                }
+            }
+        }
+    </script>
+    <?php if (count($allApplicationInfo) != 0): ?>
+        <?php foreach ($allApplicationInfo as &$application): ?>
+            <?php
+//            var_dump($newApplication[0]);
+            
+            $stuid = $application['fromsid'];
+            $sqlStuInfo = "select * from Student where sid = '{$stuid}';";
+            $resultStuInfo = mysqli_query($conToDB, $sqlStuInfo);
+            $stuInfo = mysqli_fetch_all($resultStuInfo, MYSQLI_ASSOC);
+//            var_dump($stuInfo);
+            
+            $jobid = $application['jid'];
+            $sqlGetJobInfo = "select * from Job where jid = '{$jobid}';";
+            $resultGetJobInfo = mysqli_query($conToDB, $sqlGetJobInfo);
+            $jobInfo = mysqli_fetch_all($resultGetJobInfo, MYSQLI_ASSOC);
+//            var_dump($jobInfo);
+            ?>
+            <p>
+            <form class="student-info" action="company_check_student.php" method="post" id="student-info-form">
+                <button type="submit" name="sid" value="<?php echo $stuid; ?>"><?php echo $stuInfo[0]['sname']; ?></button> applies:
+            </form>
+            <form class="job-info" action="job_info_for_company.php" method="post" id="job-info-form">
+                <button type="submit" name="jid" value="<?php echo $jobid; ?>"><?php echo $jobInfo[0]['title']; ?></button>
+            </form>
+            </p>
         <?php endforeach;?>
     <?php endif;?>
     
