@@ -159,7 +159,7 @@ if ($checkUser != "student"){
         </div>
         <div class="display-search-result-student">
             <div class="display-student">
-                <h2><p>Students accoring to your search:</p></h2>
+                <h2><p>Students according to your search:</p></h2>
                 <?php
                     $students = [];
                     foreach ($student_query_result as $result) {
@@ -185,7 +185,7 @@ if ($checkUser != "student"){
                 ?>
             </div>
             <div class="display-job">
-                <h2><p>Jobs accoring to your search:</p></h2>
+                <h2><p>Jobs according to your search:</p></h2>
                 <?php
                     $jobs = [];
                     foreach ($job_query_result as $result) {
@@ -215,7 +215,7 @@ if ($checkUser != "student"){
                 ?>
             </div>
             <div class="display-company">
-                <h2><p>Companies accoring to your search:</p></h2>
+                <h2><p>Companies according to your search:</p></h2>
                 <?php
                     $companies = [];
                     foreach ($company_query_result as $result) {

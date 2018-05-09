@@ -17,6 +17,10 @@
 
     session_start();
     $username = $_SESSION['user'];
+    $conn = new mysqli($DBhost, $DBuser, $DBpassword, $DBdatabase, $port);
+    if ($conn->connect_error) {
+        die("Connection failed: " . $conn->connect_error);
+    }
 
 ?>
 
@@ -51,6 +55,18 @@
             </div>
         </nav>
     </div>
+    <?php
+    $row = $conn->query("select sname, university, major, degree, GPA, keywords, resume from Student where username = '{$username}';")->fetch_assoc();
+    // var_dump($row);
+    $sname = $row['sname'];
+    $university = $row['university'];
+    $major = $row['major'];
+    $degree = $row['degree'];
+    $gpa = $row['GPA'];
+    $keywords = $row['keywords'];
+    $resume = $row['resume'];
+    ?>
+    <div class="wrapper">
     <div class="modify_student_profile">
         <h1>Please input what you want to change</h1>
         <h4>If you don't want to change some profile, just leave it blank</h4>
@@ -63,33 +79,32 @@
 
                 <tr>
                     <td>You name:</td>
-                    <td><input type="text" name="sname" size="35"></td>
+                    <td><input type="text" name="sname" size="35" placeholder="current: <?php echo $sname; ?>"></td>
                 </tr>
                 <tr>
                     <td>University:</td>
-                    <td><input type="text" name="university" size="35"></td>
+                    <td><input type="text" name="university" size="35" placeholder="current: <?php echo $university; ?>"></td>
                 </tr>
                 <tr>
                     <td>Major:</td>
-                    <td><input type="text" name="major" size="35"></td>
+                    <td><input type="text" name="major" size="35" placeholder="current: <?php echo $major; ?>"></td>
                 </tr>
                 <tr>
                     <td>Degree:</td>
-                    <td><input type="text" name="degree" size="35"></td>
+                    <td><input type="text" name="degree" size="35" placeholder="current: <?php echo $degree; ?>"></td>
                 </tr>
                 <tr>
                     <td>GPA:</td>
-                    <td><input type="text" name="GPA" size="35"></td>
+                    <td><input type="text" name="GPA" size="35" placeholder="current: <?php echo $gpa; ?>"></td>
                 </tr>
                 <tr>
                     <td>Keywords:</td>
-                    <td><input type="text" name="keywords" size="35"></td>
+                    <td><input type="text" name="keywords" size="35" placeholder="current: <?php echo $keywords; ?>"></td>
                 </tr>
                 <tr>
                     <td>Resume:</td>
-                    <!-- <td><input type="file" name="resume" size="35"></td> -->
                     <td>
-                        <textarea name="resume" rows="10" cols="50" maxlength="4800"></textarea>
+                        <textarea name="resume" rows="10" cols="50" maxlength="4800" placeholder="current: <?php echo $resume; ?>"></textarea>
                     </td>
                 </tr>
                 <tr>
@@ -103,10 +118,11 @@
                 </tr>
                 <tr>
                     <td></td>
-                    <td align="right"><input type="submit" value="Sign up"></td>
+                    <td align="right"><input type="submit" value="Modify"></td>
                 </tr>
             </table>
         </form>
+    </div>
     </div>
 </body>
 </html>
