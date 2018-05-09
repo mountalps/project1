@@ -28,7 +28,7 @@
     $resultNewApplicationInfo = mysqli_query($conToDB, $sqlNewApplicationInfo);
     $newApplicationInfo = mysqli_fetch_all($resultNewApplicationInfo, MYSQLI_ASSOC);
 //    var_dump($newApplicationInfo);
-    echo count($newApplicationInfo);
+//    echo count($newApplicationInfo);
 //    var_dump($availableJobInfo);
 ?>
 <!DOCTYPE html>
@@ -49,7 +49,7 @@
       <nav>
         <div class="wrapper">
           <a class="active" href="0_company-homepage.php">Home</a> |
-          <a href="company_jobs.php">Notifications</a> |
+          <a href="company_notifications.php">Notifications</a> |
           <a href="company_jobs.php">Your Jobs</a> |
           <a href="company_publish_jobs.php">Publish A Job</a> |
           <a href="company_push_jobs.php">Push A Job</a> |
@@ -115,8 +115,9 @@
     <div class="new job applicants">
         <?php echo "<h2>Hello! {$companyInfo[0]['cusername']}</h2>"?>
         <?php if (count($newApplicationInfo) != 0): ?>
-        <h2 style="color:red">You have new applicants, please check in your notification!</h2>
-        
+            <h2 style="color:red">You have new applicants, please check in your notification!</h2>
+        <?php else:?>
+            <h2 style="color:green">You have read all your notifications</h2>
         <?php endif;?>
     </div>
 
