@@ -24,6 +24,7 @@ if ($checkUser != "student"){
             $conn = new mysqli($DBhost, $DBuser, $DBpassword, $DBdatabase, $port);
             $usersid = ($conn->query("select sid from Student where username = '{$username}';"))->fetch_assoc()['sid'];
             if ($usersid == $fromsid) {
+                date_default_timezone_set("America/New_York");
                 $timeinserted = date("Y-m-d H:i:s");
                 $conn->query("insert into NotificationToStudent values(null, {$fromsid}, null, {$tosid}, 'unread', '{$timeinserted}', 'Tips');");
                 $result = $conn->query("select ns.nid from NotificationToStudent ns where ns.fromsid = {$fromsid} and ns.tosid = {$tosid} and ns.nstatus = 'unread' and ns.notificationtype = 'Tips' and ns.ntime = '{$timeinserted}';")->fetch_assoc();

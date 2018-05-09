@@ -24,6 +24,7 @@ if ($checkUser != "student"){
             $fromsid = $_POST['fromsid'];
             foreach ($_POST['forwardfriends'] as $sid) {
                 if ($conn->query("select f.nid as coun from NotificationToStudent ns, Forward f where ns.fromsid = {$fromsid} and ns.tosid = {$sid} and f.jid = {$jid} and f.nid = ns.nid;")->num_rows == 0) {
+                    date_default_timezone_set("America/New_York");
                     $time = date("Y-m-d H:i:s");
                     $conn->query("insert into NotificationToStudent values(null, {$fromsid}, null, {$sid}, 'unread', '{$time}', 'Forward');");
                     $nid = $conn->query("select nid from NotificationToStudent where fromsid={$fromsid} and tosid={$sid} and ntime='{$time}' and notificationtype='Forward';")->fetch_assoc()['nid'];
