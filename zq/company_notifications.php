@@ -31,7 +31,7 @@
     $sqlAllApplicationInfo = "select * from Application where tocid = '{$cid}' and astatus = 'read';";
     $resultAllApplicationInfo = mysqli_query($conToDB, $sqlAllApplicationInfo);
     $allApplicationInfo = mysqli_fetch_all($resultAllApplicationInfo, MYSQLI_ASSOC);
-    var_dump($allApplicationInfo);
+//    var_dump($allApplicationInfo);
     
 ?>
 
@@ -77,6 +77,7 @@
 <div class="notification display">
     
     <?php if (count($newApplicationInfo) != 0): ?>
+        <h2>Here are your unread notifications:</h2>
         <?php foreach ($newApplicationInfo as &$newApplication): ?>
         <?php
 //            var_dump($newApplication[0]);
@@ -111,7 +112,8 @@
         <?php endforeach;?>
     <?php endif;?>
     
-    
+    <hr>
+    <h2>You have read all these notifications:</h2>
     <button onclick="myFunction2()" id="hide-push-button-1">Hide read notifications</button>
     <script type="text/javascript">
         function myFunction2() {
@@ -131,6 +133,7 @@
         }
     </script>
     <?php if (count($allApplicationInfo) != 0): ?>
+        
         <?php foreach ($allApplicationInfo as &$application): ?>
             <?php
 //            var_dump($newApplication[0]);
