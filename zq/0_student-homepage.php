@@ -104,6 +104,7 @@ if ($checkUser != "student"){
           }
       }
       $conn->close();
+      
       ?>
     </div>
 </body>
