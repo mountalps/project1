@@ -203,7 +203,7 @@ if ($checkUser != "company"){
                 foreach ($jobs as $row) {
                     if (!in_array($row,$checkerjob)){
                         ?>
-                        <p><form class="job-info" action="job_info.php" method="post" id="job-info-form">
+                        <p><form class="job-info" action="job_info_for_company.php" method="post" id="job-info-form">
                             <input type="hidden" name="sid" value="<?php echo $sid; ?>">
                             <button type="submit" name="jid" value="<?php echo $row['jid']; ?>"><?php echo $row['title']; ?></button>
                             <?php echo "at {$row['jcity']}, {$row['jstate']}"; ?>
