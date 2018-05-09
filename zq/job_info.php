@@ -36,6 +36,7 @@ if ($checkUser != "student"){
         $cname = $row['cname'];
         $expired = $row['expired'];
         $nid = $_POST['nid'];
+        // var_dump($nid);
         if ($nid!="") {
             $conn->query("update NotificationToStudent set nstatus='read' where nid={$nid};");
         }
