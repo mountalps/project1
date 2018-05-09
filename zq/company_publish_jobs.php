@@ -83,7 +83,7 @@
         <form class="create-job-form" action="company_publish_jobs_result.php" method="post">
           <fieldset>
             <h2>Create a New Job</h2>
-            <p>Required fields are followed by <strong><abbr title="required">*</abbr></strong>.</p>
+            <p>All fields are required!</p>
             <p>
               <label for="company-name" style="font-weight:bold;">Company Name: <?php echo $companyInfo[0][3]?></label>
             </p>
