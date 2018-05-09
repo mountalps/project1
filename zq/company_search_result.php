@@ -169,14 +169,14 @@ if ($checkUser != "company"){
                             $students[] = $row;
                         }
                     } else {
-                        echo "<p>Sorry, we currentally do not have any students.</p>";
+                        echo "<p>Sorry, we currently do not have any students.</p>";
                     }
                 }
                 $checkerstu = [];
                 foreach ($students as $row) {
                     if (!in_array($row, $checkerstu)) {
                         ?>
-                        <p><form class="student-info" action="student_info.php" method="post" id="student-info-form">
+                        <p><form class="student-info" action="company_check_student.php" method="post" id="student-info-form">
                             <button type="submit" name="sid" value="<?php echo $row['sid']; ?>"><?php echo $row['sname']; ?></button>
                         </form></p>
                         <?php
@@ -204,7 +204,7 @@ if ($checkUser != "company"){
                     if (!in_array($row,$checkerjob)){
                         ?>
                         <p><form class="job-info" action="job_info_for_company.php" method="post" id="job-info-form">
-                            <input type="hidden" name="sid" value="<?php echo $sid; ?>">
+<!--                            <input type="hidden" name="sid" value="--><?php //echo $sid; ?><!--">-->
                             <button type="submit" name="jid" value="<?php echo $row['jid']; ?>"><?php echo $row['title']; ?></button>
                             <?php echo "at {$row['jcity']}, {$row['jstate']}"; ?>
                         </form></p>
