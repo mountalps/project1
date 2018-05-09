@@ -130,6 +130,25 @@ if ($checkUser != "student"){
             <li>
             <div class="forward">
                 <h3>Forwared Jobs From Friend:</h3>
+                <button onclick="myFunction1()" id="hide-forward-button-1">Hide clicked forwared jobs</button>
+                <script type="text/javascript">
+                    function myFunction1() {
+                        var y = document.getElementById("hide-forward-button-1");
+                        if (y.innerText === "Hide clicked forwared jobs") {
+                            y.innerText = "Show clicked forwared jobs";
+                        } else {
+                            y.innerText = "Hide clicked forwared jobs";
+                        }
+                        for (let el of document.querySelectorAll('.forwarded-message-read')) {
+                            if (el.style.display === "none") {
+                                el.style.display = 'block';
+                            } else {
+                                el.style.display = 'none';
+                            }
+
+                        }
+                    }
+                </script>
                 <?php
                     if ($resultf->num_rows > 0) {
                         // echo "<p>Here are some job forwards:</p>";
@@ -137,10 +156,10 @@ if ($checkUser != "student"){
 
 
                             if ($row['nstatus'] == 'read'){
-                                echo "<div class='forwarded-message-read' style='background-color:#e1e1e1'><p>";
+                                echo "<div class='forwarded-message-read' style='background-color:#e1e1e1;display:block;'><p>";
                                 echo "<div style='color:red;'>Your alread checked this job</div>";
                             } else {
-                                echo "<div class='forwarded-message' style='background-color:#e1e1e1'><p>";
+                                echo "<div class='forwarded-message' style='background-color:#e1e1e1; display:block;'><p>";
                             }
                             echo "You received a job forward from ";
                     ?>
