@@ -2,9 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8aa35af9-4704-4c2e-9ded-47aa05ea5462" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/zq/company_info_for_company.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/zq/company_search_result.php" beforeDir="false" afterPath="$PROJECT_DIR$/zq/company_search_result.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SQLfile/create.sql" beforeDir="false" afterPath="$PROJECT_DIR$/SQLfile/create.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/zq/0_company-homepage.php" beforeDir="false" afterPath="$PROJECT_DIR$/zq/0_company-homepage.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -24,70 +23,53 @@
     <option name="HIDDEN_KINDS">
       <set />
     </option>
-    <expand />
+    <expand>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="dbproject_new@dbprojectjobster.cinhv01qdhxv.us-east-2.rds.amazonaws.com" type="feb32156:DbDataSourceImpl" />
+      </path>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="dbproject_new@dbprojectjobster.cinhv01qdhxv.us-east-2.rds.amazonaws.com" type="feb32156:DbDataSourceImpl" />
+        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
+      </path>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="dbproject_new@dbprojectjobster.cinhv01qdhxv.us-east-2.rds.amazonaws.com" type="feb32156:DbDataSourceImpl" />
+        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
+        <item name="dbproject_new: schema" type="c314c289:MysqlImplModel$Schema" />
+      </path>
+    </expand>
     <select />
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="company_search_result.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/zq/company_search_result.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1885">
-              <caret line="239" column="29" lean-forward="true" selection-start-line="239" selection-start-column="29" selection-end-line="239" selection-end-column="29" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="0_company-homepage.php" pinned="false" current-in-tab="false">
+      <file leaf-file-name="0_company-homepage.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/zq/0_company-homepage.php">
           <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="221">
+              <caret line="114" column="69" selection-start-line="114" selection-start-column="69" selection-end-line="114" selection-end-column="69" />
+              <folding>
+                <element signature="n#style#0;n#h2#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="create.sql" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/SQLfile/create.sql">
+          <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="427">
-              <caret line="56" column="10" lean-forward="true" selection-start-line="41" selection-start-column="4" selection-end-line="56" selection-end-column="10" />
+              <caret line="92" column="4" lean-forward="true" selection-start-line="92" selection-start-column="4" selection-end-line="92" selection-end-column="4" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="company_info.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/zq/company_info.php">
+      <file leaf-file-name="logout.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/lib/logout.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="204">
-              <caret line="12" column="19" selection-end-line="126" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="company_info_for_company.php" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/zq/company_info_for_company.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="487">
-              <caret line="113" column="47" lean-forward="true" selection-start-line="113" selection-start-column="47" selection-end-line="113" selection-end-column="47" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="student_search_result.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/zq/student_search_result.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="320">
-              <caret line="205" column="44" lean-forward="true" selection-start-line="205" selection-start-column="44" selection-end-line="205" selection-end-column="44" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="company_check_student.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/zq/company_check_student.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="195">
-              <caret line="68" column="26" lean-forward="true" selection-start-line="68" selection-start-column="26" selection-end-line="68" selection-end-column="26" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/index.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="238">
-              <caret line="14" column="20" selection-start-line="14" selection-start-column="20" selection-end-line="14" selection-end-column="20" />
+            <state relative-caret-position="153">
+              <caret line="14" lean-forward="true" selection-start-line="14" selection-end-line="14" />
             </state>
           </provider>
         </entry>
@@ -137,7 +119,6 @@
         <option value="$PROJECT_DIR$/test.php" />
         <option value="$PROJECT_DIR$/companysignup.php" />
         <option value="$PROJECT_DIR$/login.php" />
-        <option value="$PROJECT_DIR$/SQLfile/create.sql" />
         <option value="$PROJECT_DIR$/studentsignup.php" />
         <option value="$PROJECT_DIR$/zq/company_jobs.php" />
         <option value="$PROJECT_DIR$/zq/company_modify_profile.php" />
@@ -146,10 +127,11 @@
         <option value="$PROJECT_DIR$/zq/company_publish_jobs_result.php" />
         <option value="$PROJECT_DIR$/zq/company_push_jobs.php" />
         <option value="$PROJECT_DIR$/zq/company_push_jobs_result.php" />
-        <option value="$PROJECT_DIR$/zq/0_company-homepage.php" />
         <option value="$PROJECT_DIR$/zq/company_check_student.php" />
         <option value="$PROJECT_DIR$/zq/company_search_result.php" />
         <option value="$PROJECT_DIR$/zq/company_info_for_company.php" />
+        <option value="$PROJECT_DIR$/SQLfile/create.sql" />
+        <option value="$PROJECT_DIR$/zq/0_company-homepage.php" />
       </list>
     </option>
   </component>
@@ -262,12 +244,12 @@
       <workItem from="1525812463251" duration="124000" />
       <workItem from="1525837132501" duration="483000" />
       <workItem from="1525838010294" duration="1499000" />
-      <workItem from="1525876719809" duration="2055000" />
+      <workItem from="1525876719809" duration="3456000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="85566000" />
+    <option name="totallyTimeSpent" value="86967000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1440" height="877" extended-state="0" />
@@ -280,9 +262,9 @@
       <window_info anchor="bottom" id="Run" order="2" weight="0.32893" />
       <window_info anchor="bottom" id="Version Control" order="7" />
       <window_info anchor="bottom" id="Terminal" order="7" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.19599427" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.19599427" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
-      <window_info anchor="right" id="Database" order="3" weight="0.22532189" />
+      <window_info active="true" anchor="right" id="Database" order="3" visible="true" weight="0.22532189" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info id="Favorites" order="2" side_tool="true" />
@@ -308,13 +290,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/studentsignup.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="945">
-          <caret line="68" selection-start-line="66" selection-end-line="68" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/companysignup.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1200">
@@ -470,13 +445,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/lib/logout.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="12" column="9" lean-forward="true" selection-start-line="12" selection-start-column="9" selection-end-line="12" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/lib/fun.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1054">
@@ -510,13 +478,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="384">
           <caret line="242" column="54" selection-start-line="242" selection-start-column="54" selection-end-line="242" selection-end-column="54" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/SQLfile/create.sql">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="15" column="6" lean-forward="true" selection-start-line="15" selection-start-column="6" selection-end-line="15" selection-end-column="6" />
         </state>
       </provider>
     </entry>
@@ -611,6 +572,13 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/zq/company_check_student.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="195">
+          <caret line="68" column="26" lean-forward="true" selection-start-line="68" selection-start-column="26" selection-end-line="68" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/zq/student_search_result.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="320">
@@ -618,10 +586,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/zq/company_check_student.php">
+    <entry file="file://$PROJECT_DIR$/zq/company_info_for_company.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="195">
-          <caret line="68" column="26" lean-forward="true" selection-start-line="68" selection-start-column="26" selection-end-line="68" selection-end-column="26" />
+        <state relative-caret-position="1734">
+          <caret line="102" column="49" lean-forward="true" selection-start-line="102" selection-start-column="49" selection-end-line="102" selection-end-column="49" />
         </state>
       </provider>
     </entry>
@@ -634,22 +602,61 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/zq/company_search_result.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1885">
-          <caret line="239" column="29" lean-forward="true" selection-start-line="239" selection-start-column="29" selection-end-line="239" selection-end-column="29" />
+        <state relative-caret-position="141">
+          <caret line="15" column="21" selection-start-line="15" selection-start-column="21" selection-end-line="15" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/logout.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="14" lean-forward="true" selection-start-line="14" selection-end-line="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/SQLfile/create.sql">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="427">
+          <caret line="92" column="4" lean-forward="true" selection-start-line="92" selection-start-column="4" selection-end-line="92" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="uml://DATABASE/167a39fc-efb9-4dba-bc92-090588a6b30d.SCHEMA:dbproject_new">
+      <provider selected="true" editor-type-id="UmlEditorProvider">
+        <state>
+          <ID>DATABASE</ID>
+          <OriginalElement>167a39fc-efb9-4dba-bc92-090588a6b30d.SCHEMA:dbproject_new</OriginalElement>
+          <nodes>
+            <node x="" y="">167a39fc-efb9-4dba-bc92-090588a6b30d.TABLE:dbproject_new.Forward</node>
+            <node x="" y="">167a39fc-efb9-4dba-bc92-090588a6b30d.TABLE:dbproject_new.NotificationToStudent</node>
+            <node x="" y="">167a39fc-efb9-4dba-bc92-090588a6b30d.TABLE:dbproject_new.Company</node>
+            <node x="" y="">167a39fc-efb9-4dba-bc92-090588a6b30d.TABLE:dbproject_new.Application</node>
+            <node x="" y="">167a39fc-efb9-4dba-bc92-090588a6b30d.TABLE:dbproject_new.Student</node>
+            <node x="" y="">167a39fc-efb9-4dba-bc92-090588a6b30d.TABLE:dbproject_new.Friend</node>
+            <node x="" y="">167a39fc-efb9-4dba-bc92-090588a6b30d.TABLE:dbproject_new.Job</node>
+            <node x="" y="">167a39fc-efb9-4dba-bc92-090588a6b30d.TABLE:dbproject_new.Tips</node>
+            <node x="" y="">167a39fc-efb9-4dba-bc92-090588a6b30d.TABLE:dbproject_new.Push</node>
+            <node x="" y="">167a39fc-efb9-4dba-bc92-090588a6b30d.TABLE:dbproject_new.Broadcast</node>
+            <node x="" y="">167a39fc-efb9-4dba-bc92-090588a6b30d.TABLE:dbproject_new.Follow</node>
+          </nodes>
+          <notes />
+          <edges />
+          <settings layout="Hierarchic Group" zoom="0.7741626794258373" x="502.5" y="469.39307787391846" />
+          <SelectedNodes />
+          <Categories>
+            <Category>Key columns</Category>
+            <Category>Columns</Category>
+          </Categories>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/zq/0_company-homepage.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="427">
-          <caret line="56" column="10" lean-forward="true" selection-start-line="41" selection-start-column="4" selection-end-line="56" selection-end-column="10" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/zq/company_info_for_company.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="487">
-          <caret line="113" column="47" lean-forward="true" selection-start-line="113" selection-start-column="47" selection-end-line="113" selection-end-column="47" />
+        <state relative-caret-position="221">
+          <caret line="114" column="69" selection-start-line="114" selection-start-column="69" selection-end-line="114" selection-end-column="69" />
+          <folding>
+            <element signature="n#style#0;n#h2#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

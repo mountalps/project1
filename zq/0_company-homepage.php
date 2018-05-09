@@ -23,6 +23,12 @@
     $sqlGetAvailableJobInfo = "select * from Job where cid = '{$cid}' and expirationDate > now();";
     $resultAvailableJobInfo = mysqli_query($conToDB, $sqlGetAvailableJobInfo);
     $availableJobInfo = mysqli_fetch_all($resultAvailableJobInfo, MYSQLI_ASSOC);
+    
+    $sqlNewApplicationInfo = "select * from Application where tocid = '{$cid}' and astatus = 'unread';";
+    $resultNewApplicationInfo = mysqli_query($conToDB, $sqlNewApplicationInfo);
+    $newApplicationInfo = mysqli_fetch_all($resultNewApplicationInfo, MYSQLI_ASSOC);
+//    var_dump($newApplicationInfo);
+    echo count($newApplicationInfo);
 //    var_dump($availableJobInfo);
 ?>
 <!DOCTYPE html>
@@ -43,6 +49,7 @@
       <nav>
         <div class="wrapper">
           <a class="active" href="0_company-homepage.php">Home</a> |
+          <a href="company_jobs.php">Notifications</a> |
           <a href="company_jobs.php">Your Jobs</a> |
           <a href="company_publish_jobs.php">Publish A Job</a> |
           <a href="company_push_jobs.php">Push A Job</a> |
@@ -104,10 +111,18 @@
 //      ?>
 <!--      </div>-->
 <!--    </div>-->
+    
+    <div class="new job applicants">
+        <?php echo "<h2>Hello! {$companyInfo[0]['cusername']}</h2>"?>
+        <?php if (count($newApplicationInfo) != 0): ?>
+        <h2 style="color:red">You have new applicants, please check in your notification!</h2>
+        
+        <?php endif;?>
+    </div>
 
 <div class="job_display">
-    <?php echo "<h2>Hello! {$companyInfo[0]['cusername']}</h2>"?>
-    <h2>Here are all your available jobs:</h2>
+    
+    <h2>Here are all your available jobs and their applicants:</h2>
     <?php foreach ($availableJobInfo as &$job): ?>
         <?php
             $sqlGetApplications = "select * from Application where tocid = '{$companyInfo[0]['cid']}' and jid = '{$job['jid']}';";

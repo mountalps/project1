@@ -75,6 +75,7 @@ CREATE TABLE `Application` (
   `fromsid` INT NOT NULL,
   `tocid` INT NOT NULL,
   `jid` INT NOT NULL,
+  `status` Varchar(10) default 'unread' not null,
   PRIMARY KEY (`atime`, `fromsid`, `jid`),
   FOREIGN KEY (`fromsid`) REFERENCES `Student` (`sid`),
   FOREIGN KEY (`tocid`) REFERENCES `Company` (`cid`),
