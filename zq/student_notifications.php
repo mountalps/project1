@@ -53,7 +53,7 @@ if ($checkUser != "student"){
             $sname = $q['sname'];
             $sid = $q['sid'];
             // the rest of the text
-            $hellostr = "Helloha " . $sname . ",";
+            $hellostr = "Hello " . $sname . ",";
             echo "<h1>$hellostr</h1>";
         ?>
         <div>
