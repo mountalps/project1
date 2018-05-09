@@ -78,8 +78,9 @@ if ($checkUser != "student"){
           </div>
           <?php
       }
-      $query = "select j.title, j.jcity, j.jstate, j.jcountry, j.salary, c.cname, j.jdescription, j.major, j.degree FROM Job j, Company c, Follow f, Student s where j.cid = c.cid and c.cid = f.cid and f.sid = s.sid and s.username ='{$username}';";
+      $query = "select j.jid, j.title, j.jcity, j.jstate, j.jcountry, j.salary, c.cname, j.jdescription, j.major, j.degree FROM Job j, Company c, Follow f, Student s where j.cid = c.cid and c.cid = f.cid and f.sid = s.sid and s.username ='{$username}';";
       $result = $conn->query($query);
+      $sid = $conn->query("select sid from Student where username = '{$username}';")->fetch_assoc()['sid'];
       if ($result->num_rows > 0) {?>
         <div>
         Here are all jobs from companies you follow:<br>
@@ -88,8 +89,15 @@ if ($checkUser != "student"){
           while ($row = $result->fetch_assoc()) {
               echo "<a href='#' class='job-a'>";
               echo "<div class='job-intro'>";
-              echo "<div class='job-header'>
-                    <p>Job Title: ".$row["title"]."</p></div>";
+            ?>
+              <div class='job-header'>
+                <p><form class="job-info" action="job_info.php" method="post" id="job-info-form">
+                    <input type="hidden" name="sid" value="<?php echo $sid; ?>">
+                    Job Title:
+                    <button type="submit" name="jid" value="<?php echo $row['jid']; ?>"><?php echo $row['title']; ?></button>
+                </form></p>
+                </div>
+            <?php
               echo "<div class='job-company'>
                     <p>By Company: ".$row["cname"]."</p></div>";
               echo "<div class='job-description'>
@@ -104,7 +112,6 @@ if ($checkUser != "student"){
           }
       }
       $conn->close();
-      
       ?>
     </div>
 </body>
