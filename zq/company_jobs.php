@@ -109,7 +109,7 @@
 
     <div class="job_display">
         <?php echo "<h2>Hello! {$companyInfo[0]['cusername']}</h2>"?>
-        <h2>Here are all your available jobs:</h2>
+        <h2>Here are all your jobs:</h2>
         <?php foreach ($allJobInfo as &$job): ?>
             
             <table border="1 pix">
