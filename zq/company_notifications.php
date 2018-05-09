@@ -1,14 +1,14 @@
 <?php
     include_once '../lib/fun.php';
     include_once '../lib/dbinfo.php';
-    
+
     $checkUser = checkLogin();
     //    var_dump($checkUser);
     if ($checkUser == "student"){
         header('Location: 0_student-homepage.php');
         exit;
     }
-    
+
     session_start();
     $username = $_SESSION['user'];
     $conToDB = mysqlInit($DBhost, $DBuser, $DBpassword, $DBdatabase, $port);
@@ -16,23 +16,23 @@
     $resultCompanyInfo = mysqli_query($conToDB, $sqlGetCompanyInfo);
     $companyInfo = mysqli_fetch_all($resultCompanyInfo, MYSQLI_ASSOC);
     $_SESSION['companyInfo'] = $companyInfo;
-    
+
     //    var_dump($companyInfo);
-    
+
     $cid = $companyInfo[0]['cid'];
     $sqlGetAvailableJobInfo = "select * from Job where cid = '{$cid}' and expirationDate > now();";
     $resultAvailableJobInfo = mysqli_query($conToDB, $sqlGetAvailableJobInfo);
     $availableJobInfo = mysqli_fetch_all($resultAvailableJobInfo, MYSQLI_ASSOC);
-    
+
     $sqlNewApplicationInfo = "select * from Application where tocid = '{$cid}' and astatus = 'unread';";
     $resultNewApplicationInfo = mysqli_query($conToDB, $sqlNewApplicationInfo);
     $newApplicationInfo = mysqli_fetch_all($resultNewApplicationInfo, MYSQLI_ASSOC);
-    
+
     $sqlAllApplicationInfo = "select * from Application where tocid = '{$cid}' and astatus = 'read';";
     $resultAllApplicationInfo = mysqli_query($conToDB, $sqlAllApplicationInfo);
     $allApplicationInfo = mysqli_fetch_all($resultAllApplicationInfo, MYSQLI_ASSOC);
 //    var_dump($allApplicationInfo);
-    
+
 ?>
 
 <!DOCTYPE html>
@@ -75,19 +75,19 @@
 
 
 <div class="notification display">
-    
+
     <?php if (count($newApplicationInfo) != 0): ?>
         <h2>Here are your unread notifications:</h2>
         <?php foreach ($newApplicationInfo as &$newApplication): ?>
         <?php
 //            var_dump($newApplication[0]);
-            
+
             $stuid = $newApplication['fromsid'];
             $sqlStuInfo = "select * from Student where sid = '{$stuid}';";
             $resultStuInfo = mysqli_query($conToDB, $sqlStuInfo);
             $stuInfo = mysqli_fetch_all($resultStuInfo, MYSQLI_ASSOC);
 //            var_dump($stuInfo);
-            
+
             $jobid = $newApplication['jid'];
             $sqlGetJobInfo = "select * from Job where jid = '{$jobid}';";
             $resultGetJobInfo = mysqli_query($conToDB, $sqlGetJobInfo);
@@ -101,7 +101,7 @@
             <form class="job-info" action="job_info_for_company.php" method="post" id="job-info-form">
                 <button type="submit" name="jid" value="<?php echo $jobid; ?>"><?php echo $jobInfo[0]['title']; ?></button>
             </form>
-        
+
             <form class="markread" action="company_mark_notification.php" method="post" id="mark">
                 <input type="hidden"  name="atime" value="<?php echo $newApplication['atime']; ?>" >
                 <input type="hidden"  name="fromsid" value="<?php echo $stuid; ?>" >
@@ -111,39 +111,35 @@
             </p>
         <?php endforeach;?>
     <?php endif;?>
-    
+
     <hr>
     <h2>You have read all these notifications:</h2>
     <button onclick="myFunction2()" id="hide-push-button-1">Hide read notifications</button>
     <script type="text/javascript">
         function myFunction2() {
             var y = document.getElementById("hide-push-button-1");
+            var x = document.getElementById("to_hide_company_notifications");
             if (y.innerText === "Hide read notifications") {
                 y.innerText = "Show read notifications";
+                x.style.display = "none";
             } else {
                 y.innerText = "Hide read notifications";
-            }
-            for (let el of document.querySelectorAll('.push-message-read')) {
-                if (el.style.display === "none") {
-                    el.style.display = 'block';
-                } else {
-                    el.style.display = 'none';
-                }
+                x.style.display = "block";
             }
         }
     </script>
     <?php if (count($allApplicationInfo) != 0): ?>
-        
+        <div class="to_hide" id="to_hide_company_notifications" style="display:block;">
         <?php foreach ($allApplicationInfo as &$application): ?>
             <?php
 //            var_dump($newApplication[0]);
-            
+
             $stuid = $application['fromsid'];
             $sqlStuInfo = "select * from Student where sid = '{$stuid}';";
             $resultStuInfo = mysqli_query($conToDB, $sqlStuInfo);
             $stuInfo = mysqli_fetch_all($resultStuInfo, MYSQLI_ASSOC);
 //            var_dump($stuInfo);
-            
+
             $jobid = $application['jid'];
             $sqlGetJobInfo = "select * from Job where jid = '{$jobid}';";
             $resultGetJobInfo = mysqli_query($conToDB, $sqlGetJobInfo);
@@ -160,7 +156,8 @@
             </p>
         <?php endforeach;?>
     <?php endif;?>
-    
+    </div>
+
 
 </div>
 
