@@ -44,26 +44,26 @@
       <file leaf-file-name="company_search_result.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/zq/company_search_result.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="519">
+            <state relative-caret-position="502">
               <caret line="40" column="6" selection-start-line="40" selection-start-column="6" selection-end-line="40" selection-end-column="6" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="company_unfollow_handle.php" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/zq/company_unfollow_handle.php">
+      <file leaf-file-name="company_jobs.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/zq/company_jobs.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="476">
-              <caret line="28" column="10" selection-start-line="28" selection-start-column="10" selection-end-line="28" selection-end-column="10" />
+            <state relative-caret-position="1175">
+              <caret line="111" column="37" lean-forward="true" selection-start-line="111" selection-start-column="37" selection-end-line="111" selection-end-column="37" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="company_mark_notification.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/zq/company_mark_notification.php">
+      <file leaf-file-name="company_unfollow_handle.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/zq/company_unfollow_handle.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="376">
-              <caret line="62" column="6" selection-start-line="62" selection-start-column="6" selection-end-line="62" selection-end-column="6" />
+            <state relative-caret-position="238">
+              <caret line="14" column="23" lean-forward="true" selection-start-line="14" selection-start-column="23" selection-end-line="14" selection-end-column="23" />
             </state>
           </provider>
         </entry>
@@ -186,7 +186,6 @@
         <option value="$PROJECT_DIR$/zq/student_notifications.php" />
         <option value="$PROJECT_DIR$/zq/company_check_student.php" />
         <option value="$PROJECT_DIR$/zq/company_info_for_company.php" />
-        <option value="$PROJECT_DIR$/zq/company_jobs.php" />
         <option value="$PROJECT_DIR$/zq/company_mark_notification.php" />
         <option value="$PROJECT_DIR$/zq/company_modify_profile.php" />
         <option value="$PROJECT_DIR$/zq/company_modify_profile_result.php" />
@@ -196,6 +195,7 @@
         <option value="$PROJECT_DIR$/zq/company_push_jobs.php" />
         <option value="$PROJECT_DIR$/zq/company_push_jobs_result.php" />
         <option value="$PROJECT_DIR$/zq/company_search_result.php" />
+        <option value="$PROJECT_DIR$/zq/company_jobs.php" />
       </list>
     </option>
   </component>
@@ -308,12 +308,12 @@
       <workItem from="1525812463251" duration="124000" />
       <workItem from="1525837132501" duration="483000" />
       <workItem from="1525838010294" duration="1499000" />
-      <workItem from="1525876719809" duration="8624000" />
+      <workItem from="1525876719809" duration="9263000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="92135000" />
+    <option name="totallyTimeSpent" value="92774000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1440" height="877" extended-state="0" />
@@ -325,9 +325,9 @@
       <window_info anchor="bottom" id="Run" order="2" weight="0.32893" />
       <window_info anchor="bottom" id="Version Control" order="7" />
       <window_info anchor="bottom" id="Terminal" order="7" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.19599427" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.19599427" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
-      <window_info anchor="right" id="Database" order="3" visible="true" weight="0.22532189" />
+      <window_info active="true" anchor="right" id="Database" order="3" visible="true" weight="0.22532189" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info id="Favorites" order="2" side_tool="true" />
@@ -643,13 +643,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/zq/company_jobs.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="477">
-          <caret line="57" column="6" selection-start-line="57" selection-start-column="6" selection-end-line="57" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/zq/company_mark_notification.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="376">
@@ -710,17 +703,24 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/zq/company_unfollow_handle.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="14" column="23" lean-forward="true" selection-start-line="14" selection-start-column="23" selection-end-line="14" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/zq/company_search_result.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="519">
+        <state relative-caret-position="502">
           <caret line="40" column="6" selection-start-line="40" selection-start-column="6" selection-end-line="40" selection-end-column="6" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/zq/company_unfollow_handle.php">
+    <entry file="file://$PROJECT_DIR$/zq/company_jobs.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="476">
-          <caret line="28" column="10" selection-start-line="28" selection-start-column="10" selection-end-line="28" selection-end-column="10" />
+        <state relative-caret-position="1175">
+          <caret line="111" column="37" lean-forward="true" selection-start-line="111" selection-start-column="37" selection-end-line="111" selection-end-column="37" />
         </state>
       </provider>
     </entry>
