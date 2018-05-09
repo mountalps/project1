@@ -78,7 +78,7 @@ if ($checkUser != "student"){
           </div>
           <?php
       }
-      $query = "SELECT j.title, j.jcity, j.jstate, j.jcountry, j.salary, c.cname, j.jdesciption, j.major, j.degree FROM Job j, Company c, Follow f, Student s where j.cid = c.cid and c.cid = f.cid and f.sid = s.sid and s.username ='{$username}';";
+      $query = "select j.title, j.jcity, j.jstate, j.jcountry, j.salary, c.cname, j.jdescription, j.major, j.degree FROM Job j, Company c, Follow f, Student s where j.cid = c.cid and c.cid = f.cid and f.sid = s.sid and s.username ='{$username}';";
       $result = $conn->query($query);
       if ($result->num_rows > 0) {?>
         <div>
@@ -93,7 +93,7 @@ if ($checkUser != "student"){
               echo "<div class='job-company'>
                     <p>By Company: ".$row["cname"]."</p></div>";
               echo "<div class='job-description'>
-                    <p>Description: ".$row["jdesciption"]."shlfdkjhasjkfhkjlasdhfajsdhlfjkashdfasdfaasjhdfkjlashdjkfahskdjf;akjsdhfjakshf;sdhfkjlashdfljkahsdfulawehfajksdhfnauwehfukasdfnajk.ehfajk.sdhfkjdkjhasjkfhkjlasdhfajsdhlfjkashdfasdfaasjhdfkjlashdjkfahskdjf;akjsdhfjakshf;sdhfkjlashdfljkahsdfulawehsdhfajsdhlfjkashdfasdfaasjhdfkjlashdjkfahskdjf;akjsdhfjakshf;sdhfkjlashdfljkahsdfulawehfajksdhfnauwehfukasdfnajk.ehfajk.sdhfkj.</p></div>";
+                    <p>Description: ".$row["jdescription"]."</p></div>";
               echo "<div class='job-location'>
                     <p>Location: ".$row["jcity"].", ".$row["jstate"].", ".$row["jcountry"]."</p></div>";
               echo "<div class='job-major-degree'>".
