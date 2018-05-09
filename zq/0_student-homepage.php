@@ -78,7 +78,7 @@ if ($checkUser != "student"){
           </div>
           <?php
       }
-      $query = "select j.jid, j.title, j.jcity, j.jstate, j.jcountry, j.salary, c.cname, j.jdescription, j.major, j.degree FROM Job j, Company c, Follow f, Student s where j.cid = c.cid and c.cid = f.cid and f.sid = s.sid and s.username ='{$username}';";
+      $query = "select j.jid, j.title, j.jcity, j.jstate, j.jcountry, j.salary, c.cname, j.jdescription, j.major, j.degree FROM Job j, Company c, Follow f, Student s where j.cid = c.cid and c.cid = f.cid and f.sid = s.sid and s.username ='{$username}' and j.expirationDate>now();";
       $result = $conn->query($query);
       $sid = $conn->query("select sid from Student where username = '{$username}';")->fetch_assoc()['sid'];
       if ($result->num_rows > 0) {?>

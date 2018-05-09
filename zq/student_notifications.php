@@ -75,14 +75,14 @@ if ($checkUser != "student"){
             <li>
             <div class="pushed-jobs">
                 <h3>Suggested Jobs:</h3>
-                <button onclick="myFunction2()" id="hide-push-button-1">Hide promot jobs</button>
+                <button onclick="myFunction2()" id="hide-push-button-1">Hide promot chekced jobs</button>
                 <script type="text/javascript">
                     function myFunction2() {
                         var y = document.getElementById("hide-push-button-1");
-                        if (y.innerText === "Hide promot jobs") {
-                            y.innerText = "Show promot jobs";
+                        if (y.innerText === "Hide promot chekced jobs") {
+                            y.innerText = "Show promot chekced jobs";
                         } else {
-                            y.innerText = "Hide promot jobs";
+                            y.innerText = "Hide promot chekced jobs";
                         }
                         for (let el of document.querySelectorAll('.push-message-read')) {
                             if (el.style.display === "none") {
