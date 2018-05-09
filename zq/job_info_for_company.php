@@ -54,8 +54,8 @@
     <?php echo "<h2>Hello! {$companyInfo[0]['cusername']}</h2>"?>
         <?php
         // echo $jid;
-            $job =  $conToDB->query("select j.title, j.jcity, j.jstate, j.jcountry, j.degree, j.major, j.jdescription, j.expirationDate, c.cname from Job j, Company c where j.cid = c.cid and j.jid = {$jid};")->fetch_assoc();
-           // var_dump($job);
+            $job =  $conToDB->query("select c.cid, j.title, j.jcity, j.jstate, j.jcountry, j.degree, j.major, j.jdescription, j.expirationDate, c.cname from Job j, Company c where j.cid = c.cid and j.jid = {$jid};")->fetch_assoc();
+           // var_dump($job['cid']);
         ?>
         <table border="1 pix">
             <tr>
@@ -65,8 +65,8 @@
             <tr>
                 <td>Company</td>
                 <td>
-                <form class="company-info" action="company_info_for_company.php" method="post" id="company-info-form">
-                    <button type="submit" name="cid" value="<?php echo $row['cid']; ?>"><?php echo $job['cname']; ?></button>
+                <form class="company-info" action="company_info_for_company.php" method="post">
+                    <button type="submit" name="cid" value="<?php echo $job['cid']; ?>"><?php echo $job['cname']; ?></button>
                 </form>
                 </td>
             </tr>
