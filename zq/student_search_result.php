@@ -97,7 +97,7 @@ if ($checkUser != "student"){
 
                         // job
                         // $querylistjob[] = "select * from Job where concat(title, jcity, jstate, jcountry, jdescription) like '%".$k."%';";
-                        if ($tempsjobprepare = $conn->prepare("select * from Job where concat(title, jcity, jstate, jcountry, jdescription) like ? ;")) {
+                        if ($tempsjobprepare = $conn->prepare("select * from Job where concat(title, jcity, jstate, jcountry, jdescription) like ? and expirationDate > now();")) {
                             // $tempstudentprepare = $conn->prepare("select sid, sname from Student where username<>? and concat(sname, university) like ? ;");
                             $tempsjobprepare->bind_param("s", $keywords_protect);
                             // $tempstudentprepare->execute();
