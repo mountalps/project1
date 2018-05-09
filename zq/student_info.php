@@ -74,7 +74,7 @@ if ($checkUser != "student"){
             </div>
         <?php
             if ($restrict == "0"){
-                echo "hello";
+                // echo "hello";
         ?>
                 <div class="private-student-info">
                     <h2><p>GPA: <?php echo $gpa; ?></p></h2>

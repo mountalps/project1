@@ -36,6 +36,7 @@ if ($checkUser != "student"){
         $cname = $row['cname'];
         $expired = $row['expired'];
         $nid = $_POST['nid'];
+        // var_dump($nid);
         if ($nid!="") {
             $conn->query("update NotificationToStudent set nstatus='read' where nid={$nid};");
         }
@@ -73,10 +74,11 @@ if ($checkUser != "student"){
                     <h1><?php echo $title; ?></h1>
                 </div>
                 <div class="job-company">
-                    <h1>Company:</h1>
-                        <p><form class="company-info" action="company_info.php" method="post">
+                    <h1>Company:
+                        <form class="company-info" action="company_info.php" method="post">
                             <button type="submit" name="cid" value="<?php echo $cid; ?>"><?php echo $cname; ?></button>
-                        </form></p>
+                        </form>
+                    </h1>
                 </div>
                 <div class="job-apply">
                     <?php

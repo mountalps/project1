@@ -61,9 +61,23 @@ if ($checkUser != "student"){
 
       // the rest of the text
       $hellostr = "Hello " . $sname . ",";
-      echo "<h2>$hellostr</h2>";
+      echo "<h1>$hellostr</h1>";
+      // var_dump();
       ?>
       <?php
+      if ($conn->query("select s.sid con from NotificationToStudent ns, Student s where ns.tosid = s.sid and s.username = '{$username}' and (ns.nstatus = 'unread' or ns.nstatus = 'pending');")->num_rows > 0) {
+          ?>
+          <div class="notificaiton-prompt">
+              <p style="background-color:pink">You have some unread messages or friend requests, please check the Notification section above.</p>
+          </div>
+          <?php
+      } else {
+          ?>
+          <div class="notificaiton-prompt">
+              <p>You don't have unread notifications</p>
+          </div>
+          <?php
+      }
       $query = "SELECT j.title, j.jcity, j.jstate, j.jcountry, j.salary, c.cname, j.jdesciption, j.major, j.degree FROM Job j, Company c, Follow f, Student s where j.cid = c.cid and c.cid = f.cid and f.sid = s.sid and s.username ='{$username}';";
       $result = $conn->query($query);
       if ($result->num_rows > 0) {?>

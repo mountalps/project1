@@ -53,7 +53,7 @@ if ($checkUser != "student"){
             $sname = $q['sname'];
             $sid = $q['sid'];
             // the rest of the text
-            $hellostr = "Helloha " . $sname . ",";
+            $hellostr = "Hello " . $sname . ",";
             echo "<h1>$hellostr</h1>";
         ?>
         <div>
@@ -62,7 +62,7 @@ if ($checkUser != "student"){
         <?php
             $queryfq = "select s2.sname, s.university, ns.nid, ns.fromsid from NotificationToStudent ns, Student s, Student s2 where ns.tosid = s.sid and ns.fromsid = s2.sid and s.username = '{$username}' and ns.nstatus = 'pending';";
 
-            $queryf = "select ns.fromsid, j.jid, j.title, s.sname, j.jcity, j.jstate, j.jcountry from NotificationToStudent ns, Forward f, Job j, Student s, Student s2 where s.sid = ns.fromsid and s2.sid = ns.tosid and ns.nid = f.nid and f.jid = j.jid and s2.username = '{$username}';";
+            $queryf = "select ns.nstatus, ns.nid, ns.fromsid, j.jid, j.title, s.sname, j.jcity, j.jstate, j.jcountry from NotificationToStudent ns, Forward f, Job j, Student s, Student s2 where s.sid = ns.fromsid and s2.sid = ns.tosid and ns.nid = f.nid and f.jid = j.jid and s2.username = '{$username}';";
 
             $queryt = "select t.content, s.sname, t.ttime, ns.nstatus, ns.nid, ns.fromsid from NotificationToStudent ns, Tips t, Student s, Student s1 where t.nid = ns.nid and ns.fromsid = s.sid and ns.tosid=s1.sid and s1.username = '{$username}';";
 
@@ -75,19 +75,44 @@ if ($checkUser != "student"){
             <li>
             <div class="pushed-jobs">
                 <h3>Suggested Jobs:</h3>
+                <button onclick="myFunction2()" id="hide-push-button-1">Hide promot jobs</button>
+                <script type="text/javascript">
+                    function myFunction2() {
+                        var y = document.getElementById("hide-push-button-1");
+                        if (y.innerText === "Hide promot jobs") {
+                            y.innerText = "Show promot jobs";
+                        } else {
+                            y.innerText = "Hide promot jobs";
+                        }
+                        for (let el of document.querySelectorAll('.push-message-read')) {
+                            if (el.style.display === "none") {
+                                el.style.display = 'block';
+                            } else {
+                                el.style.display = 'none';
+                            }
+                        }
+                    }
+                </script>
                 <?php
-                    $resultpj = $conn->query("select ns.tosid, c.cname, ns.nid, p.jid, j.title, j.jcity, j.jstate, j.salary  from NotificationToStudent ns, Push p, Job j, Company c where ns.fromcid=c.cid and p.jid = j.jid and p.nid = ns.nid and ns.tosid = {$sid} and ns.notificationtype='Push' and ns.nstatus='unread';");
+                    $resultpj = $conn->query("select ns.nstatus, ns.tosid, c.cname, ns.nid, p.jid, j.title, j.jcity, j.jstate, j.salary  from NotificationToStudent ns, Push p, Job j, Company c where ns.fromcid=c.cid and p.jid = j.jid and p.nid = ns.nid and ns.tosid = {$sid} and ns.notificationtype='Push';");
                     if ($resultpj->num_rows > 0) {
                         // echo "<p>Here are some friend requests:</p>";
                         while ($row = $resultpj->fetch_assoc()) {
+                            if ($row['nstatus'] == 'read'){
+                                echo "<div class='push-message-read' style='background-color:#e1e1e1;display:block;'>";
+                                echo "<div style='color:red;'>Your alread checked this job</div>";
+                            } else {
+                                echo "<div class='push-message' style='background-color:#e1e1e1; display:block;'>";
+                            }
                 ?>
-                            <div class="job">
-                                <p><form class="job-info" action="job_info.php" method="post" id="job-info-form">
-                                    <input type="hidden" name="nid" value="<?php echo $row['nid']; ?>">
-                                    <input type="hidden" name="sid" value="<?php echo $sid; ?>">
-                                    <button type="submit" name="jid" value="<?php echo $row['jid']; ?>"><?php echo $row['title']; ?></button>
-                                     <?php echo "at {$row['jcity']}, {$row['jstate']} for {$row['salary']}. Company: {$row['cname']}"; ?>
-                                </form></p>
+                                <div class="job">
+                                    <p><form class="job-info" action="job_info.php" method="post" id="job-info-form">
+                                        <input type="hidden" name="nid" value="<?php echo $row['nid']; ?>">
+                                        <input type="hidden" name="sid" value="<?php echo $sid; ?>">
+                                        <button type="submit" name="jid" value="<?php echo $row['jid']; ?>"><?php echo $row['title']; ?></button>
+                                         <?php echo "at {$row['jcity']}, {$row['jstate']} for {$row['salary']}. Company: {$row['cname']}"; ?>
+                                    </form></p>
+                                </div>
                             </div>
                 <?php
                         }
@@ -96,9 +121,6 @@ if ($checkUser != "student"){
             </div>
             </li>
 
-
-
-
             <li>
             <div class="friend-request">
                 <h3>Friend Requests:</h3>
@@ -106,7 +128,7 @@ if ($checkUser != "student"){
                     if ($resultfq->num_rows > 0) {
                         // echo "<p>Here are some friend requests:</p>";
                         while ($row = $resultfq->fetch_assoc()) {
-                            echo "<div class='friend-request-message' style='display:block;'><p>";
+                            echo "<div class='friend-request-message' style='display:block; background-color:#e1e1e1;'><p>";
                             echo "You received a friend request from ";
                 ?>
                             <form class="student-info" action="student_info.php" method="post" id="student-info-form">
@@ -114,13 +136,14 @@ if ($checkUser != "student"){
                             </form>
                 <?php
                             echo ", who is from ".$row['university'];
-                            echo "</p></div>";
+                            echo "</p>";
                 ?>
                             <form class="fqdecision" action="handle_fq.php" method="post">
                                 <button type="submit" name="frapprove" value="<?php echo $row['nid']; ?>">Approve <?php echo $row['sname']; ?></button>
                                 <button type="submit" name="frreject" value="<?php echo $row['nid']; ?>">Reject <?php echo $row['sname'] ?></button>
                             </form>
                 <?php
+                            echo "</div>";
                         }
                     }
                 ?>
@@ -129,11 +152,35 @@ if ($checkUser != "student"){
             <li>
             <div class="forward">
                 <h3>Forwared Jobs From Friend:</h3>
+                <button onclick="myFunction1()" id="hide-forward-button-1">Hide clicked forwared jobs</button>
+                <script type="text/javascript">
+                    function myFunction1() {
+                        var y = document.getElementById("hide-forward-button-1");
+                        if (y.innerText === "Hide clicked forwared jobs") {
+                            y.innerText = "Show clicked forwared jobs";
+                        } else {
+                            y.innerText = "Hide clicked forwared jobs";
+                        }
+                        for (let el of document.querySelectorAll('.forwarded-message-read')) {
+                            if (el.style.display === "none") {
+                                el.style.display = 'block';
+                            } else {
+                                el.style.display = 'none';
+                            }
+
+                        }
+                    }
+                </script>
                 <?php
                     if ($resultf->num_rows > 0) {
                         // echo "<p>Here are some job forwards:</p>";
                         while ($row = $resultf->fetch_assoc()) {
-                            echo "<div class='forwarded-message'><p>";
+                            if ($row['nstatus'] == 'read'){
+                                echo "<div class='forwarded-message-read' style='background-color:#e1e1e1;display:block;'><p>";
+                                echo "<div style='color:red;'>Your alread checked this job</div>";
+                            } else {
+                                echo "<div class='forwarded-message' style='background-color:#e1e1e1; display:block;'><p>";
+                            }
                             echo "You received a job forward from ";
                     ?>
                                 <form class="student-info" action="student_info.php" method="post" id="student-info-form">
@@ -141,9 +188,11 @@ if ($checkUser != "student"){
                                 </form>
                     <?php
                             echo ", who forwared you the following job:<br>";
+                            // echo $row['nid'];
                     ?>
                                 <p><form class="job-info" action="job_info.php" method="post" id="job-info-form">
                                     <input type="hidden" name="sid" value="<?php echo $sid; ?>">
+                                    <input type="hidden" name="nid" value="<?php echo $row['nid']; ?>">
                                     <button type="submit" name="jid" value="<?php echo $row['jid']; ?>"><?php echo $row['title']; ?></button>
                                      <?php echo "at {$row['jcity']}, {$row['jstate']}"; ?>
                                 </form></p>

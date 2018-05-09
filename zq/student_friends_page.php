@@ -62,10 +62,10 @@ if ($checkUser != "student"){
             }
             // the rest of the text
             $hellostr = "Hello " . $sname . ",";
-            echo "<h2>$hellostr</h2>";
+            echo "<h1>$hellostr</h1>";
         ?>
         <div class="all-friends">
-            <h4>Your Friends:</h4>
+            <h2>Your Friends:</h2>
             <?php
                 $query = "select s.sname, s.sid, s.university, s.major from ((select f.sid1 as sid from Friend f, Student s2 where f.sid2 = s2.sid and s2.username = '{$username}') union (select f.sid2 as sid from Friend f, Student s3 where f.sid1 = s3.sid and s3.username='{$username}')) a, Student s where s.sid = a.sid;";
                 $result = $conn->query($query);

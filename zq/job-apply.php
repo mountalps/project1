@@ -23,7 +23,10 @@ if ($checkUser != "student"){
             if ($conn->connect_error) {
                 die("Connection failed: " . $conn->connect_error);
             }
-            $conn->query("insert into Application values(now(), {$sid}, {$cid}, {$jid});");
+            // sleep(1);
+            if ($conn->query("select * from Application where fromsid = {$sid} and tocid = {$cid} and jid = {$jid};")->num_rows == 0) {
+                $conn->query("insert into Application values(now(), {$sid}, {$cid}, {$jid});");
+            }
             header("Location: student_applied_jobs.php");
             exit;
         ?>

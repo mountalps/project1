@@ -23,19 +23,21 @@ if ($checkUser != "student"){
             }
             $fromsid = $_POST['fromsid'];
             foreach ($_POST['forwardfriends'] as $sid) {
-                $time = date("Y-m-d H:i:s");
-                $conn->query("insert into NotificationToStudent values(null, {$fromsid}, null, {$sid}, 'unread', '{$time}', 'Forward');");
-                $nid = $conn->query("select nid from NotificationToStudent where fromsid={$fromsid} and tosid={$sid} and ntime='{$time}' and notificationtype='Forward';")->fetch_assoc()['nid'];
-                while ($nid == ""){
-                    $nid = $conn->query("select nid from NotificationToStudent where fromsid={$fromsid} and tosid={$sid} and ntime='{$time}' and notificationtype='Forward');")->fetch_assoc()['nid'];
+                if ($conn->query("select count(*) as coun from NotificationToStudent ns, Forward f where ns.fromsid = {$fromsid} and ns.tosid = {$sid} and f.jid = {$jid} and f.nid = ns.nid;")->num_rows == 0) {
+                    $time = date("Y-m-d H:i:s");
+                    $conn->query("insert into NotificationToStudent values(null, {$fromsid}, null, {$sid}, 'unread', '{$time}', 'Forward');");
+                    $nid = $conn->query("select nid from NotificationToStudent where fromsid={$fromsid} and tosid={$sid} and ntime='{$time}' and notificationtype='Forward';")->fetch_assoc()['nid'];
+                    while ($nid == ""){
+                        $nid = $conn->query("select nid from NotificationToStudent where fromsid={$fromsid} and tosid={$sid} and ntime='{$time}' and notificationtype='Forward');")->fetch_assoc()['nid'];
+                    }
+                    $conn->query("insert into Forward values({$nid}, {$jid}, '{$time}');");
                 }
-                $conn->query("insert into Forward values({$nid}, {$jid}, '{$time}');");
             }
 
         ?>
     </head>
     <body>
-        <p>Friend request send</p>
+        <p>Job Forwarded</p>
         <a href="javascript:history.go(-2)">GO BACK</a>
     </body>
 </html>
