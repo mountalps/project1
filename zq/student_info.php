@@ -67,22 +67,45 @@ if ($checkUser != "student"){
             $resume = $result['resume'];
             // var_dump($resume);
         ?>
-            <div class="public-student-info">
-                <h2><p>Name : <?php echo $studentname; ?></p></h2>
-                <h2><p>University : <?php echo $studentuniversity; ?></p></h2>
-                <h2><p>Major : <?php echo $studentmajor; ?></p></h2>
+
+            <table border="1 pix" width=50% style="margin:35px;">
+                <div class="public-student-info">
+                    <tr>
+                        <td>Name</td>
+                        <td><?php echo $studentname; ?></td>
+                    </tr>
+                    <tr>
+                        <td>University</td>
+                        <td><?php echo $studentuniversity; ?></td>
+                    </tr>
+                    <tr>
+                        <td>Major</td>
+                        <td><?php echo $studentmajor; ?></td>
+                    </tr>
             </div>
         <?php
             if ($restrict == "0"){
                 // echo "hello";
         ?>
                 <div class="private-student-info">
-                    <h2><p>GPA: <?php echo $gpa; ?></p></h2>
-                    <h2><p>Degree: <?php echo $degree; ?></p></h2>
-                    <h2><p>Resume: <?php echo $resume; ?></p></h2>
+                    <tr>
+                        <td>GPA</td>
+                        <td><?php echo $gpa; ?></td>
+                    </tr>
+                    <tr>
+                        <td>Degree</td>
+                        <td><?php echo $degree; ?></td>
+                    </tr>
+                    <tr>
+                        <td>Resume</td>
+                        <td><?php echo $resume; ?></td>
+                    </tr>
                 </div>
         <?php
             }
+        ?>
+            </table>
+        <?php
             if ($currentusersid == $sid) {
                 header("Location: 0_student-homepage.php");
                 exit;
