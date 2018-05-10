@@ -72,8 +72,16 @@
 <!--            --><?php //} ?>
         </div>
         <div class="company-body">
-            <h2>Company Location: <?php echo "{$ccity}, {$cstate}, {$ccountry}" ?></h2>
-            <h2>Company Industry: <?php echo $industry ?></h2>
+            <table border="1 pix">
+                <tr>
+                    <td>Company Location</td>
+                    <td><?php echo "{$ccity}, {$cstate}, {$ccountry}" ?></td>
+                </tr>
+                <tr>
+                    <td>Company Industry</td>
+                    <td><?php echo $industry ?></td>
+                </tr>
+            </table>
         </div>
     </div>
     <div class="company-job">
