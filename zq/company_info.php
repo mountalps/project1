@@ -72,8 +72,16 @@ include_once '../lib/dbinfo.php';
                     <?php } ?>
                 </div>
                 <div class="company-body">
-                    <h2>Company Location: <?php echo "{$ccity}, {$cstate}, {$ccountry}" ?></h2>
-                    <h2>Company Industry: <?php echo $industry ?></h2>
+                    <table border="1 pix">
+                        <tr>
+                            <td>Company Location</td>
+                            <td><?php echo "{$ccity}, {$cstate}, {$ccountry}" ?></td>
+                        </tr>
+                        <tr>
+                            <td>Company Industry</td>
+                            <td><?php echo $industry ?></td>
+                        </tr>
+                    </table>
                 </div>
             </div>
             <div class="company-job">
@@ -81,7 +89,7 @@ include_once '../lib/dbinfo.php';
                     $avaliable = $conn->query("select * from Job j where j.cid = {$cid} and j.expirationDate > now();");
                     $expired = $conn->query("select * from Job j where j.cid = {$cid} and j.expirationDate <= now();");
                 ?>
-                <h2>Company Published Jobs:</h2>
+                <h3>Company Published Jobs:</h3>
                 <ul>
                     <li><div class="company-avaliable-job">
                         <h3>Company Avaliable Jobs:</h3>
