@@ -101,10 +101,10 @@ if ($checkUser != "student"){
                         <td><?php echo $resume; ?></td>
                     </tr>
                 </div>
+                </table>
         <?php
             }
         ?>
-            </table>
         <?php
             if ($currentusersid == $sid) {
                 header("Location: 0_student-homepage.php");
@@ -115,11 +115,26 @@ if ($checkUser != "student"){
             if ($torf == 1) {
                 if ($restrict == "1") {
         ?>
-                    <div class="private-student-info">
+                    <!-- <div class="private-student-info">
                         <h2><p>GPA: <?php echo $gpa; ?></p></h2>
                         <h2><p>Degree: <?php echo $degree; ?></p></h2>
                         <h2><p>Resume: <?php echo $resume; ?></p></h2>
+                    </div> -->
+                    <div class="private-student-info">
+                        <tr>
+                            <td>GPA</td>
+                            <td><?php echo $gpa; ?></td>
+                        </tr>
+                        <tr>
+                            <td>Degree</td>
+                            <td><?php echo $degree; ?></td>
+                        </tr>
+                        <tr>
+                            <td>Resume</td>
+                            <td><?php echo $resume; ?></td>
+                        </tr>
                     </div>
+                    </table>
         <?php
                 }
          ?>
