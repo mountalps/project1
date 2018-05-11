@@ -157,6 +157,10 @@
                 <td><?php echo "{$job['major']}";?></td>
             </tr>
             <tr>
+                <td>Salary</td>
+                <td><?php echo "{$job['salary']}";?></td>
+            </tr>
+            <tr>
                 <td>Description</td>
                 <td><?php echo "{$job['jdescription']}";?></td>
             </tr>
