@@ -74,7 +74,9 @@ if ($checkUser != "student"){
                 </div> -->
 
         <?php
-            $torf = ($conn->query("select True as result from Friend f, Student s where s.username = '{$username}' and (s.sid = f.sid1 or s.sid = f.sid2) and (f.sid1 = {$sid} or f.sid2 = {$sid});"))->fetch_assoc()['result'];
+            // var_dump($sid);
+            // var_dump($username);
+            $torf = ($conn->query("select count(*) as coun from Friend f, Student s where s.username = '{$username}' and (s.sid = f.sid1 or s.sid = f.sid2) and (f.sid1 = {$sid} or f.sid2 = {$sid});"))->fetch_assoc()['coun'];
             // var_dump($torf);
             // var_dump($restrict);
             if ($restrict == "0" and $torf=='0'){
