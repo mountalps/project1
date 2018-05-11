@@ -37,6 +37,8 @@
     $GPA = htmlspecialchars($_POST['GPA']);
     $job_id = htmlspecialchars($_POST['job_id']);
     
+    var_dump($job_id);
+    
 //    var_dump($university);
 //    var_dump($major);
 //    var_dump($degree);
@@ -145,8 +147,8 @@
 </div>
 <div class="push">
     <?php
-        if ($studentInfo[0] == null){
-            echo 'No Students Satisfy your criteria! Please Try Again!';
+        if ($studentInfo[0] == null or $job_id == ""){
+            echo 'No Students Satisfy your criteria! Or you did not specify a job! Please Try Again!';
         }
         else{
         
