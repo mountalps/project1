@@ -23,6 +23,7 @@
     $conn_protect = new mysqli($DBhost, $DBuser, $DBpassword, $DBdatabase);
 //    var_dump($conn_protect);
     
+    //To guard against SQL injection
     $getCompanyInfo = $conn_protect->prepare("select * from Company where cusername = ?;");
 //    var_dump($getCompanyInfo);
 //    echo '__________';

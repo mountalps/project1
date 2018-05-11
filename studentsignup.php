@@ -8,6 +8,7 @@
 include_once './lib/fun.php';
 include_once './lib/dbinfo.php';
 
+//To guard against cross-site scripting attacks
 $username = htmlspecialchars($_POST['username']);
 $password = htmlspecialchars($_POST['password']);
 $sname = htmlspecialchars($_POST['sname']);
@@ -85,6 +86,8 @@ else if ($restrict == "no" || $restrict == null) {
 //            var_dump($restrict);
         $GPA = (double)$GPA;
 //        var_dump($resume);
+        
+            //To guard against SQL injection:
             $conn_protect = new mysqli($DBhost, $DBuser, $DBpassword, $DBdatabase);
             $createStudentAccount = $conn_protect->prepare("insert into Student (sid, username, password, sname, university, major, degree, GPA, keywords, `resume`, `restrict`) values(?,?,?,?,?,?,?,?,?,?,?);");
             $createStudentAccount->bind_param("dssssssdsss", $sid_protect, $username_protect, $password_protect, $sname_protect, $university_protect, $major_protect, $degree_protect, $GPA_protect, $keywords_protect, $resume_protect, $restrict_protect);

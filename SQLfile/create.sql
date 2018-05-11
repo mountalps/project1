@@ -1,294 +1,142 @@
 drop database if exists dbproject_new;
 create database dbproject_new;
 use dbproject_new;
-CREATE TABLE `Student` (
-  `sid` INT NOT NULL auto_increment,
-  `username` VARCHAR(20) NOT NULL,
-  `password` VARCHAR(50) NOT NULL,
-  `sname` VARCHAR(20) NOT NULL,
-  `university` VARCHAR(100) ,
-  `major` VARCHAR(20),
-  `degree` VARCHAR(20),
-  `GPA` DECIMAL(3,2) ,
-  `keywords` VARCHAR(500),
-  `resume` Varchar(5000),
-  #`restrict` bit NOT NULL,
-  `restrict` VARCHAR(1) NOT NULL DEFAULT '0',
-  PRIMARY KEY (`sid`)
-  );
-
 CREATE TABLE `Company` (
-  `cid` INT NOT NULL auto_increment,
-  `cusername` VARCHAR(20) NOT NULL,
-  `cpassword` VARCHAR(50) NOT NULL,
-  `cname` VARCHAR(20) NOT NULL,
-  `ccity` VARCHAR(20) NOT NULL,
-  `cstate` VARCHAR(20) NOT NULL,
-  `ccountry` VARCHAR(20) NOT NULL,
-  `industry` VARCHAR(100) NOT NULL,
+  `cid` int(11) NOT NULL AUTO_INCREMENT,
+  `cusername` varchar(20) NOT NULL,
+  `cpassword` varchar(50) NOT NULL,
+  `cname` varchar(20) NOT NULL,
+  `ccity` varchar(20) NOT NULL,
+  `cstate` varchar(20) NOT NULL,
+  `ccountry` varchar(20) NOT NULL,
+  `industry` varchar(100) NOT NULL,
   PRIMARY KEY (`cid`)
-  );
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=latin1;
 
--- drop table Forward;
--- drop table Application;
--- drop table Push;
--- drop table Broadcast;
--- drop table Job;
+CREATE TABLE `Student` (
+  `sid` int(11) NOT NULL AUTO_INCREMENT,
+  `username` varchar(20) NOT NULL,
+  `password` varchar(50) NOT NULL,
+  `sname` varchar(20) NOT NULL,
+  `university` varchar(100) DEFAULT NULL,
+  `major` varchar(20) DEFAULT NULL,
+  `degree` varchar(20) DEFAULT NULL,
+  `GPA` decimal(3,2) DEFAULT NULL,
+  `keywords` varchar(500) DEFAULT NULL,
+  `resume` varchar(5000) DEFAULT NULL,
+  `restrict` varchar(1) NOT NULL,
+  PRIMARY KEY (`sid`)
+) ENGINE=InnoDB AUTO_INCREMENT=119 DEFAULT CHARSET=latin1;
 
 CREATE TABLE `Job` (
-  `jid` INT NOT NULL auto_increment,
-  `title` VARCHAR(100) NOT NULL,
-  `cid` INT NOT NULL,
-  `jcity` VARCHAR(20) NOT NULL,
-  `jstate` VARCHAR(20) NOT NULL,
-  `jcountry` VARCHAR(20) NOT NULL,
-  `salary` MEDIUMINT NOT NULL,
-  `degree` VARCHAR(20) NOT NULL,
-  `major` VARCHAR(20) NOT NULL,
-  `jdescription` TEXT NOT NULL,
+  `jid` int(11) NOT NULL AUTO_INCREMENT,
+  `title` varchar(100) NOT NULL,
+  `cid` int(11) NOT NULL,
+  `jcity` varchar(20) NOT NULL,
+  `jstate` varchar(20) NOT NULL,
+  `jcountry` varchar(20) NOT NULL,
+  `salary` mediumint(9) NOT NULL,
+  `degree` varchar(20) NOT NULL,
+  `major` varchar(20) NOT NULL,
+  `jdescription` text NOT NULL,
+  `expirationDate` datetime NOT NULL,
   PRIMARY KEY (`jid`),
-  FOREIGN KEY (`cid`) REFERENCES `Company` (`cid`)
-  );
+  KEY `cid` (`cid`),
+  CONSTRAINT `Job_ibfk_1` FOREIGN KEY (`cid`) REFERENCES `Company` (`cid`)
+) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=latin1;
 
--- drop table Forward;
--- drop table Push;
--- drop table Tips;
--- drop table NotificationToStudent;
-#NotificationToStudent(nid, ntime, nstatus, notificationtype)
+
 CREATE TABLE `NotificationToStudent` (
-  `nid` INT NOT NULL auto_increment,
-  `fromsid` INT,
-  `fromcid` INT,
-  `tosid` INT NOT NULL,
-  `nstatus` VARCHAR(20) NOT NULL,
-  `ntime` datetime not null,
-  `notificationtype` VARCHAR(20) NOT NULL,
+  `nid` int(11) NOT NULL AUTO_INCREMENT,
+  `fromsid` int(11) DEFAULT NULL,
+  `fromcid` int(11) DEFAULT NULL,
+  `tosid` int(11) NOT NULL,
+  `nstatus` varchar(20) NOT NULL,
+  `ntime` datetime NOT NULL,
+  `notificationtype` varchar(20) NOT NULL,
   PRIMARY KEY (`nid`),
-  FOREIGN KEY (`tosid`) REFERENCES `Student` (`sid`),
-  FOREIGN KEY (`fromsid`) REFERENCES `Student` (`sid`),
-  FOREIGN KEY (`fromcid`) REFERENCES `Company` (`cid`)
-  );
+  KEY `tosid` (`tosid`),
+  KEY `fromsid` (`fromsid`),
+  KEY `fromcid` (`fromcid`),
+  CONSTRAINT `NotificationToStudent_ibfk_1` FOREIGN KEY (`tosid`) REFERENCES `Student` (`sid`),
+  CONSTRAINT `NotificationToStudent_ibfk_2` FOREIGN KEY (`fromsid`) REFERENCES `Student` (`sid`),
+  CONSTRAINT `NotificationToStudent_ibfk_3` FOREIGN KEY (`fromcid`) REFERENCES `Company` (`cid`)
+) ENGINE=InnoDB AUTO_INCREMENT=315 DEFAULT CHARSET=latin1;
 
-#Application is from student to company
 CREATE TABLE `Application` (
-  `atime` DATETIME NOT NULL,
-  `fromsid` INT NOT NULL,
-  `tocid` INT NOT NULL,
-  `jid` INT NOT NULL,
-  `status` Varchar(10) default 'unread' not null,
-  PRIMARY KEY (`atime`, `fromsid`, `jid`),
-  FOREIGN KEY (`fromsid`) REFERENCES `Student` (`sid`),
-  FOREIGN KEY (`tocid`) REFERENCES `Company` (`cid`),
-  FOREIGN KEY (`jid`) REFERENCES `Job` (`jid`)
-  );
+  `atime` datetime NOT NULL,
+  `fromsid` int(11) NOT NULL,
+  `tocid` int(11) NOT NULL,
+  `jid` int(11) NOT NULL,
+  `astatus` varchar(10) NOT NULL DEFAULT 'unread',
+  PRIMARY KEY (`atime`,`fromsid`,`jid`),
+  KEY `fromsid` (`fromsid`),
+  KEY `tocid` (`tocid`),
+  KEY `jid` (`jid`),
+  CONSTRAINT `Application_ibfk_1` FOREIGN KEY (`fromsid`) REFERENCES `Student` (`sid`),
+  CONSTRAINT `Application_ibfk_2` FOREIGN KEY (`tocid`) REFERENCES `Company` (`cid`),
+  CONSTRAINT `Application_ibfk_3` FOREIGN KEY (`jid`) REFERENCES `Job` (`jid`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
-#Announcement(Push) is from company to student
+
 CREATE TABLE `Push` (
-  `nid` INT NOT NULL,
-  `jid` INT NOT NULL,
-  `ptime` datetime not null,
+  `nid` int(11) NOT NULL,
+  `jid` int(11) NOT NULL,
+  `ptime` datetime NOT NULL,
   PRIMARY KEY (`nid`),
-  FOREIGN KEY (`nid`) REFERENCES `NotificationToStudent` (`nid`),
-  FOREIGN KEY (`jid`) REFERENCES `Job` (`jid`)
-  );
+  KEY `jid` (`jid`),
+  CONSTRAINT `Push_ibfk_1` FOREIGN KEY (`nid`) REFERENCES `NotificationToStudent` (`nid`),
+  CONSTRAINT `Push_ibfk_2` FOREIGN KEY (`jid`) REFERENCES `Job` (`jid`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
-#Boradcast is Companys Push requirments
-CREATE TABLE `Broadcast` (
-  `cid` INT NOT NULL,
-  `jid` INT NOT NULL,
-  `btime` DATETIME NOT NULL,
-  `minGPA` DECIMAL(3,2) ,
-  `university` VARCHAR(100) ,
-  `major` VARCHAR(20),
-  `mindegree` VARCHAR(20),
-  `keywords` VARCHAR(500),
-  PRIMARY KEY (`cid`, `jid`, `btime`),
-  FOREIGN KEY (`cid`) REFERENCES `Company` (`cid`),
-  FOREIGN KEY (`jid`) REFERENCES `Job` (`jid`)
-  );
+-- CREATE TABLE `Broadcast` (
+--   `cid` int(11) NOT NULL,
+--   `jid` int(11) NOT NULL,
+--   `btime` datetime NOT NULL,
+--   `minGPA` decimal(3,2) DEFAULT NULL,
+--   `university` varchar(100) DEFAULT NULL,
+--   `major` varchar(20) DEFAULT NULL,
+--   `mindegree` varchar(20) DEFAULT NULL,
+--   `keywords` varchar(500) DEFAULT NULL,
+--   PRIMARY KEY (`cid`,`jid`,`btime`),
+--   KEY `jid` (`jid`),
+--   CONSTRAINT `Broadcast_ibfk_1` FOREIGN KEY (`cid`) REFERENCES `Company` (`cid`),
+--   CONSTRAINT `Broadcast_ibfk_2` FOREIGN KEY (`jid`) REFERENCES `Job` (`jid`)
+-- ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
-#Forward is from student to student
 CREATE TABLE `Forward` (
-  `nid` INT NOT NULL,
-  `jid` INT NOT NULL,
-  `ftime` datetime not null,
+  `nid` int(11) NOT NULL,
+  `jid` int(11) NOT NULL,
+  `ftime` datetime NOT NULL,
   PRIMARY KEY (`nid`),
-  FOREIGN KEY (`nid`) REFERENCES `NotificationToStudent` (`nid`),
-  FOREIGN KEY (`jid`) REFERENCES `Job` (`jid`)
-  );
+  KEY `jid` (`jid`),
+  CONSTRAINT `Forward_ibfk_1` FOREIGN KEY (`nid`) REFERENCES `NotificationToStudent` (`nid`),
+  CONSTRAINT `Forward_ibfk_2` FOREIGN KEY (`jid`) REFERENCES `Job` (`jid`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
-#Tips is from student to student
 CREATE TABLE `Tips` (
-  `nid` INT NOT NULL,
-  `content` TEXT NOT NULL,
-  `ttime` datetime not null,
+  `nid` int(11) NOT NULL,
+  `content` text NOT NULL,
+  `ttime` datetime NOT NULL,
   PRIMARY KEY (`nid`),
-  FOREIGN KEY (`nid`) REFERENCES `NotificationToStudent` (`nid`)
-  );
+  CONSTRAINT `Tips_ibfk_1` FOREIGN KEY (`nid`) REFERENCES `NotificationToStudent` (`nid`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
 
 CREATE TABLE `Friend` (
-  `sid1` INT NOT NULL,
-  `sid2` INT NOT NULL,
-  PRIMARY KEY (`sid1`, `sid2`),
-  FOREIGN KEY (`sid1`) REFERENCES `Student` (`sid`),
-  FOREIGN KEY (`sid2`) REFERENCES `Student` (`sid`)
-  );
+  `sid1` int(11) NOT NULL,
+  `sid2` int(11) NOT NULL,
+  PRIMARY KEY (`sid1`,`sid2`),
+  KEY `sid2` (`sid2`),
+  CONSTRAINT `Friend_ibfk_1` FOREIGN KEY (`sid1`) REFERENCES `Student` (`sid`),
+  CONSTRAINT `Friend_ibfk_2` FOREIGN KEY (`sid2`) REFERENCES `Student` (`sid`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 CREATE TABLE `Follow` (
-  `sid` INT NOT NULL,
-  `cid` INT NOT NULL,
-  PRIMARY KEY (`sid`, `cid`),
-  FOREIGN KEY (`sid`) REFERENCES `Student` (`sid`),
-  FOREIGN KEY (`cid`) REFERENCES `Company` (`cid`)
-  );
-
--- drop database if exists dbproject;
--- create database dbproject;
--- use dbproject;
--- CREATE TABLE `Student` (
---   `sid` INT NOT NULL auto_increment,
---   `username` VARCHAR(20) NOT NULL,
---   `password` VARCHAR(50) NOT NULL,
---   `sname` VARCHAR(20) NOT NULL,
---   `university` VARCHAR(100) ,
---   `major` VARCHAR(20),
---   `degree` VARCHAR(20),
---   `GPA` DECIMAL(3,2) ,
---   `keywords` VARCHAR(500),
---   `resume` Varchar(20),
---   `restrict` bit NOT NULL,
---   PRIMARY KEY (`sid`)
---   #PRIMARY KEY (`username`)
---   );
---
--- CREATE TABLE `Company` (
---   `cid` INT NOT NULL auto_increment,
---   `cusername` VARCHAR(20) NOT NULL,
---   `cpassword` VARCHAR(50) NOT NULL,
---   `cname` VARCHAR(20) NOT NULL,
---   `ccity` VARCHAR(20) NOT NULL,
---   `cstate` VARCHAR(20) NOT NULL,
---   `ccountry` VARCHAR(20) NOT NULL,
---   `industry` VARCHAR(100) NOT NULL,
---   PRIMARY KEY (`cid`)
---   #PRIMARY KEY (`cusername`)
---   );
---
--- CREATE TABLE `Job` (
---   `jid` INT NOT NULL auto_increment,
---   `title` VARCHAR(100) NOT NULL,
---   `cid` INT NOT NULL,
---   `jcity` VARCHAR(20) NOT NULL,
---   `jstate` VARCHAR(20) NOT NULL,
---   `jcountry` VARCHAR(20) NOT NULL,
---   `salary` MEDIUMINT NOT NULL,
---   `degree` VARCHAR(20) NOT NULL,
---   `major` VARCHAR(20) NOT NULL,
---   `jdesciption` TEXT NOT NULL,
---   PRIMARY KEY (`jid`),
---   FOREIGN KEY (`cid`) REFERENCES `Company` (`cid`)
---   );
---
--- #NotificationToStudent(nid, ntime, nstatus, notificationtype)
--- CREATE TABLE `NotificationToStudent` (
---   `nid` INT NOT NULL auto_increment,
---   `tosid` INT NOT NULL,
---   `nstatus` VARCHAR(20) NOT NULL,
---   `notificationtype` VARCHAR(20) NOT NULL,
---   PRIMARY KEY (`nid`),
---   FOREIGN KEY (`tosid`) REFERENCES `Student` (`sid`)
---   );
---
--- #NotificationToCompany(nid, tocid, nstatus, notificationtype)
--- CREATE TABLE `NotificationToCompany` (
---   `nid` INT NOT NULL auto_increment,
---   `tocid` INT NOT NULL,
---   `nstatus` VARCHAR(20) NOT NULL,
---   `notificationtype` VARCHAR(20) NOT NULL,
---   PRIMARY KEY (`nid`),
---   FOREIGN KEY (`tocid`) REFERENCES `Company` (`cid`)
---   );
---
---
--- #Application is from student to company
--- CREATE TABLE `Application` (
---   `nid` INT NOT NULL,
---   `atime` DATETIME NOT NULL,
---   `fromsid` INT NOT NULL,
---   `tocid` INT NOT NULL,
---   `jid` INT NOT NULL,
---   PRIMARY KEY (`nid`),
---   FOREIGN KEY (`fromsid`) REFERENCES `Student` (`sid`),
---   FOREIGN KEY (`tocid`) REFERENCES `Company` (`cid`),
---   FOREIGN KEY (`jid`) REFERENCES `Job` (`jid`)
---   );
---
--- #Announcement is from company to student
--- CREATE TABLE `Announcement` (
---   `nid` INT NOT NULL,
---   `atime` DATETIME NOT NULL,
---   `fromcid` INT NOT NULL,
---   `jid` INT NOT NULL,
---   `tosid` INT NOT NULL,
---   PRIMARY KEY (`nid`),
---   FOREIGN KEY (`nid`) REFERENCES `NotificationToStudent` (`nid`),
---   FOREIGN KEY (`fromcid`) REFERENCES `Company` (`cid`),
---   FOREIGN KEY (`jid`) REFERENCES `Job` (`jid`),
---   FOREIGN KEY (`tosid`) REFERENCES `Student` (`sid`)
---   );
---
--- #FriendReq is from Student to student
--- CREATE TABLE `FriendReq` (
---   `nid` INT NOT NULL,
---   `ftime` DATETIME NOT NULL,
---   `fromsid` INT NOT NULL,
---   `tosid` INT NOT NULL,
---   `fqstatus` Varchar(10) NOT NULL,
---   PRIMARY KEY (`nid`),
---   FOREIGN KEY (`nid`) REFERENCES `NotificationToStudent` (`nid`),
---   FOREIGN KEY (`fromsid`) REFERENCES `Student` (`sid`),
---   FOREIGN KEY (`tosid`) REFERENCES `Student` (`sid`)
---   );
---
--- #Forward is from student to student
--- CREATE TABLE `Forward` (
---   `fid` INT NOT NULL,
---   `ftime` DATETIME NOT NULL,
---   `fromsid` INT NOT NULL,
---   `tosid` INT NOT NULL,
---   `nid` INT NOT NULL,
---   PRIMARY KEY (`fid`),
---   FOREIGN KEY (`fid`) REFERENCES `NotificationToStudent` (`nid`),
---   FOREIGN KEY (`fromsid`) REFERENCES `Student` (`sid`),
---   FOREIGN KEY (`tosid`) REFERENCES `Student` (`sid`),
---   FOREIGN KEY (`nid`) REFERENCES `Announcement` (`nid`)
---   );
---
--- #Tips is from student to student
--- CREATE TABLE `Tips` (
---   `nid` INT NOT NULL,
---   `ttime` DATETIME NOT NULL,
---   `fromsid` INT NOT NULL,
---   `tosid` INT NOT NULL,
---   `content` TEXT NOT NULL,
---   PRIMARY KEY (`nid`),
---   FOREIGN KEY (`nid`) REFERENCES `NotificationToStudent` (`nid`),
---   FOREIGN KEY (`fromsid`) REFERENCES `Student` (`sid`),
---   FOREIGN KEY (`tosid`) REFERENCES `Student` (`sid`)
---   );
---
--- CREATE TABLE `Friend` (
---   `sid1` INT NOT NULL,
---   `sid2` INT NOT NULL,
---   PRIMARY KEY (`sid1`, `sid2`),
---   FOREIGN KEY (`sid1`) REFERENCES `Student` (`sid`),
---   FOREIGN KEY (`sid2`) REFERENCES `Student` (`sid`)
---   );
---
--- CREATE TABLE `Follow` (
---   `sid` INT NOT NULL,
---   `cid` INT NOT NULL,
---   PRIMARY KEY (`sid`, `cid`),
---   FOREIGN KEY (`sid`) REFERENCES `Student` (`sid`),
---   FOREIGN KEY (`cid`) REFERENCES `Company` (`cid`)
---   );
+  `sid` int(11) NOT NULL,
+  `cid` int(11) NOT NULL,
+  PRIMARY KEY (`sid`,`cid`),
+  KEY `cid` (`cid`),
+  CONSTRAINT `Follow_ibfk_1` FOREIGN KEY (`sid`) REFERENCES `Student` (`sid`),
+  CONSTRAINT `Follow_ibfk_2` FOREIGN KEY (`cid`) REFERENCES `Company` (`cid`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;

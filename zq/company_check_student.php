@@ -20,6 +20,7 @@
     session_start();
     $username = $_SESSION['user'];
     $companyInfo = $_SESSION['companyInfo'];
+//    var_dump($companyInfo);
     $sid = $_POST['sid'];
     
 //    var_dump($companyInfo);
@@ -29,7 +30,14 @@
     $sqlGetStudentInfo = "select * from Student where sid = '{$sid}';";
     $resultGetStudentInfo = mysqli_query($conToDB, $sqlGetStudentInfo);
     $studentInfo = mysqli_fetch_all($resultGetStudentInfo, MYSQLI_ASSOC);
+//    var_dump($studentInfo[0]['restrict']);
+    $restrict = $studentInfo[0]['restrict'];
 //    var_dump($studentInfo[0]);
+    
+    $sqlApplication = "select * from Application where fromsid = '{$sid}' and tocid = '{$companyInfo[0]['cid']}';";
+    $resultApplication = mysqli_query($conToDB, $sqlApplication);
+    $resultApplication = mysqli_fetch_all($resultApplication, MYSQLI_ASSOC);
+//    var_dump($resultApplication);
 ?>
 
 <!DOCTYPE html>
@@ -65,6 +73,8 @@
 </div>
 
 <div class="student display">
+    
+    <?php if (count($resultApplication) != 0):?>
     <table border="1">
         <tr>
             <td>Name:</td>
@@ -96,6 +106,75 @@
         </tr>
     
     </table>
+    
+    
+    <?php elseif ($restrict == '0'):?>
+    <table border="1">
+        <tr>
+            <td>Name:</td>
+            <td><?php echo "{$studentInfo[0]['sname']}";?></td>
+        </tr>
+        <tr>
+            <td>University:</td>
+            <td><?php echo "{$studentInfo[0]['university']}";?></td>
+        </tr>
+        <tr>
+            <td>Major:</td>
+            <td><?php echo "{$studentInfo[0]['major']}";?></td>
+        </tr>
+        <tr>
+            <td>Degree:</td>
+            <td><?php echo "{$studentInfo[0]['degree']}";?></td>
+        </tr>
+        <tr>
+            <td>GPA:</td>
+            <td><?php echo "{$studentInfo[0]['GPA']}";?></td>
+        </tr>
+        <tr>
+            <td>Keywords:</td>
+            <td><?php echo "{$studentInfo[0]['keywords']}";?></td>
+        </tr>
+        <tr>
+            <td>Resume:</td>
+            <td><?php echo "{$studentInfo[0]['resume']}";?></td>
+        </tr>
+    
+    </table>
+    <?php else:?>
+        <table border="1">
+            <tr>
+                <td>Name:</td>
+                <td><?php echo "{$studentInfo[0]['sname']}";?></td>
+            </tr>
+            <tr>
+                <td>University:</td>
+                <td><?php echo "{$studentInfo[0]['university']}";?></td>
+            </tr>
+            <tr>
+                <td>Major:</td>
+                <td><?php echo "{$studentInfo[0]['major']}";?></td>
+            </tr>
+            <tr>
+                <td>Degree:</td>
+                <td><?php echo "{$studentInfo[0]['degree']}";?></td>
+            </tr>
+<!--            <tr>-->
+<!--                <td>GPA:</td>-->
+<!--                <td>--><?php //echo "{$studentInfo[0]['GPA']}";?><!--</td>-->
+<!--            </tr>-->
+<!--            <tr>-->
+<!--                <td>Keywords:</td>-->
+<!--                <td>--><?php //echo "{$studentInfo[0]['keywords']}";?><!--</td>-->
+<!--            </tr>-->
+<!--            <tr>-->
+<!--                <td>Resume:</td>-->
+<!--                <td>--><?php //echo "{$studentInfo[0]['resume']}";?><!--</td>-->
+<!--            </tr>-->
+    
+        </table>
+    
+    <?php endif; ?>
+    
 
 </div>
 
