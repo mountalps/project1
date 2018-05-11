@@ -28,7 +28,7 @@ if ($checkUser != "student"){
             $sid = $_POST['sid'];
             // $sid = 10;
             $studentname = ($conn->query("select s.sname from Student s where s.sid = ".$sid.";"))->fetch_assoc()['sname'];
-            $currentusersid = ($conn->query("select s.sid from Student s where s.username = '{$username}';"))->fetch_assoc()['sid']
+            $currentusersid = ($conn->query("select s.sid from Student s where s.username = '{$username}';"))->fetch_assoc()['sid'];
         ?>
     <title><?php echo $studentname; ?></title>
     <style>
@@ -68,59 +68,32 @@ if ($checkUser != "student"){
             // var_dump($resume);
         ?>
 
-            <table border="1 pix" width=50% style="margin:35px;">
-                <div class="public-student-info">
-                    <tr>
-                        <td>Name</td>
-                        <td><?php echo $studentname; ?></td>
-                    </tr>
-                    <tr>
-                        <td>University</td>
-                        <td><?php echo $studentuniversity; ?></td>
-                    </tr>
-                    <tr>
-                        <td>Major</td>
-                        <td><?php echo $studentmajor; ?></td>
-                    </tr>
-            </div>
+                <!-- <div class="public-student-info">
+                    <table border="1 pix" width=50% style="margin:35px;">
+                </table>
+                </div> -->
+
         <?php
-            if ($restrict == "0"){
+            $torf = ($conn->query("select True as result from Friend f, Student s where s.username = '{$username}' and (s.sid = f.sid1 or s.sid = f.sid2) and (f.sid1 = {$sid} or f.sid2 = {$sid});"))->fetch_assoc()['result'];
+            // var_dump($torf);
+            // var_dump($restrict);
+            if ($restrict == "0" and $torf=='0'){
                 // echo "hello";
         ?>
                 <div class="private-student-info">
-                    <tr>
-                        <td>GPA</td>
-                        <td><?php echo $gpa; ?></td>
-                    </tr>
-                    <tr>
-                        <td>Degree</td>
-                        <td><?php echo $degree; ?></td>
-                    </tr>
-                    <tr>
-                        <td>Resume</td>
-                        <td><?php echo $resume; ?></td>
-                    </tr>
-                </div>
-                </table>
-        <?php
-            }
-        ?>
-        <?php
-            if ($currentusersid == $sid) {
-                header("Location: 0_student-homepage.php");
-                exit;
-            }
-            $torf = ($conn->query("select True as result from Friend f, Student s where s.username = '{$username}' and (s.sid = f.sid1 or s.sid = f.sid2) and (f.sid1 = {$sid} or f.sid2 = {$sid});"))->fetch_assoc()['result'];
-
-            if ($torf == 1) {
-                if ($restrict == "1") {
-        ?>
-                    <!-- <div class="private-student-info">
-                        <h2><p>GPA: <?php echo $gpa; ?></p></h2>
-                        <h2><p>Degree: <?php echo $degree; ?></p></h2>
-                        <h2><p>Resume: <?php echo $resume; ?></p></h2>
-                    </div> -->
-                    <div class="private-student-info">
+                    <table border="1 pix" width=50% style="margin:35px;">
+                        <tr>
+                            <td>Name</td>
+                            <td><?php echo $studentname; ?></td>
+                        </tr>
+                        <tr>
+                            <td>University</td>
+                            <td><?php echo $studentuniversity; ?></td>
+                        </tr>
+                        <tr>
+                            <td>Major</td>
+                            <td><?php echo $studentmajor; ?></td>
+                        </tr>
                         <tr>
                             <td>GPA</td>
                             <td><?php echo $gpa; ?></td>
@@ -133,10 +106,74 @@ if ($checkUser != "student"){
                             <td>Resume</td>
                             <td><?php echo $resume; ?></td>
                         </tr>
-                    </div>
                     </table>
+                </div>
         <?php
-                }
+    }
+    if  ($restrict == "1" and $torf=='0') {
+            ?>
+            <table border="1 pix" width=50% style="margin:35px;">
+                <tr>
+                    <td>Name</td>
+                    <td><?php echo $studentname; ?></td>
+                </tr>
+                <tr>
+                    <td>University</td>
+                    <td><?php echo $studentuniversity; ?></td>
+                </tr>
+                <tr>
+                    <td>Major</td>
+                    <td><?php echo $studentmajor; ?></td>
+                </tr>
+            </table>
+            <?php
+        }
+        ?>
+        <?php
+            if ($currentusersid == $sid) {
+                header("Location: 0_student-homepage.php");
+                exit;
+            }
+
+            if ($torf == '1') {
+                // var_dump($torf);
+                // if ($restrict == "1") {
+        ?>
+                    <!-- <div class="private-student-info">
+                        <h2><p>GPA: <?php echo $gpa; ?></p></h2>
+                        <h2><p>Degree: <?php echo $degree; ?></p></h2>
+                        <h2><p>Resume: <?php echo $resume; ?></p></h2>
+                    </div> -->
+                    <div class="private-student-info">
+                        <table border="1 pix" width=50% style="margin:35px;">
+                            <tr>
+                                <td>Name</td>
+                                <td><?php echo $studentname; ?></td>
+                            </tr>
+                            <tr>
+                                <td>University</td>
+                                <td><?php echo $studentuniversity; ?></td>
+                            </tr>
+                            <tr>
+                                <td>Major</td>
+                                <td><?php echo $studentmajor; ?></td>
+                            </tr>
+                        <tr>
+                            <td>GPA</td>
+                            <td><?php echo $gpa; ?></td>
+                        </tr>
+                        <tr>
+                            <td>Degree</td>
+                            <td><?php echo $degree; ?></td>
+                        </tr>
+                        <tr>
+                            <td>Resume</td>
+                            <td><?php echo $resume; ?></td>
+                        </tr>
+                        </table>
+                    </div>
+        <?php
+                // }
          ?>
                  <form class="remove-friend" action="remove-friend.php" method="post" id="remove-friend-form">
                      <input type="hidden" name="sid2" value="<?php echo $currentusersid; ?>">
