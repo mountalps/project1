@@ -37,7 +37,7 @@
     $GPA = htmlspecialchars($_POST['GPA']);
     $job_id = htmlspecialchars($_POST['job_id']);
     
-    var_dump($job_id);
+//    var_dump($job_id);
     
 //    var_dump($university);
 //    var_dump($major);
