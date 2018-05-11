@@ -114,7 +114,7 @@ if ($checkUser != "student"){
     }
     if  ($restrict == "1" and $torf=='0') {
             ?>
-            <table border="1 pix" width=50% style="margin:35px;">
+            <table border="1 pix" style="margin:35px;">
                 <tr>
                     <td>Name</td>
                     <td><?php echo $studentname; ?></td>
