@@ -56,7 +56,7 @@
         </nav>
     </div>
     <?php
-    $row = $conn->query("select sname, university, major, degree, GPA, keywords, resume from Student where username = '{$username}';")->fetch_assoc();
+    $row = $conn->query("select sname, university, major, degree, GPA, keywords, resume, `restrict` from Student where username = '{$username}';")->fetch_assoc();
     // var_dump($row);
     $sname = $row['sname'];
     $university = $row['university'];
@@ -65,6 +65,8 @@
     $gpa = $row['GPA'];
     $keywords = $row['keywords'];
     $resume = $row['resume'];
+    $restrict = $row['restrict'];
+    // var_dump($restrict);
     ?>
     <div class="wrapper">
     <div class="modify_student_profile">
@@ -111,8 +113,19 @@
                     <td>Restrict:</td>
                     <td>
                         <select name="restrict" id="">
-                            <option value="no">No</option>
-                            <option value="yes">Yes</option>
+                            <?php
+                            if ($restrict == '1') {
+                                ?>
+                                <option value="yes">Yes</option>
+                                <option value="no">No</option>
+                                <?php
+                            } else {
+                                ?>
+                                <option value="no">No</option>
+                                <option value="yes">Yes</option>
+                                <?php
+                            }
+                            ?>
                         </select>
                     </td>
                 </tr>
