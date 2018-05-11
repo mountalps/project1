@@ -148,7 +148,7 @@
 <div class="push">
     <?php
         if ($studentInfo[0] == null or $job_id == ""){
-            echo 'No Students Satisfy your criteria! Or you did not specify a job! Please Try Again!';
+            echo '<h2>No Students Satisfy your criteria! Or you did not specify a job! Please Try Again!</h2>';
         }
         else{
         

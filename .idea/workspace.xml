@@ -35,8 +35,8 @@
       <file leaf-file-name="company_push_jobs_result.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/zq/company_push_jobs_result.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="490">
-              <caret line="39" column="22" selection-start-line="39" selection-start-column="22" selection-end-line="39" selection-end-column="22" />
+            <state relative-caret-position="2006">
+              <caret line="164" column="33" lean-forward="true" selection-start-line="164" selection-start-column="33" selection-end-line="164" selection-end-column="33" />
             </state>
           </provider>
         </entry>
@@ -296,16 +296,15 @@
       <workItem from="1525876719809" duration="10473000" />
       <workItem from="1525900507801" duration="2016000" />
       <workItem from="1525975595888" duration="711000" />
-      <workItem from="1526054479303" duration="3358000" />
+      <workItem from="1526054479303" duration="3865000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="100069000" />
+    <option name="totallyTimeSpent" value="100576000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1440" height="877" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="PHP-CGI Server" order="7" />
@@ -314,9 +313,9 @@
       <window_info anchor="bottom" id="Run" order="2" weight="0.32893" />
       <window_info anchor="bottom" id="Version Control" order="7" />
       <window_info anchor="bottom" id="Terminal" order="7" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.20457797" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.20457797" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
-      <window_info anchor="right" id="Database" order="3" visible="true" weight="0.10729614" />
+      <window_info active="true" anchor="right" id="Database" order="3" visible="true" weight="0.10729614" />
       <window_info anchor="bottom" id="Find" order="1" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
@@ -711,8 +710,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/zq/company_push_jobs_result.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="490">
-          <caret line="39" column="22" selection-start-line="39" selection-start-column="22" selection-end-line="39" selection-end-column="22" />
+        <state relative-caret-position="2006">
+          <caret line="164" column="33" lean-forward="true" selection-start-line="164" selection-start-column="33" selection-end-line="164" selection-end-column="33" />
         </state>
       </provider>
     </entry>
