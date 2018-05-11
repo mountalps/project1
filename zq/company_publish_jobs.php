@@ -1,19 +1,19 @@
 <?php
-    
+
     include_once '../lib/fun.php';
     include_once '../lib/dbinfo.php';
-    
+
     $checkUser = checkLogin();
     //    var_dump($checkUser);
     if ($checkUser == "student"){
         header('Location: 0_student-homepage.php');
         exit;
     }
-    
-    
+
+
     session_start();
     $username = $_SESSION['user'];
-    
+
     $conn_protect = new mysqli($DBhost, $DBuser, $DBpassword, $DBdatabase);
 //    var_dump($DBdatabase);
     $getCompanyInfo = $conn_protect->prepare("select * from Company where cusername = ?;");
@@ -22,14 +22,14 @@
     $getCompanyInfo->execute();
     $companyInfo = $getCompanyInfo->get_result();
     $companyInfo = $companyInfo->fetch_all();
-    
+
 //    $conToDB = mysqlInit($DBhost, $DBuser, $DBpassword, $DBdatabase, $port);
 //    $sqlGetCompanyInfo = "select * from Company where cusername = '{$username}';";
 //    $resultCompanyInfo = mysqli_query($conToDB, $sqlGetCompanyInfo);
 //    $companyInfo = mysqli_fetch_all($resultCompanyInfo, MYSQLI_ASSOC);
 //    var_dump($companyInfo);
-    
-    
+
+
 ?>
 
 <!DOCTYPE html>
@@ -104,8 +104,8 @@
               <input type="text" name="job-country" placeholder="Job Country" required>
             </p>
             <p>
-              <label for="job-salary" style="font-weight:bold;">Salary: </label>
-              <input type="text" name="job-salary" placeholder="Salary" required>
+              <label for="job-salary" style="font-weight:bold;">Annual Salary: </label>
+              <input type="text" name="job-salary" placeholder="e.g. 8500" required>
             </p>
             <p>
               <label for="job-degree" style="font-weight:bold;">Prefered Degree: </label>
@@ -128,7 +128,7 @@
               <label for="job-description" style="font-weight:bold;">Job Description: <br></label>
               <textarea name="job-description" rows="8" cols="50" required></textarea>
             </p>
-            
+
             <p>
               <input type="submit" name="submit-creat-job" value="Create Job">
             </p>
