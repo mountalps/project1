@@ -253,16 +253,50 @@
 
 <div class="changeResult" align="center">
     <h3>Here is your new profile</h3>
-    <?php
-    echo $sname.'<br>';
-    echo $university.'<br>';
-    echo $major.'<br>';
-    echo $degree.'<br>';
-    echo $GPA.'<br>';
-    echo $keywords.'<br>';
-    echo $resume.'<br>';
-    echo $restrict.'<br>';
-     ?>
+    <table border="1px">
+        <tr>
+            <td>Name</td>
+            <td><?php if($sname != null) echo $sname; else echo "not changed!"?></td>
+        </tr>
+        <tr>
+            <td>University</td>
+            <td><?php if($university != null) echo $university; else echo "not changed!"?></td>
+        </tr>
+        <tr>
+            <td>Major</td>
+            <td><?php if($major!= null) echo $major; else echo "not changed!"?></td>
+        </tr>
+        <tr>
+            <td>Degree</td>
+            <td><?php if($degree!= null) echo $degree; else echo "not changed!"?></td>
+        </tr>
+        <tr>
+            <td>GPA</td>
+            <td><?php if($GPA != null) echo $GPA; else echo "not changed!"?></td>
+        </tr>
+        <tr>
+            <td>Keywords</td>
+            <td><?php if($keywords != null) echo $keywords; else echo "not changed!"?></td>
+        </tr>
+        <tr>
+            <td>Resume</td>
+            <td><?php if($resume != null) echo $resume; else echo "not changed!"?></td>
+        </tr>
+        <tr>
+            <td>Restrict</td>
+            <td><?php if($restrict == null) echo "not changed!"; elseif ($restrict == '1') echo 'YES'; else echo "NO"?></td>
+        </tr>
+    </table>
+<!--    --><?php
+//    echo $sname.'<br>';
+//    echo $university.'<br>';
+//    echo $major.'<br>';
+//    echo $degree.'<br>';
+//    echo $GPA.'<br>';
+//    echo $keywords.'<br>';
+//    echo $resume.'<br>';
+//    echo $restrict.'<br>';
+//     ?>
 </div>
 
 </body>
