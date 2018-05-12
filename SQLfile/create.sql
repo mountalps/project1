@@ -45,6 +45,9 @@ CREATE TABLE `Job` (
   CONSTRAINT `Job_ibfk_1` FOREIGN KEY (`cid`) REFERENCES `Company` (`cid`)
 ) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=latin1;
 
+-- ALTER TABLE Job
+-- ADD COLUMN jtime datetime NOT NULL;
+
 
 CREATE TABLE `NotificationToStudent` (
   `nid` int(11) NOT NULL AUTO_INCREMENT,
