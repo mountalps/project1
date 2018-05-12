@@ -7,22 +7,22 @@
      */
     include_once '../lib/fun.php';
     include_once '../lib/dbinfo.php';
-    
-    
+
+
     $checkUser = checkLogin();
     //    var_dump($checkUser);
     if ($checkUser == "student"){
         header('Location: 0_student-homepage.php');
         exit;
     }
-    
-    
+
+
     session_start();
     $username = $_SESSION['user'];
-    
+
     $conn_protect = new mysqli($DBhost, $DBuser, $DBpassword, $DBdatabase);
 //    var_dump($conn_protect);
-    
+
     //To guard against SQL injection
     $getCompanyInfo = $conn_protect->prepare("select * from Company where cusername = ?;");
 //    var_dump($getCompanyInfo);
@@ -33,8 +33,8 @@
     $companyInfo = $getCompanyInfo->get_result();
     $companyInfo = $companyInfo->fetch_all();
 //    var_dump($companyInfo);
-    
-    
+
+
     //Job Table Attributes:
     //          `jid` INT NOT NULL auto_increment,
     //  `title` VARCHAR(100) NOT NULL,
@@ -46,7 +46,7 @@
     //  `degree` VARCHAR(20) NOT NULL,
     //  `major` VARCHAR(20) NOT NULL,
     //  `jdescription` TEXT NOT NULL,
-    
+
     $job_title = htmlspecialchars($_POST['job-title']);
     $job_city = htmlspecialchars($_POST['job-city']);
     $job_state = htmlspecialchars($_POST['job-state']);
@@ -57,11 +57,11 @@
     $job_description = htmlspecialchars($_POST['job-description']);
     $job_expires = htmlspecialchars($_POST['job-expires']);
     $job_expires = (int)$job_expires;
-    
+
     date_default_timezone_set("America/New_York");
     $timeStamp = time();
     $time_now = date('Y-m-d H:i:s', $timeStamp);
-    
+
     if ($job_expires == "1")
         $job_expires = date('Y-m-d H:i:s', strtotime("+1 months", strtotime($time_now)));
     elseif ($job_expires == "2")
@@ -70,11 +70,11 @@
         $job_expires = date('Y-m-d H:i:s', strtotime("+3 months", strtotime($time_now)));
     elseif ($job_expires == "6")
         $job_expires = date('Y-m-d H:i:s', strtotime("+6 months", strtotime($time_now)));
-    
-    
+
+
 //    var_dump($job_expires);
-    
-    
+
+
     //    var_dump($job_title);
 //    var_dump($job_city);
 //    var_dump($job_state);
@@ -83,7 +83,7 @@
 //    var_dump($job_degree);
 //    var_dump($job_major);
 //    var_dump($job_description);
-    
+
 //    if ($job_title == "" || $job_city == "" || $job_state == "" || $job_country == "" || $job_salary == "" || $job_degree == "" || $job_major == "" || $job_description == ""){
 //        if ($job_title == "")
 //            echo 'job title cannot be empty!<\br>';
@@ -102,7 +102,7 @@
 //        if ($job_description == "")
 //            echo 'job description cannot be empty!<\br>';
 //    }
-    
+
     $job_salary = (int)$job_salary;
 //    var_dump($job_salary);
     //          `jid` INT NOT NULL auto_increment,
@@ -115,13 +115,13 @@
     //  `degree` VARCHAR(20) NOT NULL,
     //  `major` VARCHAR(20) NOT NULL,
     //  `jdescription` TEXT NOT NULL,
-    
+
     $conn_protect1 = new mysqli($DBhost, $DBuser, $DBpassword, $DBdatabase);//No error
 //    var_dump($conn_protect1);
-    $publishJob = $conn_protect1->prepare("insert into Job (jid, title, cid, jcity, jstate, jcountry, salary, degree, major, jdescription, expirationDate) values(?,?,?,?,?,?,?,?,?,?,?);");
+    $publishJob = $conn_protect1->prepare("insert into Job (jid, title, cid, jcity, jstate, jcountry, salary, degree, major, jdescription, expirationDate, jtime) values(?,?,?,?,?,?,?,?,?,?,?,?);");
 //    var_dump($publishJob);
-    
-    $publishJob->bind_param("isisssdssss", $jid_protect, $title_protect, $cid_protect, $jcity_protect, $jstate_protect, $jcountry_protect, $salary_protect, $degree_protect, $major_protect, $jdescription_protect, $expirationDate_protect);
+
+    $publishJob->bind_param("isisssdsssss", $jid_protect, $title_protect, $cid_protect, $jcity_protect, $jstate_protect, $jcountry_protect, $salary_protect, $degree_protect, $major_protect, $jdescription_protect, $expirationDate_protect, $jtime);
     $jid_protect = null;
     $title_protect = $job_title;
     $cid_protect = $companyInfo[0][0];
@@ -133,7 +133,8 @@
     $major_protect = $job_major;
     $jdescription_protect = $job_description;
     $expirationDate_protect = $job_expires;
-    
+    $jtime = $time_now;
+
 //    var_dump($companyInfo[0][0]);
     $publishJob->execute();
     $affectedRows = $publishJob->affected_rows;
@@ -142,7 +143,7 @@
         $resultPublishAJob = 'true';
     else
         $resultPublishAJob = 'false';
-    
+
 ?>
 
 <!DOCTYPE html>
@@ -179,7 +180,7 @@
 
 <?php if ($resultPublishAJob):?>
     <h2>Job Created Successfully!</h2>
-    
+
 <?php else:?>
     <h2>Job Created Unsuccessfully!</h2>
     <h2>Please Try Again!</h2>
@@ -189,7 +190,3 @@
 
 </body>
 </html>
-
-
-
-
