@@ -1,2 +1,5 @@
 
+Link: 
+www.13march16.com
+
 In this project, we design a social networking website called Joster for students looking for jobs and for companies seeking candidates. Students can follow companies and find new friends to build their social network on Jobster. Companies can post jobs and even push jobs to specific groups of students. In this report, we focus on the implementation of the database and functions we designed in last project. Besides, we modify our schema and ER-diagram.
